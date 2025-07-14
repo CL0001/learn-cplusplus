@@ -410,7 +410,7 @@ Here, we’ll use the underscore suffix style as it tends to be cleaner and easi
 This naming convention helps clearly distinguish member variables from local variables or function parameters, especially in larger codebases.
 It also improves readability, reduces naming conflicts, and eliminates the need to use the this pointer explicitly in most cases — something we’ll explore a bit later as well.
 
-#### Static Inside Classes
+#### Static Inside Class
 
 So far, we’ve seen how classes let each object maintain its own set of member variables with data unique to that particular object, created from the blueprint of a class like `Patient`.
 But sometimes, you want a variable or function to belong to the class itself, rather than to any single object.
@@ -462,7 +462,7 @@ We can see that the `value` is shared across all instances of the class.
 However, since it's a static member, it must be defined outside the class—this step is required to allocate memory for it.
 If you forget to do this, you'll get a linker error.
 
-#### Static Outside Classes
+#### Static Outside Class
 
 The `static` keyword in C++ has two distinct meanings depending on where it's used.
 One use, as we saw in the previous section, is inside a class—where it makes a member variable or method shared across all instances.
@@ -543,7 +543,7 @@ Value: 20
 By using `extern`, we give `main.cpp` access to the variable defined in another file.
 This is known as external linkage, and it allows multiple files to share global variables while keeping a single definition in one place.
 
-#### Getter and Setter Methods
+#### Getters and Setters
 
 In general, member variables should not be exposed directly outside of a class.
 This encapsulation helps prevent unintended modification or misuse.
@@ -819,6 +819,76 @@ a.x = 22.33
 b.x = 10
 ```
 
+#### Copy Assignment Operator
+
+The copy assignment operator is closely related to the copy constructor, but it comes into play after an object has already been constructed.
+
+Whereas the copy constructor creates a new object from an existing one, the copy assignment operator replaces the contents of an already existing object with those from another.
+
+C++ provides a default version of this operator if you don't write your own.
+Like the default copy constructor, it performs a member-wise copy of each field.
+
+But if your type manages resources manually, or you just want to log or tweak the behavior, you can define your own.
+
+```cpp title="main.cpp"
+#include <iostream>
+
+struct Vector2 {
+    double x;
+    double y;
+
+    Vector2() = default;
+
+    Vector2(double x, double y)
+        : x(x), y(y) {
+        std::cout << "Init constructor called!" << std::endl;
+    }
+
+    Vector2(const Vector2& other)
+        : x(other.x), y(other.y) {
+        std::cout << "Copy constructor called!" << std::endl;
+    }
+
+    // Custom copy assignment operator
+    Vector2& operator=(const Vector2& other) {
+        std::cout << "Copy assignment operator called!" << std::endl;
+
+        /*
+            Self-assignment check
+
+            Without this check, you might accidentally overwrite
+            your own data unnecessarily—or worse, in more complex types,
+            cause memory corruption.
+        */
+        if (this == &other)
+            return *this;
+
+        x = other.x;
+        y = other.y;
+
+        return *this;
+    }
+};
+
+int main() {
+    Vector2 a(22.33, 55.66);
+    Vector2 b;
+
+    b = a; // This triggers the copy assignment operator
+    b.x = 10.0;
+
+    std::cout << "a.x = " << a.x << std::endl;
+    std::cout << "b.x = " << b.x << std::endl;
+}
+```
+
+``` title="output"
+Init constructor called!
+Copy assignment operator called!
+a.x = 22.33
+b.x = 10
+```
+
 #### Move Constructor
 
 !!! info
@@ -916,6 +986,78 @@ x: 22.33 y: 55.66
 
 This pattern is essential whenever your class directly manages memory or other system resources.
 It gives you precise control over how resources are moved, helping ensure both correctness and performance.
+
+#### Move Assignment Operator
+
+Just like how the copy assignment operator complements the copy constructor, the move assignment operator is the companion to the move constructor.
+
+Where the move constructor initializes a new object by stealing resources, the move assignment operator replaces the contents of an already existing object by taking ownership of another object’s resources.
+
+This is especially important when working with resource-owning types, like classes that manage dynamic memory or handles.
+
+```cpp title="main.cpp"
+#include <iostream>
+
+struct Vector2 {
+    double* data;
+
+    Vector2(double x, double y) {
+        data = new double[2]{x, y};
+    }
+
+    Vector2(Vector2&& other) {
+        std::cout << "Move constructor called!" << std::endl;
+        data = other.data;
+        other.data = nullptr;
+    }
+
+    // Move assignment operator
+    Vector2& operator=(Vector2&& other) {
+        std::cout << "Move assignment operator called!" << std::endl;
+
+        // Self-assignment check
+        if (this == &other)
+            return *this;
+
+        // Clean up existing resource
+        delete[] data;
+
+        // Steal the resource
+        data = other.data;
+        other.data = nullptr;
+
+        return *this;
+    }
+
+    void print() const {
+        if (data)
+            std::cout << "x: " << data[0] << " y: " << data[1] << std::endl;
+        else
+            std::cout << "Vector2 is in moved-from state" << std::endl;
+    }
+
+    ~Vector2() {
+        delete[] data;
+    }
+};
+
+int main() {
+    Vector2 a(11.11f, 22.22f);
+    Vector2 b(0.0f, 0.0f);
+
+    b = std::move(a); // Triggers move assignment
+
+    a.print();
+    b.print();
+}
+```
+
+!!! tip
+
+    Just like with the move constructor, if your type doesn't manage raw resources manually, you probably don’t need to write a custom move assignment operator.
+    The compiler-generated one is often sufficient.
+
+    Together, the move constructor and move assignment operator complete your class's ability to participate in move semantics safely and efficiently.
 
 #### Explicit Constructor
 
@@ -1015,13 +1157,18 @@ This is known as the Rule of Zero: let the compiler generate the special functio
 
 ### Destructors
 
+!!! info
+
+    This section is fairly short, as the core concept is straightforward.
+    However, we’ll return to the topic later—particularly when we cover inheritance—where destructors become a bit more important.
+
 Similar to a constructor, a destructor is a special method, but it's called automatically when an object goes out of scope or is explicitly deleted.
 Its job is to clean up—releasing resources the object may have acquired during its lifetime, such as dynamic memory, file handles, or network connections.
 
 Just like constructors, destructors have a unique syntax:
 
 - They have no return type (not even void).
-- Their name matches the class, but with a tilde ~ prefix.
+- Their name matches the class, but with a tilde `~` prefix.
 - A class can have only one destructor, and it cannot take any parameters.
 
 Destructors are declared public in most cases, especially when objects are created on the stack or dynamically via new.
@@ -1067,19 +1214,599 @@ Program ending
 
 ### Arrow Operator
 
+Up until now, we've been using the dot operator to access members of structs and classes.
+But that only works when we have a direct instance of the object.
+
+When we have a pointer to an object, things change.
+We can’t use the dot operator anymore — because the pointer itself doesn’t have those members.
+Instead, we use the arrow operator (`->`) to access them through the pointer.
+
+```cpp title="main.cpp"
+#include <iostream>
+
+struct Point {
+    double x;
+    double y;
+
+    void Print() const {
+        std::cout << "x: " << x << " y: " << y << std::endl;
+    }
+};
+
+int main() {
+    Point* ptr_point = new Point{41.32, 22.87};
+
+    /*
+        This won't work because ptr_point is a pointer, not an object:
+
+        ptr_point.Print();
+    */
+
+    // But this will:
+    ptr_point->Print();
+}
+```
+
+``` title="output"
+x: 41.32 y: 22.87
+```
+
+!!! note
+
+    If you're thinking, "Wait, couldn't we just dereference the pointer and call the method like this: `(*ptr_point).Print()`?" — you're absolutely right.  
+    However, that syntax is a bit messy to read.
+    That’s exactly why the arrow operator exists: it's just a cleaner, more readable shortcut for `(*pointer).member`.
+
+The arrow operator can even be used in clever low-level tricks — like calculating the byte offset of a struct member from the beginning of the structure.
+
+!!! info
+
+    This section covers advanced memory management concepts, including how data is organized in memory and how to optimize it.
+    This knowledge is generally not required unless you are working in performance-critical or low-level systems.
+
+```cpp title="main.cpp"
+#include <iostream>
+#include <cstdint>
+
+struct Point {
+    double x;
+    double y;
+    double z;
+};
+
+int main() {
+    // Use the arrow operator on a null pointer to compute member offsets
+    uintptr_t offset_x = (uintptr_t)&((Point*)nullptr)->x;
+    uintptr_t offset_y = (uintptr_t)&((Point*)nullptr)->y;
+    uintptr_t offset_z = (uintptr_t)&((Point*)nullptr)->z;
+
+    /*
+        We could technically use a regular int here, but using uintptr_t is more correct,
+        as it is specifically designed to safely store pointer values as integers.
+    */
+
+    std::cout << "Byte Offset of x: " << offset_x << std::endl;
+    std::cout << "Byte Offset of y: " << offset_y << std::endl;
+    std::cout << "Byte Offset of z: " << offset_z << std::endl;
+}
+```
+
+``` title="output"
+Byte Offset of x: 0
+Byte Offset of y: 8
+Byte Offset of z: 16
+```
+
+### Current Instance Pointer
+
+In C++, we have access to a special keyword called `this`.
+It is only available inside member functions, and it points to the current instance of the class or object the method is acting on.
+While using `this` is often optional, it becomes especially useful when there is a name clash—for example, between constructor parameters and member variables.
+
+```cpp title="main.cpp"
+struct Point {
+    double x;
+    double y;
+    double z;
+
+    // This works fine: the member variables are initialized using an initializer list
+    Point(double x, double y, double z) 
+        : x(x), y(y), z(z) {
+    }
+
+    /* 
+        This will not work as expected:
+        The assignments just assign the parameters to themselves,
+        leaving the member variables unchanged.
+
+        Point(double x, double y, double z) {
+            x = x;
+            y = y;
+            z = z;
+        }
+    */
+};
+```
+
+To resolve this ambiguity, we can use the `this` pointer to explicitly refer to the member variables.
+Since `this` is a pointer, we access members using the arrow operator.
+
+```cpp title="example"
+struct Point {
+    double x;
+    double y;
+    double z;
+
+    Point(double x, double y, double z) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+    }
+};
+```
+
+!!! note
+
+    Remember that in many C++ style guides—like Google’s or others—it’s common to suffix member variables with `_` (e.g., `name_`) or prefix them with `m_` (e.g., `m_name`).  
+    This naming convention helps avoid name clashes entirely and improves readability without needing to use `this->`.
+
+## Friend Functions
+
+In C++, we can grant non-member functions access to a class’s private and protected members by declaring them as friend.
+Although these functions are not part of the class itself, they are treated as trusted and can interact with the internal state of the class directly.
+
+This approach is useful when a function needs to work closely with a class—such as when overloading operators—but doesn’t logically belong as a member, helping keep responsibilities separated while still allowing close access.
+
+```cpp title="main.cpp"
+#include <iostream>
+
+class Box {
+private:
+    double edge_length_;
+
+public:
+    Box(double edge_length_)
+        : edge_length_(edge_length_) {
+    }
+
+    // Declare a friend function inside public access specifier
+    friend void PrintEdgeLength(const Box& box);
+};
+
+// Define friend function outside the class
+void PrintEdgeLength(const Box& box) {
+    std::cout << "Edge length: " << box.edge_length_ << std::endl;
+}
+
+int main() {
+    Box box(42.5);
+    PrintEdgeLength(box);  // Can access private width directly
+}
+```
+
+``` title="output"
+Edge length: 42.5
+```
+
+## Inheritance
+
+In more complex programs—especially games—we often need to structure our code in a way that’s both reusable and maintainable.
+Imagine you have a `Player` class and an `Enemy` class.
+At first glance, they may seem different, but both share several common traits: they might have a `name`, `hitpoints`, a `level`, or a `position` in the game world.
+
+Rather than duplicating those shared members in every class, we can extract them into a more general-purpose class—say, `Entity`.
+Both `Player` and `Enemy` can then be built on top of `Entity`, inheriting its functionality and enriching it with their own unique behavior.
+This mechanism is called inheritance.
+
+Inheritance lets us write cleaner, more modular code.
+It allows us to group shared functionality in one place and extend or override it as needed in specialized types.
+
+```cpp title="main.cpp"
+#include <iostream>
+#include <string>
+
+class Entity {
+protected:
+    std::string name_;
+    double hitpoints_;
+    unsigned int level_;
+
+public:
+    /*
+        'name' is passed by value (copied into this constructor),
+        so to avoid copying it again into name_, we move it instead.
+
+        This technique works with all STL containers
+        like std::vector, std::map as well as std::string.
+        Just remember: after moving a variable, 
+        you should not use it again unless you reassign a valid value.
+
+        In many cases this optimization isn’t strictly necessary,
+        but it serves as a good example of where move semantics—
+        which we introduced earlier—can be applied in real code.
+    */
+    Entity(std::string name, double hitpoints, unsigned int level)
+        : name_(std::move(name)), hitpoints_(hitpoints), level_(level) {
+    }
+
+    void PrintInfo() const {
+        std::cout << "name: " << name_ << std::endl;
+        std::cout << "hitpoints: " << hitpoints_ << std::endl;
+        std::cout << "level: " << level_ << std::endl;
+    }
+};
 
 
-### This pointer
+/*
+    You will almost always want to use the public inheritance
+    access specifier. See the detailed table below for why
+    that’s usually the right choice.
+*/
+struct Player : public Entity {
+    /*
+        We're using the constructor of the parent class (Entity),
+        which is one of the main benefits of inheritance:
+        reusing shared initialization logic.
+    */
+    Player(std::string name)
+        : Entity(std::move(name), 100.0, 1) {
+    }
 
+    void Attack() {
+        std::cout << name_ << " attacks with a sword!" << std::endl;
+    }
+};
 
+struct Enemy : public Entity {
+    Enemy(std::string name, double hp, unsigned int lvl)
+        : Entity(std::move(name), hp, lvl) {
+    }
 
-## Inheritance & Polymorphism
+    void Taunt() {
+        std::cout << name_ << " growls!" << std::endl;
+    }
+};
 
+int main() {
+    Player player("Archer");
+    Enemy entity("Goblin", 50.0, 2);
 
+    std::cout << "Player info" << std::endl;
+    player.PrintInfo();
+    player.Attack();
+
+    std::cout << std::endl;
+
+    std::cout << "Enemy info" << std::endl;
+    entity.PrintInfo();
+    entity.Taunt();
+}
+```
+
+``` title="output"
+Player info
+name: Archer
+hitpoints: 100
+level: 1
+Archer attacks with a sword!
+
+Enemy info
+name: Goblin
+hitpoints: 50
+level: 2
+Goblin growls!
+```
+
+| Inheritance Type | `public` Members in Base   | `protected` Members in Base   | `private` Members in Base |
+| ---------------- | -------------------------- | ----------------------------- | ------------------------- |
+| `public`         | Remain `public` in derived | Remain `protected` in derived | Not accessible            |
+| `protected`      | Become `protected`         | Remain `protected`            | Not accessible            |
+| `private`        | Become `private`           | Become `private`              | Not accessible            |
+
+### Polymorphism
+
+Polymorphism refers to the ability of different classes to respond to the same function call in their own way.
+Unlike regular function overloading (where multiple functions share a name but differ in parameters), polymorphism usually involves methods of a base class that are overridden in derived classes to provide specialized behavior.
+
+```cpp title="main.cpp"
+#include <iostream>
+
+class Entity {
+public:
+    virtual void Speak() { // Must be marked virtual
+        std::cout << "Entity speaks." << std::endl;
+    }
+};
+
+class Player : public Entity {
+public:
+    void Speak() override {
+        std::cout << "Player speaks." << std::endl;
+    }
+};
+
+int main() {
+    Entity* entity = new Player(); // Base class pointer to derived object
+    entity->Speak();               // Calls Player::Speak() thanks to polymorphism
+
+    delete entity;
+}
+```
+
+``` title="output"
+Player speaks.
+```
+
+### Virtual Methods
+
+In the previous section, we used the virtual keyword to enable polymorphism.
+Let’s now take a moment to focus on what virtual methods actually are.
+
+A virtual method is a member function that can be overridden in a derived class.
+When you call it through a base class pointer or reference, the version that's selected is based on the actual type of the object — not the type of the pointer or reference.
+
+This mechanism is called dynamic dispatch, and it only happens when you're using a base class pointer or reference and the method is marked as virtual.
+
+| Keyword    | Purpose                                                               | Where it's used              | Notes                                                                  |
+| ---------- | --------------------------------------------------------------------- | ---------------------------- | ---------------------------------------------------------------------- |
+| `virtual`  | Marks a method as overridable in derived classes                      | In base class declarations   | Enables runtime polymorphism.                                          |
+| `override` | Indicates that a method intentionally overrides a base virtual method | In derived class definitions | Helps catch bugs caused by mismatched method signatures.               |
+| `final`    | Prevents a virtual method from being overridden further               | In derived class definitions | Can also be used to seal entire classes: `class MyFinalClass final {}` |
+
+!!! tip 
+
+    Always use override when overriding virtual methods.
+    It makes your intent clear and helps the compiler catch mistakes.
+
+```cpp title="example"
+class Entity {
+public:
+    virtual void Speak() {
+        std::cout << "Entity speaks." << std::endl;
+    }
+};
+
+class Player : public Entity {
+public:
+    void Speak() override final { // overrides and seals the method
+        std::cout << "Player speaks." << std::endl;
+    }
+};
+
+/*
+    This would cause a compile error:
+
+    class Boss : public Player {
+        void Speak() override { ... } // Not allowed as it was marked as final
+    };
+*/
+```
+
+### Interfaces 
+
+Now that we've seen how virtual methods work, let's talk about a special case: interfaces.
+
+In C++, an interface is typically just a class that contains only pure virtual functions — methods that must be implemented by any derived class.
+They have no body and are declared using `= 0`.
+
+Interfaces are especially useful for enforcing consistent behavior across many unrelated types — for example, in plugins, simulation systems, or game objects.
+You can build systems that interact with any class that implements the interface, without caring what kind of object it is.
+
+You can think of an interface as an abstract base class made up entirely of pure virtual methods.
+And yes — in C++, a class can inherit from multiple interfaces.
+
+!!! note
+
+    A class that contains at least one pure virtual method becomes an abstract class, and it cannot be instantiated directly.
+
+```cpp title="main.cpp"
+#include <iostream>
+
+class Updatable {
+public:
+    virtual void Update() = 0; // Pure virtual function
+};
+
+class Player : public Updatable {
+public:
+    void Update() override {
+        std::cout << "Player updates." << std::endl;
+    }
+};
+
+int main() {
+    Player player;
+    player.Update(); // Calls Player's implementation
+}
+```
+
+``` title="output"
+Player updates.
+```
 
 ## Singletons
 
+Sometimes, we only ever want a single instance of a class to exist across an entire program.
+Maybe it's a logger, a configuration manager, or a global game state—whatever the case, the Singleton design pattern is exactly for this pupose.
+Instead of letting code freely create new objects, a Singleton class controls its own instantiation and ensures only one object is ever made.
+The typical approach involves a static method that hands out a reference to the sole instance, creating it the first time it's needed.
 
+```cpp title="example"
+class Game {
+private:
+    Game() {
+    }
+
+public:
+    Game(const Game&) = delete;
+    Game& operator=(const Game&) = delete;
+    Game(Game&&) = delete;
+    Game& operator=(Game&&) = delete;
+
+    static Game& Instance() {
+        static Game instance;
+        return instance;
+    }
+
+    void Run() {
+        // Game loop would go here
+    }
+};
+
+int main() {
+    Game::Instance().Run(); // Only one Game ever exists
+}
+```
 
 ## Exercises
 
+=== "task 1"
+
+    ```
+    Define a `Book` struct with the following fields: `title`, `author`,
+    `year`, and `price`. Then, write a function that takes a `Book`
+    as a parameter and prints its contents in a human-readable format.
+    ```
+
+=== "answer"
+
+    ```cpp
+    #include <iostream>
+    #include <string>
+
+    struct Book {
+        std::string title;
+        std::string author;
+        unsigned int year;
+        double price; 
+    };
+
+    void PrintBookContent(const Book& book) {
+        std::cout << "Title: " << book.title << std::endl;
+        std::cout << "Author: " << book.author << std::endl;
+        std::cout << "Year: " << book.year << std::endl;
+        std::cout << "Price: " << book.price << std::endl;
+    }
+
+    int main() {
+        Book book{
+            .title = "Learn CPlusPlus",
+            .author = "CL0001/ElGordoOfficial",
+            .year = 2025,
+            .price = 0.0
+        };
+        
+        PrintBookContent(book);
+    }
+    ```
+
+---
+
+=== "task 2"
+
+    ```
+    Create a Rectangle class that stores width and height.
+
+    - Provide a constructor.
+    - Add getter and setter methods for both members.
+    - Add a method area() that returns the area of the rectangle.
+    ```
+
+=== "answer"
+
+    ```cpp
+    #include <iostream>
+
+    class Rectangle {
+    public:
+        Rectangle(double width, double height)
+            : width_(width), height_(height) {
+        }
+
+        double GetWidth() const {
+            return width_;
+        }
+
+        double GetHeight() const {
+            return height_;
+        }
+
+        void SetWidth(double width) {
+            width_ = width;
+        }
+
+        void SetHeight(double height) {
+            height_ = height;
+        }
+
+        double CalculateArea() const {
+            return width_ * height_;
+        }
+
+    private:
+        double width_;
+        double height_;
+    };
+
+    int main() {
+        Rectangle rectangle(10.32, 20.85);
+
+        rectangle.SetWidth(10.0);
+        rectangle.SetHeight(20.0);
+
+        std::cout << "Rectangle area: " << rectangle.CalculateArea() << std::endl;
+    }
+    ```
+
+---
+
+=== "task 3"
+
+    ```
+    Define a class Logger that writes custom user defined messages
+    into terminal when:
+
+    - An object is constructed
+    - An object is destructed
+
+    Create several `Logger` instances inside a `CreateLoggers` function
+    and observe the output order.
+    ```
+
+=== "answer"
+
+    ```cpp
+    #include <iostream>
+    #include <string>
+
+    class Logger {
+    public:
+        Logger(const std::string& name)
+            : name_(name) {
+            std::cout << "Logger " << name_ << " constructed." << std::endl;
+        }
+
+        ~Logger() {
+            std::cout << "Logger " << name_ << " destructed." << std::endl;
+        }
+
+    private:
+        std::string name_;
+    };
+
+    void CreateLoggers() {
+        Logger log1("First");
+        Logger log2("Second");
+        Logger log3("Third");
+        std::cout << "Exiting CreateLoggers function..." << std::endl;
+    }
+
+    int main() {
+        CreateLoggers();
+        std::cout << "Back in main." << std::endl;
+    }
+    ```
+
+---
+
+More to come ...

@@ -1,7 +1,7 @@
 # 00 Table of Contents
 
 <pre>
-<strong><a href="/learn-cplusplus/01 Introduction/"><span class="link">├── 01 Introduction/</span></a></strong>
+├── <strong><a href="/learn-cplusplus/01 Introduction/"><span class="link">01 Introduction/</span></a></strong>
 │   ├── <a href="/learn-cplusplus/01 Introduction/#environment-setup">Environment Setup/</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#recommended-setup-for-windows">Recommended Setup for Windows</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#recommended-setup-for-macos">Recommended Setup for macOS</a>
@@ -24,7 +24,7 @@
 │   ├── <a href="/learn-cplusplus/01 Introduction/#terminal-input-and-output">Terminal Input and Output</a>
 │   └── <a href="/learn-cplusplus/01 Introduction/#exercises">Exercises</a>
 │
-<strong>├── <a href="/learn-cplusplus/02 Control Flow/"><span class="link">02 Control Flow/</span></a></strong>
+├── <strong><a href="/learn-cplusplus/02 Control Flow/"><span class="link">02 Control Flow/</span></a></strong>
 │   ├── <a href="/learn-cplusplus/02 Control Flow/#if-statements">If Statements</a>
 │   ├── <a href="/learn-cplusplus/02 Control Flow/#switch-statements">Switch Statements</a>
 │   ├── <a href="/learn-cplusplus/02 Control Flow/#goto-statements">Go To Statements</a>
@@ -36,7 +36,7 @@
 │   ├── <a href="/learn-cplusplus/02 Control Flow/#shortened-notations">Shortened Notations</a>
 │   └── <a href="/learn-cplusplus/02 Control Flow/#exercises">Exercises</a>
 │
-<strong>├── <a href="/learn-cplusplus/03 Operators/"><span class="link">03 Operators/</span></a></strong>
+├── <strong><a href="/learn-cplusplus/03 Operators/"><span class="link">03 Operators/</span></a></strong>
 │   ├── <a href="/learn-cplusplus/03 Operators/#comparison-operators">Comparison Operators</a>
 │   ├── <a href="/learn-cplusplus/03 Operators/#logical-operators">Logical Operators</a>
 │   ├── <a href="/learn-cplusplus/03 Operators/#arithmetic-operators">Arithmetic Operators/</a>
@@ -58,8 +58,8 @@
 │   ├── <a href="/learn-cplusplus/03 Operators/#ternary-operator">Ternary Operator</a>
 │   ├── <a href="/learn-cplusplus/03 Operators/#operator-overloading">Operator Overloading</a>
 │   └── <a href="/learn-cplusplus/03 Operators/#exercises">Exercises</a>
-|
-<strong>├── <a href="/learn-cplusplus/04 Functions/"><span class="link">04 Functions/</span></a></strong>
+│
+├── <strong><a href="/learn-cplusplus/04 Functions/"><span class="link">04 Functions/</span></a></strong>
 │   ├── <a href="/learn-cplusplus/04 Functions/#function-creation">Function Creation</a>
 │   ├── <a href="/learn-cplusplus/04 Functions/#return-values">Return Values/</a>
 │   │   └── <a href="/learn-cplusplus/04 Functions/#mandatory-return-values">Mandatory Return Values</a>
@@ -73,8 +73,8 @@
 │   │   ├── <a href="/learn-cplusplus/04 Functions/#when-to-use-lambdas">When to Use Lambdas</a>
 │   │   └── <a href="/learn-cplusplus/04 Functions/#lambda-use-case">Lambda Use Case</a>
 │   └── <a href="/learn-cplusplus/04 Functions/#exercises">Exercises</a>
-|
-<strong>├── <a href="/learn-cplusplus/05 Data Types/"><span class="link">05 Data Types/</span></a></strong>
+│
+├── <strong><a href="/learn-cplusplus/05 Data Types/"><span class="link">05 Data Types/</span></a></strong>
 │   ├── <a href="/learn-cplusplus/05 Data Types/#static-and-strong-typing">Static and Strong Typing</a>
 │   ├── <a href="/learn-cplusplus/05 Data Types/#primitive-data-types">Primitive Data Types/</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#standard-integer-types">Standard Integer Types</a>
@@ -108,7 +108,7 @@
 │   │   └── <a href="/learn-cplusplus/05 Data Types/#considerations-when-using-rtti">Considerations When Using RTTI</a>
 │   └── <a href="/learn-cplusplus/05 Data Types/#exercises">Exercises</a>
 │
-<strong>├── <a href="/learn-cplusplus/06 Pointers and References/"><span class="link">06 Pointers and References/</span></a></strong>
+├── <strong><a href="/learn-cplusplus/06 Pointers and References/"><span class="link">06 Pointers and References/</span></a></strong>
 │   ├── <a href="/learn-cplusplus/06 Pointers and References/#memory-allocation">Memory Allocation</a>
 │   ├── <a href="/learn-cplusplus/06 Pointers and References/#object-lifetimes">Object Lifetimes</a>
 │   ├── <a href="/learn-cplusplus/06 Pointers and References/#raw-pointers">Raw Pointers/</a>
@@ -149,8 +149,8 @@
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#weak-pointer">Weak Pointer</a>
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#when-to-use-smart-pointers">When to Use Smart Pointers</a>
 │   └── <a href="/learn-cplusplus/06 Pointers and References/#exercises">Exercises</a>
-|
-<strong>├── <a href="/learn-cplusplus/07 Collections of Data/"><span class="link">07 Collections of Data/</span></a></strong>
+│
+├── <strong><a href="/learn-cplusplus/07 Collections of Data/"><span class="link">07 Collections of Data/</span></a></strong>
 │   ├── <a href="/learn-cplusplus/07 Collections of Data/#c-style-arrays">C-Style Arrays/</a>
 │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#access-and-modify-elements">Access and Modify Elements</a>
 │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#iterate-over-arrays">Iterate Over Arrays</a>
@@ -184,15 +184,15 @@
 │   ├── <a href="/learn-cplusplus/07 Collections of Data/#iterators">Iterators/</a>
 │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#range-based-for-loops">Range-Based For Loops</a>
 │   └── <a href="/learn-cplusplus/07 Collections of Data/#exercises">Exercises</a>
-|
-<strong>├── <a href="/learn-cplusplus/08 User Defined Types/"><span class="link">08 User Defined Types</span></a></strong>
+│
+├── <strong><a href="/learn-cplusplus/08 User Defined Types/"><span class="link">08 User Defined Types</span></a></strong>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#structs">Structs</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#unions">Unions</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#enums">Enums</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#classes">Classes/</a>
-│   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#static-inside-classes">Static Inside Classes</a>
-│   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#static-outside-classes">Static Outside Classes</a>
-│   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#getter-and-setter-methods">Getter and Setter Methods</a>
+│   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#static-inside-class">Static Inside Classe</a>
+│   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#static-outside-class">Static Outside Classe</a>
+│   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#getter-and-setter-methods">Getters and Setters</a>
 │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#constructors">Constructors/</a>
 │   │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#member-initializer-list">Member Initializer List</a>
 │   │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#copy-constructor">Copy Constructor</a>
@@ -205,7 +205,8 @@
 │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#arrow-operator">Arrow Operator</a>
 │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#current-instance-pointer">Current Instance Pointer</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#inheritance-and-polymorphism">Inheritance and Polymorphism</a>
-│   └── <a href="/learn-cplusplus/08 User Defined Types/#singletons">Singletons</a>
+│   ├── <a href="/learn-cplusplus/08 User Defined Types/#singletons">Singletons</a>
+│   └── <a href="/learn-cplusplus/08 User Defined Types/#exercises">Exercises</a>
 
 Working on more...
 </pre>
