@@ -590,12 +590,57 @@ int main() {
 Person name: Random Na
 ```
 
-!!! note
+### Constant Member Functions
 
-    The get method is marked `const` because it does not modify the object’s internal state.
-    This allows it to be safely called on `const` instances of the class.
-    If a method is not explicitly marked `const`, it cannot be called on a `const` object—doing so would violate the promise that the object remains unchanged.
-    It’s good practice to always mark methods that do not modify the object’s state as `const` so they can be safely called without causing issues during development.
+In the previous section, we can see a const qualifier behind the class method declaration.
+When designing a class, it’s important to distinguish between member functions that modify the object’s internal state and those that don’t.
+Functions that do not change the object should be explicitly marked as `const`.
+
+That is because doing so allows those functions to be safely called on constant instances of your class—objects that have been declared immutable and are not supposed to be changed.
+
+```cpp title="main.cpp"
+#include <iostream>
+
+class Player {
+private:
+    std::string name;
+
+public:
+    Player(std::string name) 
+        : name(name) {}
+
+    /*
+        Notice that it is marked with const at the end.
+        This tells the compiler that calling this method won’t
+        change the internal state of the object. Because of that,
+        we can safely call it even when the player object is const.
+
+        Now, if we forget to add const to a method that doesn’t actually
+        modify anything, we’ll run into problems—because the method can’t
+        be called on const objects, even though it logically should be.
+    */
+
+    std::string GetName() const {
+        return name;
+    }
+
+    void SetName(std::string newName) {
+        name = newName;
+    }
+};
+
+int main() {
+    const Player player("Alex");
+
+    std::cout << player.GetName() << std::endl;
+
+    // player.SetName("Chris"); Error: can't call non-const method on const object
+}
+```
+
+``` title="output"
+Alex
+```
 
 ### Constructors
 

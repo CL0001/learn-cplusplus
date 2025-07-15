@@ -193,6 +193,7 @@
 │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#static-inside-class">Static Inside Classe</a>
 │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#static-outside-class">Static Outside Classe</a>
 │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#getter-and-setter-methods">Getters and Setters</a>
+│   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#constant-member-functions">Constant Member Functions</a>
 │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#constructors">Constructors/</a>
 │   │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#member-initializer-list">Member Initializer List</a>
 │   │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#copy-constructor">Copy Constructor</a>
