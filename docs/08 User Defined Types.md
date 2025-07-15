@@ -592,7 +592,7 @@ Person name: Random Na
 
 ### Constant Member Functions
 
-In the previous section, we can see a const qualifier behind the class method declaration.
+In the previous section, we can see a `const` qualifier behind the class method declaration.
 When designing a class, it’s important to distinguish between member functions that modify the object’s internal state and those that don’t.
 Functions that do not change the object should be explicitly marked as `const`.
 
@@ -602,12 +602,10 @@ That is because doing so allows those functions to be safely called on constant 
 #include <iostream>
 
 class Player {
-private:
-    std::string name;
-
 public:
     Player(std::string name) 
-        : name(name) {}
+        : name_(name) {
+    }
 
     /*
         Notice that it is marked with const at the end.
@@ -621,12 +619,15 @@ public:
     */
 
     std::string GetName() const {
-        return name;
+        return name_;
     }
 
-    void SetName(std::string newName) {
-        name = newName;
+    void SetName(std::string name) {
+        name_ = name;
     }
+
+private:
+    std::string name_;
 };
 
 int main() {
