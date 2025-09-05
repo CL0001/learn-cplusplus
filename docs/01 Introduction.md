@@ -1,72 +1,77 @@
 # 01 Introduction
 
-We pick C++ as the language for learning computer science because, for one, it's an incredibly powerful and versatile tool.
-C++ is used to build everything from command-line utilities and desktop apps to real-time systems and high-performance games.
-It's the language behind major AAA titles like Counter-Strike, Fortnite, and the Warcraft series.
+We chose C++ as our language of choice for learning computer science because, for one, it’s an incredibly powerful and versatile tool.
+C++ is used to build everything from command-line utilities and desktop apps to real-time systems and high-performance game engines.
+
+To spark interest, it’s the language behind major AAA titles like Counter-Strike, Fortnite, the Warcraft series, and many more.
 Game engines like Unreal Engine are built on it, and even modern operating systems—including parts of Windows—rely on C++ under the hood.
 
-Even if you're not aiming for game development or systems programming, learning C++ gives you a solid foundation in how computers actually work.
-This low-level understanding transfers to almost every other language or tech stack you’ll encounter later.
+Also, it’s important to note that even if you’re not aiming for game development or systems programming, learning C++ gives you a solid foundation in how computers actually work.
+This low-level understanding carries over to almost every other language or technology stack you’ll encounter later on.
 
-One of the big reasons C++ remains so relevant is its performance and portability.
+Another big reason C++ remains so relevant is its performance and portability.
 It runs natively on everything—Windows, Linux, macOS, embedded devices, mobile platforms, game consoles—you name it.
 It supports both 32-bit and 64-bit architectures and compiles directly to machine code, which means it can be very fast when written well.
 
-But here’s the flip side: C++ gives you a lot of control—especially over memory—and that means it’s also easier to shoot yourself in the foot.
-Sloppy code can lead to memory leaks, crashes, or bugs that are really tricky to track down.
+But here’s the flip side: C++ gives you a lot of control—especially over memory—and that also means it’s easier to shoot yourself in the foot.
+Sloppy code can lead to memory leaks, crashes, or bugs that are notoriously tricky to track down.
 It’s a language that rewards careful thinking and clean design.
 
-C++ is built on top of C, one of the oldest and most influential programming languages still in use today.
-In fact, a lot of valid C code is also valid C++.
-But C++ goes further, introducing features that help you write safer, more maintainable, and modern code—without losing the performance edge that made C famous.
+But despite its challenges, C++ remains one of the most enduring languages in modern computing.
+Part of that longevity comes from its roots: C++ is built on top of C, one of the oldest and most influential programming languages still in use today.
+Much of C code even compiles directly as valid C++, but C++ takes things further.
+It introduces features that make your programs safer, more maintainable, and more modern—without losing the raw performance that made C so famous.
 
-In this book, we’ll explore C++ from the ground up.
-When it makes sense, we’ll also dip into some C concepts—especially when we want to get closer to the hardware or squeeze out maximum performance.
+In this book, we’ll work through C++ from the ground up.
+Along the way, we’ll occasionally dip into C concepts as well, especially when we want to get closer to the hardware or squeeze out every last bit of performance.
 
 ## Environment Setup
 
-To write and run C++ code on your computer, you need to install two essential components:
+To write and run C++ code on your computer, you need two essential components:
 
-1. Compiler: A program that translates your human-readable C++ source code—essentially just plain text—into machine-readable binary.
-   It acts as a bridge between your code and the hardware, enabling the CPU to execute your instructions.
-2. Code Editor or IDE (Integrated Development Environment): A tool that helps you write, edit, and manage your code.
-   Most IDEs also offer features like syntax highlighting, auto-completion, and debugging tools.
+- **Compiler:** A program that translates your human-readable C++ source code—essentially plain text—into machine-readable binary.
+It acts as a bridge between your code and the hardware, allowing the CPU to execute your instructions.
+
+- **Code Editor or IDE (Integrated Development Environment):** A tool that helps you write, edit, and manage your code.
+Most IDEs also provide features like syntax highlighting, auto-completion, and debugging tools.
 
 ### Recommended Setup for Windows
 
-The easiest way to get started with C++ on Windows is by using Microsoft Visual Studio.
-It’s a fully featured IDE that comes preconfigured for C++ development and includes the MSVC compiler, so there's no need to install it separately like with other solutions—it provides everything you need in a single package.
+The easiest way to get started with C++ on Windows is to use Microsoft Visual Studio Community Edition.
+It’s a fully featured IDE that comes preconfigured for C/C++ development and includes the MSVC compiler, so there’s no need to install it separately.
+Everything you need comes in a single package.
 
 **Installation Steps**
 
-1. Download Visual Studio Community Edition from the microsoft official website or Microsoft Store
-2. During installation, select "Desktop development with C++" to include the required compiler and tools.
-3. After installation, launch Visual Studio and follow these steps:
-    1. Click "Create a new project"
-    2. In the project language filter, choose C++
-    3. Select "Console App"
-    4. Enter a your desired project name
-    5. Choose a location for the project (default is usually `C:\Users\Username\source\repos`)
-    6. Click Create
-5. To test your setup, run the Console App sample program by clicking the green arrow button at the top center of the screen.
+1. Download Visual Studio Community Edition from the Microsoft official website
+   <a href="https://visualstudio.microsoft.com/vs/community/" target="_blank" rel="noopener noreferrer">https://visualstudio.microsoft.com/vs/community/</a> or directly from the Microsoft Store.
+2. During installation, select “Desktop development with C++” to include the required compiler and tools.
+3. After installation, launch Visual Studio
+4. Click “Create a new project”
+5. In the project language filter, choose C++
+6. Select “Console App”
+7. Enter your desired project name
+8. Choose a location for the project (default is usually C:\Users\Username\source\repos)
+9. Click Create
 
-If a terminal window appears showing "Hello World!", your installation is complete and working correctly.
+To test your setup, run the "Console App" sample program by clicking the green arrow button at the top center of the screen.
 
-!!! tip
-
-    To add a new file in Visual Studio, right-click on "Source Files" or "Header Files" in the "Solution Explorer", depending on what kind of file you need.
-    Then choose "Add" → "New Item".
-    Give your file any name you like, such as `something_like.cpp`.
-
-    Keep in mind that "Source Files" and "Header Files" are just filters in the Solution Explorer—they don’t represent actual folders on your system.
-    All the files you add will be placed in the same physical project directory on disk.
+If a terminal window appears showing “Hello World!”, your installation is complete and working correctly.
 
 !!! tip
 
-    For a more advanced C++ development experience in Visual Studio, consider using Visual Assist.
-    It enhances code navigation, refactoring, and auto-completion.  
-    It's not free (offers a 1-month trial or is free with a student ID), but it’s highly recommended for serious C++ work.  
-    More info: <a href="https://www.wholetomato.com/" target="_blank" rel="noopener noreferrer">https://www.wholetomato.com/</a>
+    To add a new file in Visual Studio, right-click on **Source Files** or **Header Files** in the **Solution Explorer**, depending on the type of file you need.
+    Then choose **Add → New Item** and give it a name, such as `example.cpp`.
+
+    Keep in mind that **Source Files** and **Header Files** are just filters in the **Solution Explorer**—they don’t represent the actual folder structure on your system.
+    All files you add will be placed in the same physical project directory on disk.
+
+!!! tip
+
+    For a more advanced C++ development experience in Visual Studio, consider using Visual Assist. It enhances code navigation, refactoring, and auto-completion.
+
+    It’s not free (offers a 1-month trial or is free with a student ID), but it’s highly recommended for serious C++ work.  
+    More info here: <a href="https://www.wholetomato.com/" target="_blank" rel="noopener noreferrer">https://www.wholetomato.com/</a>
 
 ### Recommended Setup for macOS
 
@@ -77,71 +82,93 @@ It includes the Clang compiler and provides everything you need to build and run
 
 1. Open the Mac App Store and download Xcode.
 2. Once installed, launch Xcode.
-3. Follow these steps to create a C++ project:
-    1. Click "Create a new Xcode project"
-    2. Under macOS, select "Command Line Tool" and click Next
-    3. Enter a product name (e.g., `HelloCpp`)
-    4. Set Language to C++
-    5. Click "Next"
-    6. Choose a location to save your project and click Create
-5. To test the installation, run the sample code that is included in the project by clicking the “Run” button located at the top-left corner of the Xcode window.
+4. Click “Create a new Xcode project”
+5. Under macOS, select “Command Line Tool” and click Next
+6. Enter a product name (e.g., HelloCpp)
+7. Set Language to C++
+8. Click Next
+9. Choose a location to save your project and click Create
 
-Once you see "Hello, World!" output in the console, your setup is complete.
+To test the installation, run the sample code included in the project by clicking the Run button at the top-left corner of the Xcode window.
+
+Once you see “Hello, World!” output in the console, your setup is complete.
 
 !!! tip
 
     If the console is not visible, go to View → Debug Area → Activate Console.
+
+### Recommended Cross-Platform Setup
+
+If you frequently switch development platforms, the easiest way to get started with C++ is to use a single IDE for both macOS and Windows.
+It’s better to master one tool than to juggle several.
+One of the best choices is JetBrains CLion Community Edition.
+
+CLion is a fully featured IDE that comes preconfigured for C/C++ development and includes the GNU GCC compiler as well as a debugger.
+Unlike some other solutions, you don’t need to install these separately—it provides everything you need in one package.
+
+You can download CLion through the JetBrains Toolbox on the official website:
+<a href="https://www.jetbrains.com/toolbox-app/" target="_blank">https://www.jetbrains.com/toolbox-app/</a>
+
+Once the Toolbox is installed, open it, find CLion in the list, and install it.
+One advantage of using the Toolbox is that it manages updates and installations seamlessly.
 
 ### Alternative Setup via Web
 
 If your computer is too slow to run heavy IDEs—or if you simply don’t want to install anything—you can use an online C++ compiler to get started quickly.
 This is a convenient way to write and run code directly in your browser.
 
-However, keep in mind that most online compilers have limitations.
-They often don’t support the latest C++ standards (such as C++17 or C++20), and they usually lack access to the local file system, meaning file input/output won’t work as expected.
-Because of this, some features covered later here won’t be usable in a web-based environment.
+Keep in mind that most online compilers have limitations.
+They often don’t support the latest C++ standards (such as C++17 or C++20) and usually lack access to the local file system, meaning file input/output won’t work as expected.
+Because of this, some features covered later in this book may not be usable in a web-based environment.
 
 One beginner-friendly example can be found here: <a href="https://www.programiz.com/cpp-programming/online-compiler/" target="_blank" rel="noopener noreferrer">https://www.programiz.com/cpp-programming/online-compiler/</a>
 
-## How C++ Works
+## Build Process
 
-Now that the setup is behind us—and we've touched on why learning a lower-level language like C++ builds a solid understanding of how computers operate—let's start exploring how a C++ program actually comes together under the hood.
+!!! info
+    Don’t worry if some words sound unfamiliar—we’ll explain everything clearly as we go.
 
-The files we write in C++ are just plain text, but they’re typically separated by purpose.
-Source files—usually with a `.cpp` extension though you might also see `.cc` or `.cxx`—contain the actual logic and code of your program.
-Header files—commonly ending in `.h`, `.hh`, or .`hpp`—are used to declare functions, classes, and variables that can be shared across multiple source files.
+Now that the setup is behind us—and we’ve touched on why learning a lower-level language like C++ helps you understand how computers operate—let’s take a look at how C++ programs actually come together.
 
-We’ll go through all of these concepts—like functions, classes, and variables—step by step in the upcoming chapters.
-For now, just think of them as different parts of your program: some that do things, and others that describe what exists.
-Don’t worry if words like “declare” or “variable” sound unfamiliar—we’ll explain everything clearly as we go.
+To tell a computer what we want it to do, we write code using a programming language—in our case, we've chosen C++.
+This code is written in plain text files, but instead of using the standard `.txt` extension, they use different extensions to reflect their purpose and indicate which programming language they're written in.
+
+Files referred to as source files—usually with a `.cpp` extension (though you might also see `.cc` or `.cxx`)—contain the actual logic and instructions that make your program run.
+
+Files referred to as header files—commonly ending in `.h`, `.hh`, or `.hpp`—are used to declare things like functions, classes, and variables so they can be shared across multiple source files.
+
+Though these file extensions are common, they’re just conventions—they don’t affect how the compiler interprets the code.
+While these naming patterns help humans organize code, you could technically name your files almost anything.
+What really matters is how the compiler is instructed to treat them.
+As long as the compiler knows it’s a C++ source file, it will be processed correctly, regardless of the extension.
+
+This separation of code into source and header files is foundational to how C++ projects are structured.
+
+After writing code to describe what we want the computer to do, the next step is turning that code into something the machine can actually run.
+This means translating the human-readable code into a binary file—a format the computer understands directly.
+
+This binary is usually either an executable—such as a `.exe` file on Windows—or a library, which contains pre-written, pre-compiled code that can be linked into an executable, like `.lib` or `.dll` files.
+
+We’ll dive deeper into libraries and the linking process in later chapters.
+
+The next important piece to understand is the compilation process itself—how your source code becomes a working program.  
+This process is influenced by two key settings: project configuration and target platform.
+
+This determines how the compiled binary behaves. The two most common project configurations are:
+
+| Configuration | Description                                                      | Use Case                 |
+|---------------|------------------------------------------------------------------|--------------------------|
+| Debug         | Includes extra information like error messages and debug symbols | Ideal during development |
+| Release       | Optimized for performance; debugging info is removed             | For final builds         |
+
+Target platform refers to the system architecture your program is intended to run on, such as x86 (32-bit) or x64 (64-bit).
 
 !!! note
 
-    In C++, file extensions are just a convention—they don't affect how the compiler interprets the code.
-    There are some common extensions, but technically, you could name your file anything.
-    What matters is how the file is treated by the compiler.
-    As long as you tell the compiler that it's a C++ file, it will process it correctly.
+    Programs must be compiled separately for each target platform.
+    A binary built for Windows won’t run on macOS or Linux, and vice versa.
 
-To actually run on your computer, these files must be translated into a binary file that your machine can understand.
-This binary is usually either an executable like a `.exe` file on Windows or a library, which contains pre-written, pre-compiled code that can be linked to an executable such as `.lib` or `.dll` files.
-We’ll explore these library formats and the linking process in more detail in later chapters.
-
-The next important thing to understand is that the compilation process—translating human-readable code into machine-executable instructions—involves two key settings: project configuration and target platform.
-
-**Project configuration** determines how the compiled binary behaves. The two most common options are:
-
-| Configuration | Description                                                                 | Use Case                 |
-| ------------- | --------------------------------------------------------------------------- | ------------------------ |
-| Debug         | Includes extra information like error messages and debugging symbols.       | Ideal during development |
-| Release       | Optimized for speed; debugging info is removed.                             | For final builds         |
-
-
-**Target platform** refers to the system architecture your program is intended to run on, such as x86 (32-bit) or x64 (64-bit).
-
-!!! note
-
-    Programs must be compiled separately for each target platform because a binary built for Windows will not run on macOS or Linux, and vice versa.
-    Similarly, the architecture matters: a 32-bit program can generally run on a 64-bit system, but a 64-bit program cannot run on a 32-bit system.
+    Architecture also matters: a 32-bit program can usually run on a 64-bit system, but a 64-bit program will not run on a 32-bit system.
 
 ### Entry Point
 
@@ -172,11 +199,12 @@ In this example, the entry point is the main function on line 3.
 This is where the program starts executing after it is launched.
 Everything inside the curly braces is the function body, which contains the instructions that run when the program begins.
 
-The `main` function is a special case in C++.
-Even though it declares that it returns an `int`, you might not see a return statement—don’t worry, we’ll cover this in more detail later.
-Just remember that `main` is unique in this regard, and we’ll emphasize why as we go along.
-This happens because modern compilers automatically insert `return 0;` at the end of `main` if you don’t include it yourself.
-This behavior is specific to `main` and does not apply to other functions.
+The main function is a special case in C++.
+Even though it declares that it returns an `int`, you might not see a return statement.
+Don’t worry—we’ll cover this in more detail later.
+
+What’s happening here is that modern compilers automatically insert `return 0;` at the end of main if you don’t include it yourself.
+This behavior is specific to main and does not apply to other functions.
 
 ### Preprocessor Directives
 
@@ -208,13 +236,13 @@ The C++ compiler transforms your human-readable code into a format that computer
 First, it creates intermediate files—typically with a `.obj` extension on Windows or `.o` on macOS/Linux.
 These files are often found in your project directory under folders like x64 → Debug.
 
-During compilation, the compiler begins by processing all preprocessor directives (lines starting with #).
+During compilation, the compiler begins by processing all preprocessor directives.
 Then, it tokenizes and parses your code.
 Parsing builds an internal structure called an Abstract Syntax Tree (AST), which represents the logic and meaning of your program.
 
 Once the AST is ready, the compiler generates machine code based on your original source file.
 
-Here’s an example of what a raw `.obj` file might look like (shown as hexadecimal bytes).
+Here’s an example of what a raw `.obj` file might look like.
 
 ``` title="main.obj"
 00000000 64 86 5A 00 8B C5 06 68 87 EC 00 00 EF 01 00 00 d.Z....h..
@@ -261,6 +289,17 @@ Each source file is refered to as a translation unit.
 The compiler processes each translation unit independently, producing an intermediate object file.
 When your program consists of multiple source files, these translation units are later linked together to create the final executable or library.
 If your entire program is in a single source file, then there will be only one translation unit.
+
+### Assembler
+
+Once the compiler generates machine-level instructions from your translation units, these instructions are still not in a format the CPU can directly execute—as they’re typically stored in object files.
+
+This is where the assembler comes in.
+The assembler takes these low-level instructions—often written in assembly language—and translates them into pure machine code, which is a sequence of binary instructions the CPU understands directly.
+
+You don’t usually need to interact with the assembler manually in modern C++ development.
+Compilers handle this step automatically for you.
+However, understanding that this step exists helps explain why compiled programs are so fast: they are ultimately executed directly by the hardware.
 
 ### Linker
 
