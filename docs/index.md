@@ -2,11 +2,11 @@
 
 !!! info
 
-    This book is a living document.  
-    It will continue to evolve as I refine explanations, add examples, and correct mistakes.  
-    If you notice anything confusing, incorrect, or missing, please consider opening an issue on GitHub so I can improve it for everyone.  
+    This book is a living document.
+    It will continue to evolve as I refine explanations, add examples, and correct mistakes.
+    If you notice anything confusing, incorrect, or missing, please consider opening an issue on GitHub so I can improve it for everyone.
     
-    Direct link: <a href="https://github.com/CL0001/learn-cplusplus/issues" target="_blank">GitHub Issues</a>
+    Direct link: <a href="https://github.com/CL0001/learn-cplusplus/issues" target="_blank">https://github.com/CL0001/learn-cplusplus/issues</a>
 
 ## Why I Wrote This Book
 
