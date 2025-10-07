@@ -25,6 +25,11 @@ It introduces features that make your programs safer, more maintainable, and mor
 In this book, we’ll work through C++ from the ground up.
 Along the way, we’ll occasionally dip into C concepts as well, especially when we want to get closer to the hardware or squeeze out every last bit of performance.
 
+!!! info
+    Before we jump into actual coding, we need to cover a few essentials in this introduction chapter.  
+    We'll go through how to set up your development environment, introduce some basic terminology and conventions used throughout the book, and get familiar with how the C++ build process works.  
+    Once those foundations are in place, we’ll be ready to start writing real C++ code.
+
 ## Environment Setup
 
 To write and run C++ code on your computer, you need two essential components:
@@ -97,38 +102,32 @@ Once you see “Hello, World!” output in the console, your setup is complete.
 
     If the console is not visible, go to View → Debug Area → Activate Console.
 
-### Recommended Cross-Platform Setup
-
-If you frequently switch development platforms, the easiest way to get started with C++ is to use a single IDE for both macOS and Windows.
-It’s better to master one tool than to juggle several.
-One of the best choices is JetBrains CLion Community Edition.
-
-CLion is a fully featured IDE that comes preconfigured for C/C++ development and includes the GNU GCC compiler as well as a debugger.
-Unlike some other solutions, you don’t need to install these separately—it provides everything you need in one package.
-
-You can download CLion through the JetBrains Toolbox on the official website:
-<a href="https://www.jetbrains.com/toolbox-app/" target="_blank">https://www.jetbrains.com/toolbox-app/</a>
-
-Once the Toolbox is installed, open it, find CLion in the list, and install it.
-One advantage of using the Toolbox is that it manages updates and installations seamlessly.
-
 ### Alternative Setup via Web
 
-If your computer is too slow to run heavy IDEs—or if you simply don’t want to install anything—you can use an online C++ compiler to get started quickly.
-This is a convenient way to write and run code directly in your browser.
+If your computer struggles to run large IDEs—or if you simply want to start coding immediately without installing anything—you can use an online C++ compiler.
+This is a fast and convenient way to write, compile, and run C++ code directly from your browser.
 
-Keep in mind that most online compilers have limitations.
-They often don’t support the latest C++ standards (such as C++17 or C++20) and usually lack access to the local file system, meaning file input/output won’t work as expected.
-Because of this, some features covered later in this book may not be usable in a web-based environment.
+One of the best online environments is Compiler Explorer, created by Matt Godbolt.
+It’s free, powerful, and widely used by professional developers for testing and learning C++ features.
 
-One beginner-friendly example can be found here: <a href="https://www.programiz.com/cpp-programming/online-compiler/" target="_blank" rel="noopener noreferrer">https://www.programiz.com/cpp-programming/online-compiler/</a>
+**How to Use**
+
+1. Go to <a href="https://godbolt.org/" target="_blank" rel="noopener noreferrer">https://godbolt.org/</a>.
+2. Select a compiler from the drop-down menu on the top-left (e.g., x86-64 gcc 13.2 or clang 17).
+3. Type your C++ code in the editor pane on the left.
+4. Click Run (or press Ctrl + Enter) to compile and execute your code.
+5. The output will appear in the console area at the bottom of the screen.
+
+!!! warning
+    Compiler Explorer is ideal for quickly testing code snippets, comparing compiler behavior, or experimenting with new C++ features without changing your local setup.
+    However, it’s not designed for large projects—once you start building multi-file programs, you’ll want to switch to a local IDE.
 
 ## Build Process
 
 !!! info
     Don’t worry if some words sound unfamiliar—we’ll explain everything clearly as we go.
 
-Now that the setup is behind us—and we’ve touched on why learning a lower-level language like C++ helps you understand how computers operate—let’s take a look at how C++ programs actually come together.
+Now that the setup is behind us let’s take a look at how C++ programs actually come together.
 
 To tell a computer what we want it to do, we write code using a programming language—in our case, we've chosen C++.
 This code is written in plain text files, but instead of using the standard `.txt` extension, they use different extensions to reflect their purpose and indicate which programming language they're written in.
@@ -137,19 +136,13 @@ Files referred to as source files—usually with a `.cpp` extension (though you 
 
 Files referred to as header files—commonly ending in `.h`, `.hh`, or `.hpp`—are used to declare things like functions, classes, and variables so they can be shared across multiple source files.
 
-Though these file extensions are common, they’re just conventions—they don’t affect how the compiler interprets the code.
-While these naming patterns help humans organize code, you could technically name your files almost anything.
-What really matters is how the compiler is instructed to treat them.
-As long as the compiler knows it’s a C++ source file, it will be processed correctly, regardless of the extension.
-
+These file extensions are common, but they’re just conventions—they don’t affect how the compiler interprets your code.
+Naming patterns help humans organize files, but technically, you could name them almost anything.
 This separation of code into source and header files is foundational to how C++ projects are structured.
 
-After writing code to describe what we want the computer to do, the next step is turning that code into something the machine can actually run.
-This means translating the human-readable code into a binary file—a format the computer understands directly.
+Once we’ve written code describing what we want the computer to do, the next step is to turn it into a binary file—a format the machine can execute directly.
 
-This binary is usually either an executable—such as a `.exe` file on Windows—or a library, which contains pre-written, pre-compiled code that can be linked into an executable, like `.lib` or `.dll` files.
-
-We’ll dive deeper into libraries and the linking process in later chapters.
+This binary is usually either an executable—such as a `.exe` file on Windows—or a library, which contains pre-written, pre-compiled code that can be linked into an executable, like `.lib` or `.dll` files. We'll dive deeper into libraries and the process of linking against them in later chapters.
 
 The next important piece to understand is the compilation process itself—how your source code becomes a working program.  
 This process is influenced by two key settings: project configuration and target platform.
@@ -177,7 +170,6 @@ Every C++ program needs an entry point—the place where execution begins.
 Without it, your program has no defined starting point.
 
 You’ve already seen this entry point during setup, where a sample file was created for you.
-
 
 ```cpp title="main.cpp"
 #include <iostream>

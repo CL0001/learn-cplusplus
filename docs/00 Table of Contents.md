@@ -6,10 +6,11 @@
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#recommended-setup-for-windows">Recommended Setup for Windows</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#recommended-setup-for-macos">Recommended Setup for macOS</a>
 │   │   └── <a href="/learn-cplusplus/01 Introduction/#alternative-setup-via-web">Alternative Setup via Web</a>
-│   ├── <a href="/learn-cplusplus/01 Introduction/#how-c-works">How C++ Works/</a>
+│   ├── <a href="/learn-cplusplus/01 Introduction/#build-process">Build Process/</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#entry-point">Entry Point</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#preprocessor-directives">Preprocessor Directives</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#compiler">Compiler</a>
+│   │   ├── <a href="/learn-cplusplus/01 Introduction/#assembler">Assembler</a>
 │   │   └── <a href="/learn-cplusplus/01 Introduction/#linker">Linker</a>
 │   ├── <a href="/learn-cplusplus/01 Introduction/#header-files">Header Files/</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#header-guard">Header Guard</a>
@@ -190,8 +191,8 @@
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#unions">Unions</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#enums">Enums</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#classes">Classes/</a>
-│   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#static-inside-class">Static Inside Classe</a>
-│   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#static-outside-class">Static Outside Classe</a>
+│   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#static-inside-class">Static Inside Classes</a>
+│   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#static-outside-class">Static Outside Classes</a>
 │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#getter-and-setter-methods">Getters and Setters</a>
 │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#constant-member-functions">Constant Member Functions</a>
 │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#constructors">Constructors/</a>
