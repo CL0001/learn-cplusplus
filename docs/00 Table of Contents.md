@@ -5,7 +5,7 @@
 │   ├── <a href="/learn-cplusplus/01 Introduction/#environment-setup">Environment Setup/</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#recommended-setup-for-windows">Recommended Setup for Windows</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#recommended-setup-for-macos">Recommended Setup for macOS</a>
-│   │   └── <a href="/learn-cplusplus/01 Introduction/#alternative-setup-via-web">Alternative Setup via Web</a>
+│   │   └── <a href="/learn-cplusplus/01 Introduction/#recommended-setup-without-installation">Recommended Setup Without Installation</a>
 │   ├── <a href="/learn-cplusplus/01 Introduction/#build-process">Build Process/</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#entry-point">Entry Point</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#preprocessor-directives">Preprocessor Directives</a>
@@ -14,15 +14,17 @@
 │   │   └── <a href="/learn-cplusplus/01 Introduction/#linker">Linker</a>
 │   ├── <a href="/learn-cplusplus/01 Introduction/#header-files">Header Files/</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#header-guard">Header Guard</a>
-│   │   └── <a href="/learn-cplusplus/01 Introduction/#header-search">Header Search</a>
-│   ├── <a href="/learn-cplusplus/01 Introduction/#code-comments">Code Comments/</a>
-│   │   └── <a href="/learn-cplusplus/01 Introduction/#types-of-comments">Types of Comments</a>
+│   │   └── <a href="/learn-cplusplus/01 Introduction/#header-file-search">Header File Search</a>
+│   ├── <a href="/learn-cplusplus/01 Introduction/#comments">Comments/</a>
+│   │   └── <a href="/learn-cplusplus/01 Introduction/#comment-types">Comment Types</a>
 │   ├── <a href="/learn-cplusplus/01 Introduction/#data-types-and-variables">Data Types and Variables/</a>
-│   │   ├── <a href="/learn-cplusplus/01 Introduction/#data-types-and-variables">Data Types and Variables</a>
+│   │   ├── <a href="/learn-cplusplus/01 Introduction/#primitive-data-types">Primitive Data Types</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#ascii">ASCII</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#declaring-and-naming-variables">Declaring and Naming Variables</a>
 │   │   └── <a href="/learn-cplusplus/01 Introduction/#constants">Constants</a>
 │   ├── <a href="/learn-cplusplus/01 Introduction/#terminal-input-and-output">Terminal Input and Output</a>
+│   │   └── <a href="/learn-cplusplus/01 Introduction/#stream-buffers">Stream Buffers</a>
+│   ├── <a href="/learn-cplusplus/01 Introduction/#questions">Questions</a>
 │   └── <a href="/learn-cplusplus/01 Introduction/#exercises">Exercises</a>
 │
 ├── <strong><a href="/learn-cplusplus/02 Control Flow/"><span class="link">02 Control Flow/</span></a></strong>
