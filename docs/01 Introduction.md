@@ -721,146 +721,110 @@ At that point, everything in the buffer is written out at once.
 
 === "question 1"
 
-    ``` linenums="0"
     How many entry points can a valid C++ program have?
-    ```
 
 === "answer"
 
-    ``` linenums="0"
     Exactly one — the main function.
-    ```
 
 ---
 
 === "question 2"
 
-    ``` linenums="0"
     How does the #include preprocessor directive work?
-    ```
 
 === "answer"
 
-    ``` linenums="0"
     It copies the contents of the specified file directly into
     the location where it was included.
-    ```
 
 ---
 
 === "question 3"
 
-    ``` linenums="0"
     What is a preprocessed source file called?
-    ```
 
 === "answer"
 
-    ``` linenums="0"
     A translation unit.
-    ```
 
 ---
 
 === "question 4"
 
-    ``` linenums="0"
     During the compile step, does the compiler require a full function
     definition, or is a declaration enough?
-    ```
 
 === "answer"
 
-    ``` linenums="0"
     A declaration is enough — the actual connection to the definition
     happens during the linking phase.
-    ```
 
 ---
 
 === "question 5"
 
-    ``` linenums="0"
     What does a header guard protect against?
-    ```
 
 === "answer"
 
-    ``` linenums="0"
     Against multiple inclusion of the same header file.
-    ```
 
 ---
 
 === "question 6"
 
-    ``` linenums="0"
     Name the primitive data types mentioned in this chapter
     and their typical byte sizes.
-    ```
 
 === "answer"
 
-    ``` linenums="0"
     int    - 4  
     float  - 4  
     double - 8  
     char   - 1  
     bool   - 1
-    ```
 
 ---
 
 === "question 7"
 
-    ``` linenums="0"
     Which header provides input and output stream functionality in C++?
-    ```
 
 === "answer"
 
-    ``` linenums="0"
     <iostream>
-    ```
 
 ---
 
 === "question 8"
 
-    ``` linenums="0"
     What is a stream buffer used for?
-    ```
 
 === "answer"
 
-    ``` linenums="0"
     It temporarily stores output data before sending it to the terminal or file.
-    ```
 
 ---
 
 === "question 9"
 
-    ``` linenums="0"
     Explain difference between a \n and std::endl for writing a new line.
-    ```
 
 === "answer"
 
-    ``` linenums="0"
     \n only adds a newline character to the output.
     std::endl adds a newline and flushes the output buffer,
     which can slow the program down if used excessively.
-    ```
+
 
 ## Exercises
 
 === "task 1"
 
-    ``` linenums="0"
     Write a program that prints your first name on one line 
     and your surname on the next line in the terminal.
-    ```
+
 
 === "answer"
 
@@ -877,11 +841,10 @@ At that point, everything in the buffer is written out at once.
 
 === "task 2"
 
-    ``` linenums="0"
     Write a program that asks the user for their age, 
     stores it in a variable, and then prints it back 
     to the command line.
-    ```
+    
 
 === "answer"
 
