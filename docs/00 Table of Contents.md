@@ -34,8 +34,8 @@
 │   ├── <a href="/learn-cplusplus/02 Control Flow/#loops">Loops/</a>
 │   │   ├── <a href="/learn-cplusplus/02 Control Flow/#while-loops">While Loops</a>
 │   │   ├── <a href="/learn-cplusplus/02 Control Flow/#for-loops">For Loops</a>
-│   │   └── <a href="/learn-cplusplus/02 Control Flow/#nested-loops">Nested Loops</a>
-│   ├── <a href="/learn-cplusplus/02 Control Flow/#break-and-continue">Break and Continue</a>
+│   │   ├── <a href="/learn-cplusplus/02 Control Flow/#nested-loops">Nested Loops</a>
+│   │   └── <a href="/learn-cplusplus/02 Control Flow/#break-and-continue">Break and Continue</a>
 │   ├── <a href="/learn-cplusplus/02 Control Flow/#shortened-notations">Shortened Notations</a>
 │   ├── <a href="/learn-cplusplus/02 Control Flow/#questions">Questions</a>
 │   └── <a href="/learn-cplusplus/02 Control Flow/#exercises">Exercises</a>

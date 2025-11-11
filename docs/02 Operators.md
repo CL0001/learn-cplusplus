@@ -1,15 +1,22 @@
-# 03 Operators
+# 02 Operators
+
+!!! info
+
+    This chapter goes hand in hand with the <strong><a href="/learn-cplusplus/02 Control Flow/"><span class="link">03 Control Flow/</span></a></strong> chapter.
+    So keep in mind that the two chapters are closely related, and many concepts work together.
+    If something seems skipped here, it's likely because it was better suited for that chapter.
 
 In programming, operators are special symbols or keywords that perform actions on variables and values.
 They allow us to manipulate data, perform calculations, and control program logic.
 Whether it’s adding numbers, comparing values, or modifying bits directly, operators are fundamental to how code behaves.
 
-At their core, operators resemble mathematical symbols, but they go far beyond basic arithmetic—enabling everything from assignment and comparison to pointer manipulation and bitwise control.
+At their core, operators resemble mathematical symbols, but they go far beyond basic arithmetic.
 
-## **Comparison Operators**
+## Comparison Operators
 
 The first and most fundamental type of operators are comparison operators, which are commonly used in conditions—such as inside `if` statements or loops.
-They are similar to those found in mathematics. These operators allow us to compare values and control the flow of a program by returning `true` or `false` based on the result.
+They are similar to those found in mathematics.
+These operators allow us to compare values and control the flow of a program by returning `true` or `false` based on the result.
 
 | Operator | Description                  | Example     |
 |----------|------------------------------|-------------|
@@ -26,12 +33,13 @@ They are similar to those found in mathematics. These operators allow us to comp
 int main() {
     int user_age = 10;
 
-    if (user_age < 0)
-        std::cout << "Invalid age. Age cannot be negative." << std::endl;
-    else if (user_age < 12)
-        std::cout << "Sorry, you are too young to enter." << std::endl;
-    else
-        std::cout << "Welcome to the game!" << std::endl;
+    if (user_age < 0) {
+        std::cout << "Invalid age. Age cannot be negative.";
+	} else if (user_age < 12) {
+        std::cout << "Sorry, you are too young to enter.";
+	} else {
+        std::cout << "Welcome to the game!";
+	}
 }
 ```
 
@@ -39,7 +47,7 @@ int main() {
 Sorry, you are too young to enter.
 ```
 
-## **Logical Operators**
+## Logical Operators
 
 Logical operators are used to combine multiple comparison expressions to form complex decision-making conditions.
 When used alongside comparison operators, they enable more precise control flow.
@@ -55,16 +63,19 @@ When used alongside comparison operators, they enable more precise control flow.
 
 int main() {
     int x = 5;
-    bool isReady = false;
+    bool is_ready = false;
     
-    if (x > 0 && x < 10)
-        std::cout << "x is between 1 and 9" << std::endl;
-    
-    if (x < 0 || x > 100)
-        std::cout << "x is out of range" << std::endl;
-    
-    if (!isReady)
-        std::cout << "Not ready yet!" << std::endl;
+    if (x > 0 && x < 10) {
+        std::cout << "x is between 1 and 9\n";
+	}
+
+    if (x < 0 || x > 100) {
+        std::cout << "x is out of range\n";
+	}
+
+    if (!is_ready) {
+        std::cout << "Not ready yet!\n";
+	}
 }
 ```
 
@@ -75,8 +86,8 @@ Not ready yet!
 
 ## Arithmetic Operators
 
-Next in line are arithmetic operators. They function just like in mathematics, helping us perform
-basic mathematical operations such as addition, multiplication, and more.
+Next in line are arithmetic operators.
+They function just like in mathematics, helping us perform basic mathematical operations such as addition, multiplication, and more.
 
 | Operator | Description                               | Example     |
 | -------- | ----------------------------------------- | ----------- |
@@ -95,7 +106,7 @@ int main() {
 	int b = 20;
 	int c = a + b;
 	
-	std::cout << "Number C: " << c << std::endl;
+	std::cout << "Number C: " << c;
 }
 ```
 
@@ -103,7 +114,7 @@ int main() {
 Number C: 120
 ```
 
-!!! note
+!!! warning
 
 	If a program tries to divide by zero, it will result in a runtime error (crash) because division by zero is undefined.
 
@@ -118,8 +129,8 @@ Number C: 120
 #include <iostream>
 
 int main() {
-    std::cout << "Integer division: " << 9 / 2 << std::endl;
-    std::cout << "One is floating point number: " << 9.0 / 2 << std::endl;
+    std::cout << "Integer division: " << 9 / 2 << '\n';
+    std::cout << "One is floating point number: " << 9.0 / 2;
 }
 ```
 
@@ -137,10 +148,11 @@ It is commonly used to check divisibility, such as determining whether a number 
 int main() {
 	int x = 7;
 	
-	if (x % 2 == 0)
+	if (x % 2 == 0) {
 		std::cout << "Number is even";
-	else
+	} else {
 		std::cout << "Number is odd";
+	}
 }
 ```
 
@@ -176,8 +188,8 @@ Difference between postfix increment and prefix increment:
 - `++a` is the prefix increment: the variable is incremented first, then its new value is used in the expression.
 - `a++` is the postfix increment: the variable’s current value is used first, and then it is incremented.
 
-For clarity, prefer using the prefix (`++a`) method when the previous value is not needed.
-In console outputs or function arguments, postfix (`a++`) can be misleading, as it will display or use the old value before incrementing.
+For clarity, prefer using the prefix method when the previous value is not needed.
+In console outputs or function arguments, postfix can be misleading, as it will display or use the old value before incrementing.
 
 ```cpp title="main.cpp"
 #include <iostream>
@@ -187,13 +199,13 @@ int main() {
     int b = 5;
     
     a += b;
-    std::cout << "Number A after +=: " << a << std::endl; 
+    std::cout << "Number A after +=: " << a << '\n'; 
     
     a *= 2;
-    std::cout << "Number A after *=: " << a << std::endl;
+    std::cout << "Number A after *=: " << a << '\n';
     
     a++;
-    std::cout << "Number A after ++: " << a++ << std::endl;
+    std::cout << "Number A after ++: " << a++;
 }
 ```
 
@@ -225,12 +237,12 @@ These rules dictate whether multiplication happens before addition, or how logic
 #include <iostream>
 
 bool first() {
-	std::cout << "First" << std::endl;
+	std::cout << "First\n";
 	return false;
 }
 
 bool second() {
-	std::cout << "Second" << std::endl;
+	std::cout << "Second\n";
 	return true;
 }
 
@@ -245,7 +257,11 @@ First
 ```
 
 The output remains unchanged because the `if` statement uses the logical AND operator, which evaluates conditions from left to right.
-Since `first()` returns `false`, the entire condition can never be true, so the second function is never called. **This behavior is known as short-circuit evaluation**.
+Since `first()` returns `false`, the entire condition can never be true, so the second function is never called.
+
+!!! note
+
+	This behavior is known as short-circuit evaluation.
 
 ## Bitwise Operators
 
@@ -268,7 +284,7 @@ Below is a comparison of base-10 numbers and their binary (base-2) equivalents.
 | 4           | 100        |
 | 5           | 101        |
 
-Each new bit (binary digit) doubles the range of representable numbers, just as adding a new digit in base-10 increases the place value.
+Each new bit (binary digit) doubles the range of representable numbers.
 
 !!! tip
 
@@ -373,7 +389,7 @@ For example, converting `101` from octal to decimal:
 ```
   1        0        1
 1 × 8² + 0 × 8¹ + 1 × 8⁰
- 64    +   0    +   1    = 65`
+ 64    +   0    +   1    = 65
 ```
 
 ### Examining Memory Representation in Practice
@@ -381,12 +397,12 @@ For example, converting `101` from octal to decimal:
 Now that we understand how binary works, we can examine how memory is structured using Visual Studio by writing a simple program.
 This examination was done in Visual Studio, but it can be performed in almost any code editor or IDE.
 
-```cpp title="main.cpp"
+```cpp title="main.cpp" hl_lines="5"
 #include <iostream>
 
 int main() {
 	int a = 5;
-	std::cout << a << std::endl; // Place breakpoint at this line
+	std::cout << a << '\n';
 }
 ```
 
@@ -398,22 +414,25 @@ Then, in the top utility bar, navigate to Debug → Windows → Memory → Memor
 This will open a memory panel where you’ll find an address search field.
 Enter `&a` to jump to the memory address where the variable is stored.
 
-At this memory location, you’ll see our number 5, but instead of just `0`s and `1`s, you’ll also notice characters like `F` and `B`.
-That’s because memory is displayed using hexadecimal (base-16) instead of binary.
+At this memory location, you’ll see our number 5, but instead of just 0s and 1s, you’ll also notice characters like `F` and `B`.
+That’s because memory is displayed using hexadecimal system instead of binary.
 
-Using pure binary would be inefficient for reading and searching, as long sequences of `0`s and `1`s are hard to interpret.
-Hexadecimal (base-16) is useful because it aligns perfectly with binary, **each hex digit represents exactly 4 bits, meaning two hex digits make up one byte**. This significantly shortens binary representation.
+Using pure binary would be inefficient for reading and searching, as long sequences of 0s and 1s are hard to interpret.
+Hexadecimal is useful because it aligns perfectly with binary, each hex digit represents exactly 4 bits, meaning two hex digits make up one byte.
+This significantly shortens binary representation.
 
 ```
    0    5 |    0    0 |    0    0 |    0    0
 0000 0101 | 0000 0000 | 0000 0000 | 0000 0000 
 ```
 
-For comparison, in decimal (base-10), 8 bits can represent values up to 255, requiring three digits (e.g., `255`). In hexadecimal, however, `255` is simply `FF`,
-retaining the one hex digit per 4 bits rule. This makes hexadecimal more efficient for representing memory values.
+For comparison, in decimal, 8 bits can represent values up to 255, requiring three digits.
+In hexadecimal, however, `255` is simply `FF`, retaining the one hex digit per 4 bits rule.
+This makes hexadecimal more efficient for representing memory values.
 
 While these concepts primarily apply to integers, they can also be used with floating-point numbers.
-However, working with floats at the binary level requires specifying the correct data type to interpret the stored bits correctly. **In most cases, though, bitwise operations are used with integers only**.
+However, working with floats at the binary level requires specifying the correct data type to interpret the stored bits correctly.
+In most cases, though, bitwise operations are used with integers only.
 
 ### Bitwise Shift Operators
 
@@ -429,8 +448,8 @@ int main() {
 	a <<= 2;
 	b >>= 2;
 	
-	std::cout << "Number A: " << a << std::endl;
-	std::cout << "Number B: " << b << std::endl;
+	std::cout << "Number A: " << a << '\n';
+	std::cout << "Number B: " << b;
 }
 ```
 
@@ -450,7 +469,7 @@ Number B: 1
       01 = 1
 ```
 
-In the examples, we can see that **when a bit shifts out of scope, it is replaced with a zero on the opposite side of the shift direction**.
+In the examples, we can see that when a bit shifts out of scope, it is replaced with a zero on the opposite side of the shift direction.
 
 !!! note
 
@@ -461,12 +480,12 @@ In the examples, we can see that **when a bit shifts out of scope, it is replace
 ### Bitwise Logic Operators
 
 Similar to regular logical operators that compare two variables, bitwise logic operators operate directly on individual bits and compare them between each other.
-**Each logical operation can be described using a truth table**.
+Each logical operation can be described using a truth table.
 
 #### Bitwise AND
 
-Bitwise AND (`&`) is used for masking and isolating specific bits. This is exactly what happens, for example,
-in IPv4 networking when masks are used to separate the network and host portions of an address.
+Bitwise AND (`&`) is used for masking and isolating specific bits.
+This is exactly what happens, for example, in IPv4 networking when masks are used to separate the network and host portions of an address.
 
 |  A  |  B  | AND |
 |-----|-----|-----|
@@ -483,7 +502,7 @@ int main() {
 	int b = 13;
 	a &= b;
 	
-	std::cout << "Number A: " << a << std::endl;
+	std::cout << "Number A: " << a;
 }
 ```
 
@@ -498,11 +517,13 @@ Number A: 5
   0101   = 5
 ```
 
-Let’s go through how masking works using the bitwise AND operator. We’ll use the example of a private IPv4 address: `192.168.0.10` with a `/24` prefix. 
+Let’s go through how masking works using the bitwise AND operator.
+We’ll use the example of a private IPv4 address: `192.168.0.10` with a `/24` prefix. 
 
 If you have no background in networking, don’t worry — we’ll briefly explain what’s going on.
 
-The address is a 32-bit number, divided into 4 octets separated by dots (`.`). It represents the address of a host device, such as a laptop.
+The address is a 32-bit number, divided into 4 octets separated by dots.
+It represents the address of a host device, such as a laptop.
 
 The prefix (in this case `/24`) indicates how many bits belong to the network part of the address.
 
@@ -515,7 +536,8 @@ The prefix (in this case `/24`) indicates how many bits belong to the network pa
 
 This way, we can determine which network the IP address belongs to and how many bits remain for identifying host devices within that network.
 
-In our example, the `/24` prefix means that the first 24 bits (3 full octets) are used to identify the network, while the remaining 8 bits are reserved for host addresses. That gives us:
+In our example, the `/24` prefix means that the first 24 bits (3 full octets) are used to identify the network, while the remaining 8 bits are reserved for host addresses.
+That gives us:
 
 | Type                    | Address                          |
 | ----------------------- | -------------------------------- |
@@ -528,7 +550,8 @@ This technique of using a bitmask (in this case, `255.255.255.0`) allows compute
 
 #### Bitwise OR
 
-Bitwise OR (`|`) is used for setting and combining bits. It’s helpful when you want to ensure that certain bits are turned on (set to 1) without affecting the others.
+Bitwise OR (`|`) is used for setting and combining bits.
+It’s helpful when you want to ensure that certain bits are turned on (set to 1) without affecting the others.
 
 |  A  |  B  | OR  |
 |-----|-----|-----|
@@ -545,7 +568,7 @@ int main() {
 	int b = 13;
 	a |= b;
 	
-	std::cout << "Number A: " << a << std::endl;
+	std::cout << "Number A: " << a;
 }
 ```
 
@@ -595,7 +618,7 @@ int main() {
 	int b = 13;
 	a ^= b;
 	
-	std::cout << "Number A: " << a << std::endl; 
+	std::cout << "Number A: " << a; 
 }
 ```
 
@@ -612,7 +635,8 @@ Number A: 8
 
 An interesting property of XOR is that when a number is XORed with itself, the result is always zero.
 
-Another powerful aspect of XOR is its reversibility, if you XOR a number with another value and then XOR the result with the same value again, you get back the original number. This enables swapping values without a temporary variable.
+Another powerful aspect of XOR is its reversibility, if you XOR a number with another value and then XOR the result with the same value again, you get back the original number.
+This enables swapping values without a temporary variable.
 
 ```cpp title="main.cpp"
 #include <iostream>
@@ -621,13 +645,13 @@ int main() {
     int a = 5;
     int b = 13;
 	
-    std::cout << "Before swap: a = " << a << ", b = " << b << std::endl;
+    std::cout << "Before swap: a = " << a << ", b = " << b << '\n';
 	
     a ^= b;
     b ^= a;
     a ^= b;
 	
-    std::cout << "After swap:  a = " << a << ", b = " << b << std::endl;
+    std::cout << "After swap:  a = " << a << ", b = " << b;
 }
 ```
 
@@ -663,8 +687,8 @@ Bitwise NOT (`~`) is used to invert all bits in a number.
 
 int main() {
 	int a = 5;
-	std::cout << "Original: " << std::bitset<4>(a) << std::endl;
-	std::cout << "Inverted: " << std::bitset<4>(~a) << std::endl;
+	std::cout << "Original: " << std::bitset<4>(a) << '\n';
+	std::cout << "Inverted: " << std::bitset<4>(~a);
 }
 ```
 
@@ -693,9 +717,9 @@ int main() {
 	int b = 0xff;
 	int c = 015;
 	
-	std::cout << "Number A: " << a << std::endl;
-	std::cout << "Number B: " << b << std::endl;
-	std::cout << "Number C: " << c << std::endl;
+	std::cout << "Number A: " << a << '\n';
+	std::cout << "Number B: " << b << '\n';
+	std::cout << "Number C: " << c;
 }
 ```
 
@@ -706,7 +730,7 @@ Number C: 13
 ```
 
 This can also be done in reverse, we can assign values using decimal numbers and output their binary, hexadecimal, and octal representations.
-However, for the binary representation, we will need the `<bitset>` library.
+However, for the binary representation, we will need the `<bitset>` header file.
 
 ```cpp title="main.cpp"
 #include <iostream>
@@ -719,11 +743,11 @@ int main() {
 	std::cout << "Decimal: "   << a
 	          << " | Binary: " << std::bitset<4>(a)
 			  << " | Hex: "    << std::hex << a
-			  << " | Octal: "  << std::oct << a << std::dec << std::endl;
+			  << " | Octal: "  << std::oct << a << std::dec << '\n';
 	std::cout << "Decimal: "   << b
 			  << " | Binary: " << std::bitset<4>(b)
 			  << " | Hex: "    << std::hex << b
-			  << " | Octal: "  << std::oct << b << std::dec << std::endl;
+			  << " | Octal: "  << std::oct << b << std::dec;
 }
 ```
 
@@ -735,18 +759,20 @@ Decimal: 13 | Binary: 1101 | Hex: d | Octal: 15
 The new function used here is `std::bitset<T>(int)`, which converts an integer into its binary representation as a string.
 Replace `T` with the number of bits you want to display, and provide the integer value as the argument.
 
-For hexadecimal output, we use `std::hex`, which tells the stream to display numbers in base 16. Similarly, `std::oct` is used for base 8 representation.
+For hexadecimal output, we use `std::hex`, which tells the stream to display numbers in base 16.
+Similarly, `std::oct` is used for base 8 representation.
 
 !!! warning
 
 	Remember to reset the output stream back to decimal using `std::dec`, as the formatting change is persistent.
 	If you don’t reset it, the program will continue printing numbers in the last format you set.
 
-## **Ternary Operator**
+## Ternary Operator
 
-The ternary operator is a shorthand for an `if-else` statement, often called an inline if statement. It provides a more concise way to express simple conditional expressions.
+The ternary operator is a shorthand for an `if-else` statement, often called an inline if statement.
+It provides a more concise way to express simple conditional expressions.
 
-It uses the `?` operator to check a condition and the `:` operator to separate the two possible results (true case and false case).
+It uses the `?` operator to check a condition and the `:` operator to separate the two possible results (true case : false case).
 
 ```cpp title="main.cpp"
 #include <iostream>
@@ -754,13 +780,14 @@ It uses the `?` operator to check a condition and the `:` operator to separate t
 int main() {
 	int number = 5;
 	
-	if (number % 2 == 0)
-		std::cout << "number is even" << std::endl;
-	else
-		std::cout << "number is odd" << std::endl;
-	
-	number % 2 == 0 ? std::cout << "number is even" << std::endl 
-	                : std::cout << "number is odd" << std::endl;
+	if (number % 2 == 0) {
+		std::cout << "number is even\n";
+	} else {
+		std::cout << "number is odd\n";
+	}
+
+	number % 2 == 0 ? std::cout << "number is even\n"
+	                : std::cout << "number is odd\n";
 }
 ```
 
@@ -779,6 +806,207 @@ number is odd
 Behind the scenes the operators are just functions and similar to them they can be in the same sense overloaded.
  
 
-## Chapter Summary
+## Questions
 
-In this chapter, we explored the core set of operators in C++ that form the basis for performing calculations, comparisons, and logic in programming.
+=== "question 1"
+
+	Name the six basic comparison operators in C++.
+
+=== "answer"
+
+	`>` , `<` , `>=` , `<=` , `==` , `!=`
+
+---
+
+=== "question 2"
+
+	What is the difference between the `&&` and `||` logical operators?
+
+=== "answer"
+
+	`&&` (AND) is true only if both conditions are true.  
+	`||` (OR) is true if at least one condition is true.
+
+---
+
+=== "question 3"
+
+	How does integer division differ from floating-point division in C++?
+
+=== "answer"
+
+	Integer division discards any decimal part, while floating-point division retains decimals if at least one operand is a floating-point number.
+
+---
+
+=== "question 4"
+
+	Which operator is used to find the remainder of an integer division?
+
+=== "answer"
+
+	The modulus operator
+
+---
+
+=== "question 5"
+
+	What is the difference between `a++` and `++a`?
+
+=== "answer"
+
+	`a++` is the postfix increment: the current value of `a` is used first, then it is incremented.  
+	`++a` is the prefix increment: `a` is incremented first, then the new value is used.
+
+---
+
+=== "question 6"
+
+	What is operator precedence?
+
+=== "answer"
+
+	Operator precedence defines the order in which operators are evaluated in an expression.
+
+---
+
+=== "question 7"
+
+	What does short-circuit evaluation mean?
+
+=== "answer"
+
+	In logical expressions, evaluation stops as soon as the result is determined.  
+	For example, in `false && expr`, `expr` is never evaluated.
+
+---
+
+
+=== "question 8"
+
+	Name the six main bitwise operators in C++.
+
+=== "answer"
+
+	AND (`&`), OR (`|`), XOR (`^`), NOT (`~`), left shift (`<<`), right shift (`>>`)
+
+---
+
+=== "question 9"
+
+	What is the ternary operator and how does it work?
+
+=== "answer"
+
+	The ternary operator `? :` is a shorthand for `if-else`.  
+	Syntax: `condition ? expression_if_true : expression_if_false`.
+
+
+## Exercises
+
+=== "exercise 1"
+
+	Write a program that asks the user for two doubles and prints their sum, difference, product, and quotient.
+
+=== "answer"
+
+	```cpp
+	#include <iostream>
+
+	int main() {
+		double a;
+		double b;
+		
+		std::cout << "Enter first number: ";
+		std::cin >> a;
+		
+		std::cout << "Enter second number: ";
+		std::cin >> b;
+		
+		std::cout << "Their sum is: " << a + b << '\n';
+		std::cout << "Their difference is: " << a - b << '\n'; 
+		std::cout << "Their product is: " << a * b << '\n';
+		
+		if (b != 0) {
+			std::cout << "Their quotient is: " << a / b;
+		} else {
+			std::cout << "Cannot divide by zero!";
+		}
+	}
+	```
+
+---
+
+=== "exercise 2"
+
+	Write a program that asks the user for an integer and prints whether it is divisible by both 3 and 5.
+
+=== "answer"
+
+	```cpp
+	#include <iostream>
+
+	int main() {
+		int number;
+		
+		std::cout << "Enter a number: ";
+		std::cin >> number;
+		
+		if (number % 3 == 0 && number % 5 == 0) {
+			std::cout << "Number is divisible by both 3 and 5.";
+		} else {
+			std::cout << "Number is not divisible by both 3 and 5.";
+		}
+	}
+	```
+
+---
+
+=== "exercise 3"
+
+	Write a program that reads an integer and prints its square and cube using arithmetic operators.
+
+=== "answer"
+
+	```cpp
+	#include <iostream>
+
+	int main() {
+		int number;
+		
+		std::cout << "Enter a number: ";
+		std::cin >> number;
+		
+		std::cout << "Square of the number is " << number * number << '\n';
+		std::cout << "Cube of the number is " << number * number * number;
+	}
+	```
+
+---
+
+=== "question 4"
+
+	Write a program that reads two integers and uses bitwise operators to print their AND, OR, XOR, and NOT results.
+
+=== "answer"
+
+	```cpp
+	#include <iostream>
+
+	int main() {
+		int a;
+		int b;
+		
+		std::cout << "Enter first number: ";
+		std::cin >> a;
+		
+		std::cout << "Enter second number: ";
+		std::cin >> b;
+		
+		std::cout << "Bitwise AND: " << (a & b) << '\n';
+		std::cout << "Bitwise OR: " << (a | b) << '\n';
+		std::cout << "Bitwise XOR: " << (a ^ b) << '\n';
+		std::cout << "Bitwise NOT of a: " << ~a << '\n';
+		std::cout << "Bitwise NOT of b: " << ~b;
+	}
+	```

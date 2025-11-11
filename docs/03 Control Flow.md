@@ -1,8 +1,8 @@
-# 02 Control Flow
+# 03 Control Flow
 
 !!! info
 
-    This chapter goes hand in hand with the <strong><a href="/learn-cplusplus/03 Operators/"><span class="link">03 Operators/</span></a></strong> chapter.
+    This chapter goes hand in hand with the <strong><a href="/learn-cplusplus/03 Operators/"><span class="link">02 Operators/</span></a></strong> chapter.
     So keep in mind that the two chapters are closely related, and many concepts work together.
     If something seems skipped here, it's likely because it was better suited for that chapter.
 
@@ -17,7 +17,7 @@ We manage this kind of behavior using control flow statements, which let us chec
 Think of them as checkpoints in your code: Before moving forward, the program asks if the condition is true.
 If it is, the code inside the check runs; otherwise, it is skipped.
 
-### If Statements
+## If Statements
 
 The most basic and essential control flow tool in programming is the `if` statement.
 It does exactly what it sounds like: it checks a condition and decides what to do based on the result.
@@ -73,7 +73,7 @@ int main() {
 You’ve entered the zone. Good luck, adventurer!
 ```
 
-### Switch Statements
+## Switch Statements
 
 When we need to compare a variable against several fixed values, writing a long chain of if-else statements can get messy and harder to read.
 In these situations, a `switch` statement offers a cleaner and often more efficient alternative.
@@ -157,7 +157,7 @@ int main()  {
 You passed.
 ```
 
-### Go To Statements
+## Go To Statements
 
 The `goto` statement is a control flow mechanism that allows you to jump to a labeled part of the code.
 While it does exist in C++, it's generally discouraged because it can make your code harder to read, understand, and maintain.
@@ -320,7 +320,7 @@ int main() {
     Always use a different variable name for the inner loop.
     If the inner and outer loops share the same variable, it can cause unexpected behavior and logic errors.
 
-## Break and Continue
+### Break and Continue
 
 Control flow inside loops can be further refined with the `break` and `continue` statements.
 
@@ -493,7 +493,7 @@ x is positive
 
 ## Exercises
 
-=== "task 1"
+=== "exercise 1"
 
     Write a program that asks the user to enter an integer.
     Use an if-else statement to determine whether the number is even or odd.
@@ -520,7 +520,7 @@ x is positive
 
 ---
 
-=== "task 2"
+=== "exercise 2"
 
     Write a program that counts down and prints the numbers from 10 to 1 using a for loop.
     Skip the number 5, and stop the loop entirely when the number reaches 2.
@@ -547,7 +547,7 @@ x is positive
 
 ---
 
-=== "task 3"
+=== "exercise 3"
 
     Write a program that prints a 5 × 5 square made of `#` characters.
     Skip the third row entirely so that it appears as a blank line in the output.
@@ -575,7 +575,7 @@ x is positive
 
 ---
 
-=== "task 4"
+=== "exercise 4"
 
     Write a program that asks the user for an integer `n`, then prints a reversed pyramid of @ characters.
     The first row should contain `n` symbols, and each subsequent row should have one fewer.
@@ -603,7 +603,7 @@ x is positive
 
 ---
 
-=== "task 5"
+=== "exercise 5"
 
     Write a program that repeatedly asks the user to enter an odd number between 1 and 15 until a valid number is entered.
     Then, draw a star pattern made of `*` characters with the size specified by the user.

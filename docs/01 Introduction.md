@@ -529,12 +529,13 @@ int main() {
 ## Data Types and Variables
 
 In programming, data types and variables are fundamental concepts.
-That’s because programming is ultimately about working with data—and to work with data effectively, two things need to happen.
+Programming is ultimately about working with data—and to work with it effectively, two things must happen.
 
-| Requirement | Description                                                                                               |
-| ----------- | --------------------------------------------------------------------------------------------------------- |
-| Storage     | The data must be placed somewhere in the computer's memory.                                               |
-| Typing      | The program must understand what kind of data it's dealing with (e.g., a number, a character and so on).  |
+| Requirement | Description                                                                                                  |
+| ----------- | ------------------------------------------------------------------------------------------------------------ |
+| Storage     | Data must be placed somewhere in the computer’s memory.                                                      |
+| Typing      | The program must understand what kind of data it’s dealing with (e.g., a number, a character, or a boolean). |
+
 
 To represent different kinds of data, we use data types.
 To actually hold that data in memory, we use variables.
@@ -549,7 +550,7 @@ The main differences between data types come down to how much memory they use an
 
 ### Primitive Data Types
 
-The most basic data types in C++ are called primitive types. They form the foundation for all more complex types you'll encounter later.
+The most basic data types in C++ are called primitive types. They form the foundation for all more complex types you’ll encounter later.
 
 | Type     | Name                        | Description                                                                 | Size                            |
 | -------- | --------------------------- | --------------------------------------------------------------------------- | ------------------------------- |
@@ -567,17 +568,24 @@ The most basic data types in C++ are called primitive types. They form the found
 
 ### ASCII
 
-ASCII (American Standard Code for Information Interchange) is a character encoding standard that represents text characters using numerical values.
+When we talk about text or characters in code, what we’re really dealing with under the hood are just numbers.
+
+Each character—whether a letter, digit, or symbol—is stored as an integer value defined by the ASCII (American Standard Code for Information Interchange) standard.
+ASCII assigns a unique numeric code to each printable and control character.
 
 | ASCII Code | Character |
-|------------|-----------|
+| ---------- | --------- |
 | 65         | A         |
 | 66         | B         |
 | 97         | a         |
 | 48         | 0         |
 
-Full table can be found here: <a href="https://www.asciitable.com/" target="_blank" rel="noopener noreferrer">https://www.ascii-code.com/</a>
 
+That means characters can participate in arithmetic operations just like integers.
+
+So, whenever you see a character literal, remember: it’s really just an integer with a special meaning attached.
+
+You can explore the full ASCII table here: <a href="https://www.asciitable.com/" target="_blank" rel="noopener noreferrer">https://www.ascii-code.com/</a>
 
 ### Declaring and Naming Variables
 
@@ -609,8 +617,8 @@ int main () {
 
     std::cout << "User age: " << user_age << '\n';
     std::cout << "PI: " << pi << '\n';
-    std::cout << "User grade: " << user_age << '\n';
-    std::cout << "Underaged? " << underaged << '\n';
+    std::cout << "User grade: " << user_grade << '\n';
+    std::cout << "Underaged? " << underaged;
 }
 ```
 
@@ -624,12 +632,23 @@ Underaged? 0
 In C++, each declaration or statement must end with a semicolon `;`.
 This symbol tells the compiler that the statement is complete.
 
+!!! danger
+
+    You might come across codebases or developers who declare multiple variables of the same type on a single line, as shown in the snippet below.  
+
+    ```cpp linenums="0"
+    int number_one, number_two;
+    ```
+
+    While this is allowed and will work, it’s considered a bad habit because it reduces readability and can lead to subtle bugs.
+
+
 Additionally, in the example above, you might have noticed a specific way of naming variables. This naming style is called snake_case,
 where all characters are lowercase and words are separated by underscores (e.g., user_age, player_score). This style improves readability, especially in longer variable names, and is commonly used in many C++ codebases.
 
 !!! info
 
-    Throughout this guide, we will follow the Google C++ Style Guide, which recommends using snake_case for variable names and PascalCase for function and class names.
+    Throughout this book, we will follow the Google C++ Style Guide, which recommends using snake_case for variable names and PascalCase for function and class names.
 
     You can learn more about these conventions and other best practices here: 
     <a href="https://google.github.io/styleguide/cppguide.html" target="_blank" rel="noopener noreferrer">https://google.github.io/styleguide/cppguide.html</a>
@@ -731,7 +750,7 @@ At that point, everything in the buffer is written out at once.
 
 === "question 2"
 
-    How does the #include preprocessor directive work?
+    How does the `#include` preprocessor directive work?
 
 === "answer"
 
@@ -820,7 +839,7 @@ At that point, everything in the buffer is written out at once.
 
 ## Exercises
 
-=== "task 1"
+=== "exercise 1"
 
     Write a program that prints your first name on one line 
     and your surname on the next line in the terminal.
@@ -833,19 +852,16 @@ At that point, everything in the buffer is written out at once.
 
     int main() {
         std::cout << "Name\n";
-        std::cout << "Surname\n";
+        std::cout << "Surname";
     }
     ```
 
 ---
 
-=== "task 2"
+=== "exercise 2"
 
-    Write a program that asks the user for their age, 
-    stores it in a variable, and then prints it back 
-    to the command line.
+    Write a program that asks the user for their age, stores it in a variable, and then prints it back to the command line.
     
-
 === "answer"
 
     ```cpp
@@ -857,6 +873,6 @@ At that point, everything in the buffer is written out at once.
         std::cout << "Enter your age: ";
         std::cin >> user_age;
 
-        std::cout << "User age: " << user_age << '\n';
+        std::cout << "User age: " << user_age;
     }
     ```
