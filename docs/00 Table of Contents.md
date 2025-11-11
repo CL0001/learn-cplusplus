@@ -22,7 +22,7 @@
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#ascii">ASCII</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#declaring-and-naming-variables">Declaring and Naming Variables</a>
 │   │   └── <a href="/learn-cplusplus/01 Introduction/#constants">Constants</a>
-│   ├── <a href="/learn-cplusplus/01 Introduction/#terminal-input-and-output">Terminal Input and Output</a>
+│   ├── <a href="/learn-cplusplus/01 Introduction/#terminal-input-and-output">Terminal Input and Output/</a>
 │   │   └── <a href="/learn-cplusplus/01 Introduction/#stream-buffers">Stream Buffers</a>
 │   ├── <a href="/learn-cplusplus/01 Introduction/#questions">Questions</a>
 │   └── <a href="/learn-cplusplus/01 Introduction/#exercises">Exercises</a>
@@ -30,13 +30,14 @@
 ├── <strong><a href="/learn-cplusplus/02 Control Flow/"><span class="link">02 Control Flow/</span></a></strong>
 │   ├── <a href="/learn-cplusplus/02 Control Flow/#if-statements">If Statements</a>
 │   ├── <a href="/learn-cplusplus/02 Control Flow/#switch-statements">Switch Statements</a>
-│   ├── <a href="/learn-cplusplus/02 Control Flow/#goto-statements">Go To Statements</a>
+│   ├── <a href="/learn-cplusplus/02 Control Flow/#go-to-statements">Go To Statements</a>
 │   ├── <a href="/learn-cplusplus/02 Control Flow/#loops">Loops/</a>
 │   │   ├── <a href="/learn-cplusplus/02 Control Flow/#while-loops">While Loops</a>
 │   │   ├── <a href="/learn-cplusplus/02 Control Flow/#for-loops">For Loops</a>
 │   │   └── <a href="/learn-cplusplus/02 Control Flow/#nested-loops">Nested Loops</a>
 │   ├── <a href="/learn-cplusplus/02 Control Flow/#break-and-continue">Break and Continue</a>
 │   ├── <a href="/learn-cplusplus/02 Control Flow/#shortened-notations">Shortened Notations</a>
+│   ├── <a href="/learn-cplusplus/02 Control Flow/#questions">Questions</a>
 │   └── <a href="/learn-cplusplus/02 Control Flow/#exercises">Exercises</a>
 │
 ├── <strong><a href="/learn-cplusplus/03 Operators/"><span class="link">03 Operators/</span></a></strong>

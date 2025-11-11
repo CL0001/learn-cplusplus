@@ -721,7 +721,7 @@ At that point, everything in the buffer is written out at once.
 
 === "question 1"
 
-    How many entry points can a valid C++ program have?
+    How many entry points can a valid C/C++ program have?
 
 === "answer"
 
@@ -793,7 +793,7 @@ At that point, everything in the buffer is written out at once.
 
 === "answer"
 
-    <iostream>
+    `<iostream>`
 
 ---
 
@@ -809,12 +809,12 @@ At that point, everything in the buffer is written out at once.
 
 === "question 9"
 
-    Explain difference between a \n and std::endl for writing a new line.
+    Explain difference between a `\n` and `std::endl` for writing a new line.
 
 === "answer"
 
-    \n only adds a newline character to the output.
-    std::endl adds a newline and flushes the output buffer,
+    `\n` only adds a newline character to the output.
+    `std::endl` adds a newline and flushes the output buffer,
     which can slow the program down if used excessively.
 
 

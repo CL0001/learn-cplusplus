@@ -1,14 +1,10 @@
 # 06 Pointers and References
 
-Now, we arrive at one of the most feared topics in C++, pointers.
+Now, we arrive at one of the most feared topics in C/C++, pointers.
 Many people associate pointers with confusion, often because they tend to overthink them.
 In reality, pointers are quite simple once you understand the core concept.
 
-In computing, memory management is crucial.
-Every application you open is loaded into memory (RAM), and all the data the computer processes is stored there.
-Without memory, nothing would function, variables, programs, and even the operating system itself rely on it.
-
-A **pointer is essentially an integer** that holds a memory address.
+**A pointer is essentially an integer that represents a memory address.**
 Think of computer memory as a long, one-dimensional array of bytes, each with a unique address, like houses lined up along a street.
 Just as you wouldn't physically move a house to show someone its location, but rather give them its address, a pointer stores the address of a specific memory block.
 This approach allows programs to work directly with data without unnecessary duplication.
@@ -19,17 +15,17 @@ This approach allows programs to work directly with data without unnecessary dup
 | Value       | 0000 0101     | 0000 1001     | 0000 0010     | 0000 0000     | ...          |
 
 Pointers are extremely important because everything in computing involves reading and writing to memory.
-While you can write C++ code without directly using pointers, they offer a powerful way to manage memory.
+While you can write C/C++ code without directly using pointers, they offer a powerful way to manage memory.
 
-Also **pointers themselves aren’t tied to specific data types**.
+**Also pointers themselves aren’t tied to specific data types**.
 Whether you're dealing with characters, booleans, integers, or any other data type, a pointer is still just a number representing a memory address.
-The reason we specify a type for pointers in C++ is to indicate how much data should be read or written at that memory location.
+The reason we specify a type for pointers in C/C++ is to indicate how much data should be read or written at that memory location.
 
 ## Memory Allocation
 
 Memory (RAM) is where our program is loaded and where it stores data.
 It is divided into two distinct regions: the stack and the heap.
-The stack is typically a fixed-size memory area, often around 2 MB, while the heap also has a predefined size but can grow dynamically as the application runs.
+The stack is typically a fixed-size memory area, often around 2 MB, while the heap also has a predefined size but can grow dynamically as the application runs—yet not indefinitely.
 
 A common misconception is that the stack and heap are stored in the CPU cache, but they actually reside in RAM.
 These regions serve as the primary storage areas for variables and other essential data during program execution.
@@ -58,10 +54,10 @@ Variables declared inside such a block exist only within that scope and are dest
 int main() {
 	{
 		int number = 16;
-		std::cout << number << std::endl;
+		std::cout << number << '\n';
 	}
 	
-	std::cout << number << std::endl;
+	std::cout << number << '\n';
 }
 ```
 
@@ -83,7 +79,7 @@ int main() {
 }
 ```
 
-This is a very common mistake, returning a pointer to a local stack-allocated array.
+This is a very common mistake, returning a pointer to a local stack-allocated array—or variables in general.
 Since the array is created inside the function, it only exists within that function's scope.
 Once the function returns, the stack frame is destroyed, and the array no longer exists, leaving us with a dangling pointer that points to invalid (or corrupted) memory.
 
@@ -111,19 +107,21 @@ int main() {
 ### Null Pointers
 
 In the example above, we assigned `0` to a pointer.
-Since **memory addresses do not start at zero**, `0` is an invalid memory address.
+Since **memory addresses do not start at zero, `0` is an invalid memory address.**
 However, having an invalid address is a perfectly acceptable state for a pointer, as it indicates that the pointer is not currently pointing to valid memory.
 
-We also used `NULL`, which is simply a **macro-defined constant representing `0`**. While it functions the same as writing `0` directly, it improves readability.
+We also used `NULL`, which is simply a macro-defined constant representing `0`.
+While it functions the same as writing `0` directly, it improves readability.
 
-Additionally, we introduced `nullptr`, a C++ keyword specifically designed to represent an invalid pointer. Unlike `NULL`, `nullptr` has stronger type safety, making it the preferred choice in modern C++.
+Additionally, we introduced `nullptr`, a C++ keyword specifically designed to represent an invalid pointer.
+Unlike `NULL`, `nullptr` has stronger type safety, making it the preferred choice in modern C++.
 
-### Accessing the Address of a Variable
+### Accessing the Memory Address of a Variable
 
-Earlier, we mentioned that everything created in a program has a memory address where its data is stored.
+Earlier, we mentioned that everything created in a program has a memory address that points to where the data is stored.
 This applies even to simple integer variables, each variable resides at a unique location in memory.
 
-We can access a variable's address by prefixing it with **`&`, which is called the address-of operator** (sometimes referred to as the **reference operator**).
+We can access a variable's address by prefixing it with **`&`, which is called the address-of operator (sometimes referred to as the reference operator)**.
 This operator returns the memory address of the variable, allowing us to work with its location directly.
 
 ```cpp title="main.cpp"
@@ -133,7 +131,7 @@ int main() {
 	int value = 8;
 	void* ptr = &value; // Storing the memory address of 'value'
 	
-	std::cout << &value << std::endl;
+	std::cout << &value << '\n';
 }
 ```
 
@@ -173,7 +171,7 @@ Error: cannot dereference a void pointer
 This will produce an error because `void*` represents a generic memory address without a specific type.
 While it can store the address of any data type, it cannot be dereferenced because the compiler does not know how many bytes belong to the variable at that address.
 
-To fix this, we need to create an `int*` pointer for an `int` value.
+To fix this, we need to create an `int*` pointer for an integer value, or cast it to the correct pointer type before using it. 
 This way, the compiler knows that 4 bytes (on most modern systems) after the address belong to the integer, allowing proper reading and writing of the data.
 
 ```cpp title="main.cpp"
@@ -184,7 +182,7 @@ int main() {
     int* ptr = &value;
 
     // Correct: Dereferencing an int pointer
-    std::cout << "Value of pointer: " << *ptr <<std::endl;
+    std::cout << "Value of pointer: " << *ptr << '\n;
 }
 ```
 
