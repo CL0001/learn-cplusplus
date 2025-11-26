@@ -7,10 +7,13 @@ C++ is used to build everything from command-line utilities and desktop applicat
 To spark your interest, C++ is the language behind major AAA titles like Counter-Strike, Fortnite, the Warcraft series and many more.
 Every industry-grade game engine—such as Unreal, Unity, or Godot—is built on it, and even modern operating systems, including parts of Windows, rely on C++ under the hood.
 
-Also, it’s important to note that even if you’re not aiming for game development or high-performance programming—the areas where C++ truly shines—learning C++ gives you a solid foundation in how computers actually work.
-This low-level understanding carries over to almost every other language or technology stack you’ll encounter later on.
+Also, it’s important to note that even if you’re not aiming for game development or high-performance programming—the areas where C++ truly shines—learning C++ gives you a remarkably solid foundation in how computers work.
+Along the way, you’ll also get to peek into several programming paradigms and long-standing design ideas.
+Not all of these ideas are universally great or perfectly modern, but they provide valuable context for how today’s languages evolved.
 
-Another big reason C++ remains so relevant is its performance and portability.
+This kind of low-level understanding tends to carry over to almost every other language or technology stack you’ll encounter later on.
+
+Another big reason C++ remains so relevant is that, in addition to its performance, it offers excellent portability.
 It runs natively on everything—Windows, Linux, macOS, embedded devices, mobile platforms, game consoles—you name it.
 It supports both 32-bit and 64-bit architectures and compiles directly to machine code, which means it can be very fast when written well.
 
@@ -710,8 +713,8 @@ A helpful way to visualize them is to think of them as arrows showing the direct
 
 | Statement               | Description                                          |
 | ----------------------- | ---------------------------------------------------- |
-| `std::cin >> variable;` | Data flows from the command line into the variable.  |
-| `std::cout << message;` | Data flows from the program out to the command line. |
+| `std::cin >> variable;` | Data flows from the terminal into the variable.      |
+| `std::cout << message;` | Data flows from the program out to the terminal.     |
 
 ### Stream Buffers
 

@@ -803,8 +803,57 @@ number is odd
 	This section is considered more advanced at this point, as it requires knowledge of functions and user-defined types.
 	If you're not yet comfortable with those concepts, feel free to skip this section and return to it later once you're more confident.
 
-Behind the scenes the operators are just functions and similar to them they can be in the same sense overloaded.
+Behind the scenes, operators are just functions.
+Much like functions, they can also be overloaded—that is, given custom behavior for specific types.
+
+This can be useful when working with custom data structures like vectors, matrices, or complex numbers.
+For instance, if you create a class representing a 3D vector, it would be convenient to use `+` to add two vectors together, rather than calling a member function like `add()` manually.
+
+```cpp title="main.cpp"
+#include <iostream>
+
+class Vector3 {
+public:
+    Vector3(double x, double y, double z)
+        : x_(x), y_(y), z_(z) {}
+
+    Vector3 operator+(const Vector3& other) const {
+        return Vector3(x_ + other.x_, y_ + other.y_, z_ + other.z_);
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Vector3& v) {
+        os << "(" << v.x_ << ", " << v.y_ << ", " << v.z_ << ")";
+        return os;
+    }
+
+private:
+    double x_;
+    double y_;
+    double z_;
+};
+
+int main() {
+    Vector3 position(13.22, 51.79, 73.46);
+    Vector3 speed(54.87, 91.37, 65.87);
+
+    Vector3 result = position + speed;
+
+    std::cout << "Resulting vector: " << result << '\n';
+}
+```
  
+``` title="output"
+Resulting vector: (68.09, 143.16, 139.33)
+```
+
+Operator overloading can make code more intuitive and expressive, but it should be used with care.
+
+!!! warning
+
+	Only overload operators when it makes logical sense.
+	For example, overloading `+` for vectors or `==` for custom types is clear and intuitive.
+	Overloading `++` or `!` for unrelated classes, on the other hand, can make code confusing.
+
 
 ## Questions
 
