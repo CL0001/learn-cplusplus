@@ -27,55 +27,57 @@
 │   ├── <a href="/learn-cplusplus/01 Introduction/#questions">Questions</a>
 │   └── <a href="/learn-cplusplus/01 Introduction/#exercises">Exercises</a>
 │
-├── <strong><a href="/learn-cplusplus/02 Control Flow/"><span class="link">02 Control Flow/</span></a></strong>
-│   ├── <a href="/learn-cplusplus/02 Control Flow/#if-statements">If Statements</a>
-│   ├── <a href="/learn-cplusplus/02 Control Flow/#switch-statements">Switch Statements</a>
-│   ├── <a href="/learn-cplusplus/02 Control Flow/#go-to-statements">Go To Statements</a>
-│   ├── <a href="/learn-cplusplus/02 Control Flow/#loops">Loops/</a>
-│   │   ├── <a href="/learn-cplusplus/02 Control Flow/#while-loops">While Loops</a>
-│   │   ├── <a href="/learn-cplusplus/02 Control Flow/#for-loops">For Loops</a>
-│   │   ├── <a href="/learn-cplusplus/02 Control Flow/#nested-loops">Nested Loops</a>
-│   │   └── <a href="/learn-cplusplus/02 Control Flow/#break-and-continue">Break and Continue</a>
-│   ├── <a href="/learn-cplusplus/02 Control Flow/#shortened-notations">Shortened Notations</a>
-│   ├── <a href="/learn-cplusplus/02 Control Flow/#questions">Questions</a>
-│   └── <a href="/learn-cplusplus/02 Control Flow/#exercises">Exercises</a>
+├── <strong><a href="/learn-cplusplus/02 Operators/"><span class="link">02 Operators/</span></a></strong>
+│   ├── <a href="/learn-cplusplus/02 Operators/#comparison-operators">Comparison Operators</a>
+│   ├── <a href="/learn-cplusplus/02 Operators/#logical-operators">Logical Operators</a>
+│   ├── <a href="/learn-cplusplus/02 Operators/#arithmetic-operators">Arithmetic Operators/</a>
+│   │   └── <a href="/learn-cplusplus/02 Operators/#shortened-notations">Shortened Notations</a>
+│   ├── <a href="/learn-cplusplus/02 Operators/#operator-evaluation-order">Operator Evaluation Order</a>
+│   ├── <a href="/learn-cplusplus/02 Operators/#bitwise-operators">Bitwise Operators/</a>
+│   │   ├── <a href="/learn-cplusplus/02 Operators/#binary-representation">Binary Representation</a>
+│   │   ├── <a href="/learn-cplusplus/02 Operators/#conversion-between-decimal-and-binary-systems">Conversion Between Decimal and Binary Systems</a>
+│   │   ├── <a href="/learn-cplusplus/02 Operators/#conversion-between-decimal-and-hexadecimal-systems">Conversion Between Decimal and Hexadecimal Systems</a>
+│   │   ├── <a href="/learn-cplusplus/02 Operators/#conversion-between-decimal-and-octal-systems">Conversion Between Decimal and Octal Systems</a>
+│   │   ├── <a href="/learn-cplusplus/02 Operators/#examining-memory-representation-in-practice">Examining Memory Representation in Practice</a>
+│   │   ├── <a href="/learn-cplusplus/02 Operators/#bitwise-shift-operators">Bitwise Shift Operators</a>
+│   │   ├── <a href="/learn-cplusplus/02 Operators/#bitwise-logic-operators">Bitwise Logic Operators/</a>
+│   │   │   ├── <a href="/learn-cplusplus/02 Operators/#bitwise-and">Bitwise AND</a>
+│   │   │   ├── <a href="/learn-cplusplus/02 Operators/#bitwise-or">Bitwise OR</a>
+│   │   │   ├── <a href="/learn-cplusplus/02 Operators/#bitwise-xor">Bitwise XOR</a>
+│   │   │   └── <a href="/learn-cplusplus/02 Operators/#bitwise-not">Bitwise NOT</a>
+│   │   └── <a href="/learn-cplusplus/02 Operators/#writing-binary-hexadecimal-and-octal-values-in-c">Writing Binary, Hexadecimal and Octal Values in C++</a>
+│   ├── <a href="/learn-cplusplus/02 Operators/#ternary-operator">Ternary Operator</a>
+│   ├── <a href="/learn-cplusplus/02 Operators/#operator-overloading">Operator Overloading</a>
+│   └── <a href="/learn-cplusplus/02 Operators/#exercises">Exercises</a>
 │
-├── <strong><a href="/learn-cplusplus/03 Operators/"><span class="link">03 Operators/</span></a></strong>
-│   ├── <a href="/learn-cplusplus/03 Operators/#comparison-operators">Comparison Operators</a>
-│   ├── <a href="/learn-cplusplus/03 Operators/#logical-operators">Logical Operators</a>
-│   ├── <a href="/learn-cplusplus/03 Operators/#arithmetic-operators">Arithmetic Operators/</a>
-│   │   └── <a href="/learn-cplusplus/03 Operators/#shortened-notations">Shortened Notations</a>
-│   ├── <a href="/learn-cplusplus/03 Operators/#operator-evaluation-order">Operator Evaluation Order</a>
-│   ├── <a href="/learn-cplusplus/03 Operators/#bitwise-operators">Bitwise Operators/</a>
-│   │   ├── <a href="/learn-cplusplus/03 Operators/#binary-representation">Binary Representation</a>
-│   │   ├── <a href="/learn-cplusplus/03 Operators/#conversion-between-decimal-and-binary-systems">Conversion Between Decimal and Binary Systems</a>
-│   │   ├── <a href="/learn-cplusplus/03 Operators/#conversion-between-decimal-and-hexadecimal-systems">Conversion Between Decimal and Hexadecimal Systems</a>
-│   │   ├── <a href="/learn-cplusplus/03 Operators/#conversion-between-decimal-and-octal-systems">Conversion Between Decimal and Octal Systems</a>
-│   │   ├── <a href="/learn-cplusplus/03 Operators/#examining-memory-representation-in-practice">Examining Memory Representation in Practice</a>
-│   │   ├── <a href="/learn-cplusplus/03 Operators/#bitwise-shift-operators">Bitwise Shift Operators</a>
-│   │   ├── <a href="/learn-cplusplus/03 Operators/#bitwise-logic-operators">Bitwise Logic Operators/</a>
-│   │   │   ├── <a href="/learn-cplusplus/03 Operators/#bitwise-and">Bitwise AND</a>
-│   │   │   ├── <a href="/learn-cplusplus/03 Operators/#bitwise-or">Bitwise OR</a>
-│   │   │   ├── <a href="/learn-cplusplus/03 Operators/#bitwise-xor">Bitwise XOR</a>
-│   │   │   └── <a href="/learn-cplusplus/03 Operators/#bitwise-not">Bitwise NOT</a>
-│   │   └── <a href="/learn-cplusplus/03 Operators/#writing-binary-hexadecimal-and-octal-values-in-c">Writing Binary, Hexadecimal and Octal Values in C++</a>
-│   ├── <a href="/learn-cplusplus/03 Operators/#ternary-operator">Ternary Operator</a>
-│   ├── <a href="/learn-cplusplus/03 Operators/#operator-overloading">Operator Overloading</a>
-│   └── <a href="/learn-cplusplus/03 Operators/#exercises">Exercises</a>
+├── <strong><a href="/learn-cplusplus/03 Control Flow/"><span class="link">03 Control Flow/</span></a></strong>
+│   ├── <a href="/learn-cplusplus/03 Control Flow/#if-statements">If Statements</a>
+│   ├── <a href="/learn-cplusplus/03 Control Flow/#switch-statements">Switch Statements</a>
+│   ├── <a href="/learn-cplusplus/03 Control Flow/#go-to-statements">Go To Statements</a>
+│   ├── <a href="/learn-cplusplus/03 Control Flow/#loops">Loops/</a>
+│   │   ├── <a href="/learn-cplusplus/03 Control Flow/#while-loops">While Loops</a>
+│   │   ├── <a href="/learn-cplusplus/03 Control Flow/#for-loops">For Loops</a>
+│   │   ├── <a href="/learn-cplusplus/03 Control Flow/#nested-loops">Nested Loops</a>
+│   │   └── <a href="/learn-cplusplus/03 Control Flow/#break-and-continue">Break and Continue</a>
+│   ├── <a href="/learn-cplusplus/03 Control Flow/#shortened-notations">Shortened Notations</a>
+│   ├── <a href="/learn-cplusplus/03 Control Flow/#questions">Questions</a>
+│   └── <a href="/learn-cplusplus/03 Control Flow/#exercises">Exercises</a>
 │
 ├── <strong><a href="/learn-cplusplus/04 Functions/"><span class="link">04 Functions/</span></a></strong>
 │   ├── <a href="/learn-cplusplus/04 Functions/#function-creation">Function Creation</a>
-│   ├── <a href="/learn-cplusplus/04 Functions/#return-values">Return Values/</a>
-│   │   └── <a href="/learn-cplusplus/04 Functions/#mandatory-return-values">Mandatory Return Values</a>
-│   ├── <a href="/learn-cplusplus/04 Functions/#multiple-return-values">Multiple Return Values</a>
-│   ├── <a href="/learn-cplusplus/04 Functions/#parameter-list">Parameter List</a>
-│   ├── <a href="/learn-cplusplus/04 Functions/#function-declaration-vs-definition">Function Declaration vs. Definition</a>
+│   │   ├── <a href="/learn-cplusplus/04 Functions/#return-values">Return Values/</a>
+│   │   ├── <a href="/learn-cplusplus/04 Functions/#multiple-return-values">Multiple Return Values/</a>
+│   │   ├── <a href="/learn-cplusplus/04 Functions/#parameter-list">Parameter List/</a>
+│   │   ├── <a href="/learn-cplusplus/04 Functions/#default-arguments">Default Arguments/</a>
+│   │   ├── <a href="/learn-cplusplus/04 Functions/#function-attributes">Function Attributes/</a>
+│   │   └── <a href="/learn-cplusplus/04 Functions/#function-specifiers">Function Specifiers/</a>
 │   ├── <a href="/learn-cplusplus/04 Functions/#function-overloading">Function Overloading</a>
 │   ├── <a href="/learn-cplusplus/04 Functions/#inline-functions">Inline Functions</a>
-│   ├── <a href="/learn-cplusplus/04 Functions/#recursion">Recursion</a>
 │   ├── <a href="/learn-cplusplus/04 Functions/#lambdas">Lambdas/</a>
 │   │   ├── <a href="/learn-cplusplus/04 Functions/#when-to-use-lambdas">When to Use Lambdas</a>
 │   │   └── <a href="/learn-cplusplus/04 Functions/#lambda-use-case">Lambda Use Case</a>
+│   ├── <a href="/learn-cplusplus/04 Functions/#recursion">Recursion</a>
+│   ├── <a href="/learn-cplusplus/04 Functions/#questions">Questions</a>
 │   └── <a href="/learn-cplusplus/04 Functions/#exercises">Exercises</a>
 │
 ├── <strong><a href="/learn-cplusplus/05 Data Types/"><span class="link">05 Data Types/</span></a></strong>

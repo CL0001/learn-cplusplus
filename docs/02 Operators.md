@@ -2,7 +2,7 @@
 
 !!! info
 
-    This chapter goes hand in hand with the <strong><a href="/learn-cplusplus/02 Control Flow/"><span class="link">03 Control Flow/</span></a></strong> chapter.
+    This chapter goes hand in hand with the <strong><a href="/learn-cplusplus/03 Control Flow/"><span class="link">03 Control Flow/</span></a></strong> chapter.
     So keep in mind that the two chapters are closely related, and many concepts work together.
     If something seems skipped here, it's likely because it was better suited for that chapter.
 
