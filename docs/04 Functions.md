@@ -321,6 +321,57 @@ We’ll encounter a few more specifiers as we move deeper into the language.
 Introducing them gradually keeps the learning curve reasonable.
 Whenever a new specifier appears in the book, it will be clearly called out and explained in context.
 
+### Forward Declarations
+
+So far, all of our examples have followed a simple rule: a function is created and fully defined before it is used elsewhere in the program.
+
+This works well in small programs, but as soon as your code grows, that restriction starts to feel limiting.
+You may want `main` function at the top of the file for readability, or you may want functions to call each other in a natural order.
+Unfortunately, the compiler doesn’t read your program the way a human does.
+
+C++ is compiled top to bottom.
+When the compiler encounters a function call, it must already know that the function exists and how it can be called.
+If it doesn’t, compilation fails—even if the function is defined later in the file.
+
+This is the problem that forward declaration solve.
+
+A forward declaration tells the compiler “this function exists, and this is its signature”, without providing the actual implementation yet.
+It gives the compiler just enough information to allow function calls before the definition appears.
+
+A forward declaration looks exactly like a function declaration—but without the function body.
+
+```cpp title="main.cpp"
+#include <iostream>
+#include <cmath>
+
+double CalculateHypotenuse(double a, double b); // forward declaration
+
+int main() {
+    std::cout << "Hypotenuse = " << CalculateHypotenuse(3, 4);
+}
+
+double CalculateHypotenuse(double a, double b) {
+    return std::sqrt(std::pow(a, 2) + std::pow(b, 2));
+}
+```
+
+``` title="output"
+Hypotenuse = 5
+```
+
+Notice what’s happening here:
+
+- The compiler sees the declaration first and learns the function’s return type and parameters.
+- The function can safely be called inside main.
+- The full definition appears later and provides the actual behavior.
+
+Forward declarations simply act as a promise that “this function will be defined somewhere”.
+If the definition is missing—or doesn’t match the declaration—the linker will report an error.
+
+Forward declarations become especially important once our programs are split across multiple files.
+In practice, this is exactly how header files work.
+They typically contain forward declarations, while source files contain the actual definitions.
+
 ## Function Overloading
 
 Function overloading occurs when we define multiple functions with the same name but different types or counts of parameters.

@@ -48,6 +48,7 @@
 │   │   └── <a href="/learn-cplusplus/02 Operators/#writing-binary-hexadecimal-and-octal-values-in-c">Writing Binary, Hexadecimal and Octal Values in C++</a>
 │   ├── <a href="/learn-cplusplus/02 Operators/#ternary-operator">Ternary Operator</a>
 │   ├── <a href="/learn-cplusplus/02 Operators/#operator-overloading">Operator Overloading</a>
+│   ├── <a href="/learn-cplusplus/02 Operators/#questions">Questions</a>
 │   └── <a href="/learn-cplusplus/02 Operators/#exercises">Exercises</a>
 │
 ├── <strong><a href="/learn-cplusplus/03 Control Flow/"><span class="link">03 Control Flow/</span></a></strong>
@@ -70,7 +71,8 @@
 │   │   ├── <a href="/learn-cplusplus/04 Functions/#parameter-list">Parameter List/</a>
 │   │   ├── <a href="/learn-cplusplus/04 Functions/#default-arguments">Default Arguments/</a>
 │   │   ├── <a href="/learn-cplusplus/04 Functions/#function-attributes">Function Attributes/</a>
-│   │   └── <a href="/learn-cplusplus/04 Functions/#function-specifiers">Function Specifiers/</a>
+│   │   ├── <a href="/learn-cplusplus/04 Functions/#function-specifiers">Function Specifiers/</a>
+│   │   └── <a href="/learn-cplusplus/04 Functions/#forward-declarations">Forward Declarations/</a>
 │   ├── <a href="/learn-cplusplus/04 Functions/#function-overloading">Function Overloading</a>
 │   ├── <a href="/learn-cplusplus/04 Functions/#inline-functions">Inline Functions</a>
 │   ├── <a href="/learn-cplusplus/04 Functions/#lambdas">Lambdas/</a>
@@ -81,14 +83,18 @@
 │   └── <a href="/learn-cplusplus/04 Functions/#exercises">Exercises</a>
 │
 ├── <strong><a href="/learn-cplusplus/05 Data Types/"><span class="link">05 Data Types/</span></a></strong>
-│   ├── <a href="/learn-cplusplus/05 Data Types/#static-and-strong-typing">Static and Strong Typing</a>
+│   ├── <a href="/learn-cplusplus/05 Data Types/#static-typing">Static Typing</a>
+│   ├── <a href="/learn-cplusplus/05 Data Types/#strong-typing">Strong Typing</a>
 │   ├── <a href="/learn-cplusplus/05 Data Types/#primitive-data-types">Primitive Data Types/</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#standard-integer-types">Standard Integer Types</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#fixed-width-integer-types">Fixed-Width Integer Types</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#unsigned-integers">Unsigned Integers</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#floating-point-types">Floating-Point Types</a>
 │   │   └── <a href="/learn-cplusplus/05 Data Types/#character-types">Character Types</a>
+│   ├── <a href="/learn-cplusplus/05 Data Types/#bitfields">Bitfields</a>
 │   ├── <a href="/learn-cplusplus/05 Data Types/#automatic-type-inference">Automatic Type Inference</a>
+│   ├── <a href="/learn-cplusplus/05 Data Types/#volatile-specifier">Volatile Specifier</a>
+│   ├── <a href="/learn-cplusplus/05 Data Types/#register-specifier">Register Specifier</a>
 │   ├── <a href="/learn-cplusplus/05 Data Types/#determining-the-byte-size-of-variables">Determining the Byte Size of Variables</a>
 │   ├── <a href="/learn-cplusplus/05 Data Types/#type-casting">Type Casting/</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#conversions">Conversions</a>
@@ -99,7 +105,7 @@
 │   │   │   ├── <a href="/learn-cplusplus/05 Data Types/#constant-cast">Constant Cast</a>
 │   │   │   └── <a href="/learn-cplusplus/05 Data Types/#reinterpret-cast">Reinterpret Cast</a>
 │   │   └── <a href="/learn-cplusplus/05 Data Types/#when-to-cast">When to Cast</a>
-│   ├── <a href="/learn-cplusplus/05 Data Types/#constants-and-compile-time-constructs">Constants and Compile-Time Constructs/</a>
+│   ├── <a href="/learn-cplusplus/05 Data Types/#compile-time-constructs">Compile-Time Constructs/</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#constexpr">Constexpr</a>
 │   │   └── <a href="/learn-cplusplus/05 Data Types/#consteval-and-constinit">Consteval and Constinit</a>
 │   ├── <a href="/learn-cplusplus/05 Data Types/#padding-and-alignment">Padding and Alignment/</a>

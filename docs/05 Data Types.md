@@ -1,48 +1,49 @@
 # 05 Data Types
 
 By now, we've covered the absolute basics.
-As part of that foundation, we introduced fundamental primitive data types such as integers, characters, and floating-point numbers, along with the kinds of values they can represent.
+As part of that foundation, we introduced fundamental primitive data types, along with the kinds of values they can represent.
 
 In the next few chapters, we’ll start working more closely with memory.
 As we go deeper into the language, it becomes increasingly important to understand how memory behaves—especially when working with a lower-level language like C++.
 At this point, it’s not just about writing code that works; it’s about knowing what’s really happening behind the scenes.
 
-As part of our earlier foundation, we introduced primitive data types, which act as the building blocks for all data structures.
 Now, it’s time to look more closely at how these basic types can be refined and extended into more specialized or optimized forms, depending on the needs of your data.
 
-## Static and Strong Typing
+## Static Typing
 
 C++ is a statically typed language.
-This means that the data type of every variable must be explicitly declared and known at compile time.
-In other words, the compiler needs to know what kind of data each variable will hold before the program runs.
+This means that the type of every variable must be known at compile time.
+In other words, the compiler needs to know what kind of data each variable will hold before the program even runs.
 
-This requirement brings a few important benefits.
-First, it allows the compiler to catch many type-related errors early—before the code ever executes.
-Second, it enables more efficient memory usage and better optimization.
-After all, the data type of a variable determines how much memory it occupies and how that memory is interpreted during execution—which in turn affects how the program interacts with the system’s memory layout.
+This gives us a few advantages.
+First, it allows the compiler to catch many type-related errors early, before the program executes.
+Second, it lets the compiler optimize memory usage and CPU instructions because it knows exactly how much space each variable takes and how to interpret it.
 
-Compared to dynamically typed languages such as Python and JavaScript, where types are resolved at runtime.
-C++’s static typing provides stronger guarantees and performance benefits—though at the cost of some flexibility.
+## Strong Typing
 
-C++ is also considered a strongly typed language.
-This refers to how strictly the language enforces type rules.
-While C++ allows you to perform type conversions (also called casting), the compiler won't let you mix incompatible types without an explicit cast.
-This helps prevent unintended behavior or subtle bugs caused by incorrect assumptions about how data is represented in memory.
+C++ is also considered strongly typed.
+This means the language enforces rules about how different types can interact.
+While you can convert between types using casts, the compiler won’t allow incompatible types to be mixed unintentionally.
+
+For example, you can’t assign a double to a pointer to an int or automatically treat a `std::string` as a number.
+The compiler forces you to be explicit, which prevents subtle bugs and unintended behavior.
+
+In short, static typing tells the compiler what a variable is, and strong typing tells it what a variable cannot be.
 
 ## Primitive Data Types
 
-In the introduction chapter, we introduced some of the primitive data types to kick-start your learning—but that was just the absolute core.
-To give you more control and flexibility, C++ actually offers a broader range of primitive types, enabling more precise management of memory and data.
+In the introduction chapter, we introduced some of the primitive data types to kick-start our learning—but that was just the absolute core.
+To give you more control and flexibility, C++ actually offers a broader range of primitive types, enabling more precise management of memory.
 
 ### Standard Integer Types
 
-| Type        | Size         | Signed Range                                            |
-| ----------- | ------------ | ------------------------------------------------------- |
-| `char`      | 1 byte       | -128 to 127                                             |
-| `short`     | 2 bytes      | -32,768 to 32,767                                       |
-| `int`       | 4 bytes      | -2,147,483,648 to 2,147,483,647                         |
-| `long`      | 4 or 8 bytes | Depends on the system                                   |
-| `long long` | 8 bytes      | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 |
+| Type        | Size (bytes)  | Signed Range                                            |
+| ----------- | --------------| ------------------------------------------------------- |
+| `char`      | 1             | -128 to 127                                             |
+| `short`     | 2             | -32,768 to 32,767                                       |
+| `int`       | 4             | -2,147,483,648 to 2,147,483,647                         |
+| `long`      | 4 or 8        | Depends on the system                                   |
+| `long long` | 8             | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 |
 
 !!! note 
 
@@ -53,23 +54,24 @@ To give you more control and flexibility, C++ actually offers a broader range of
 These types guarantee their size across different systems and compilers.
 But to use the fixed-width integer types ending with `_t`, you need to include the `<cstdint>` header.
 
-| Type        | Size         | Signed Range / Purpose                                        |
-| ----------- | ------------ | ------------------------------------------------------------- |
-| `int8_t`    | 1 byte       | -128 to 127                                                   |
-| `int16_t`   | 2 bytes      | -32,768 to 32,767                                             |
-| `int32_t`   | 4 bytes      | -2,147,483,648 to 2,147,483,647                               |
-| `int64_t`   | 8 bytes      | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807       |
-| `size_t`    | 4 or 8 bytes | Represents the size of any object in memory (always unsigned) |
+| Type        | Size (bytes)   | Signed Range                                                  |
+| ----------- | -------------- | ------------------------------------------------------------- |
+| `int8_t`    | 1              | -128 to 127                                                   |
+| `int16_t`   | 2              | -32,768 to 32,767                                             |
+| `int32_t`   | 4              | -2,147,483,648 to 2,147,483,647                               |
+| `int64_t`   | 8              | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807       |
+| `size_t`    | 4 or 8         | Represents the size of any object in memory (always unsigned) |
 
 !!! note
 
     Types like `intptr_t` and `uintptr_t` are integer types capable of storing pointer values.
-    They’re mostly useful in low-level or systems programming, such as writing memory managers or interfacing with hardware. Most C++ applications will never need them.
+    They’re mostly useful in low-level or systems programming, such as writing memory managers or interfacing with hardware.
+    But these data types will most C++ applications never need.
 
 !!! note
 
     Similarly, `intmax_t` and `uintmax_t` represent the largest signed and unsigned integer types available on a given platform.
-    While they sound powerful, they’re rarely used in everyday programming and are mainly helpful in highly portable libraries or template-heavy code.
+    While they sound powerful, they’re rarely used and are mainly helpful in highly portable libraries or template-heavy code.
     For most use cases, fixed-width types like `int64_t` or `size_t` are a better fit.
 
 ### Unsigned Integers
@@ -77,32 +79,33 @@ But to use the fixed-width integer types ending with `_t`, you need to include t
 Signed integers divide their range between positive and negative numbers, effectively splitting their capacity in half.
 
 However, in many cases, negative numbers are unnecessary or nonsensical.
-For example, color channels use values from 0 to 255, and array sizes or memory addresses are always non-negative.
+For example, color channels such as RGBA are represented by values between 0 and 255, and quantities like array sizes or memory addresses can never be negative.
 
-In these scenarios, using a signed integer like int8_t would be wasteful because half of the range goes unused.
+In these scenarios, using a signed integer like `int8_t` would be wasteful because half of the range goes unused.
 
 To allocate the entire bit range exclusively for non-negative values you can use unsigned types.
 For example, `uint8_t` ranges from 0 to 255, doubling the maximum value you can store in the same memory size.
 
-| Type                 | Unsigned Range                  |
-| -------------------- | ------------------------------- |
-| `unsigned char`      | 0 to 255                        |
-| `unsigned short`     | 0 to 65,535                     |
-| `unsigned int`       | 0 to 4,294,967,295              |
-| `unsigned long`      | Depends on system               |
-| `unsigned long long` | 0 to 18,446,744,073,709,551,615 |
-| `uint8_t`            | 0 to 255                        |
-| `uint16_t`           | 0 to 65,535                     |
-| `uint32_t`           | 0 to 4,294,967,295              |
-| `uint64_t`           | 0 to 18,446,744,073,709,551,615 |
+| Type                 | Size (bytes) | Unsigned Range                  |
+| -------------------- | ------------ | ------------------------------- |
+| `unsigned char`      | 1            | 0 to 255                        |
+| `unsigned short`     | 2            | 0 to 65,535                     |
+| `unsigned int`       | 4            | 0 to 4,294,967,295              |
+| `unsigned long`      | 4 or 8       | Depends on system               |
+| `unsigned long long` | 8            | 0 to 18,446,744,073,709,551,615 |
+| `uint8_t`            | 1            | 0 to 255                        |
+| `uint16_t`           | 2            | 0 to 65,535                     |
+| `uint32_t`           | 4            | 0 to 4,294,967,295              |
+| `uint64_t`           | 8            | 0 to 18,446,744,073,709,551,615 |
+
 
 ### Floating-Point Types
 
-| Type          | Size       | Precision (Approx.)   | Range                          |
-| ------------- | ---------- | --------------------- | ------------------------------ |
-| `float`       | 4 bytes    | ~6-7 decimal digits   | ±1.5 × 10⁻⁴⁵ to ±3.4 × 10³⁸    |
-| `double`      | 8 bytes    | ~15-16 decimal digits | ±5.0 × 10⁻³²⁴ to ±1.8 × 10³⁰⁸  |
-| `long double` | 8-16 bytes | Varies                | Higher precision than `double` |
+| Type          | Size (bytes)       | Precision (Approx.)   | Range                          |
+| ------------- | ------------------ | --------------------- | ------------------------------ |
+| `float`       | 4                  | ~6-7 decimal digits   | ±1.5 × 10⁻⁴⁵ to ±3.4 × 10³⁸    |
+| `double`      | 8                  | ~15-16 decimal digits | ±5.0 × 10⁻³²⁴ to ±1.8 × 10³⁰⁸  |
+| `long double` | 8-16               | Varies                | Higher precision than `double` |
 
 !!! note
 
@@ -118,7 +121,7 @@ However, ASCII is insufficient for representing the full range of characters use
 
 To address this, other encodings were developed, with UTF-8 becoming the most widely used due to its flexibility and backward compatibility with ASCII.
 
-**UTF-8** can represent a wide variety of characters, including:
+UTF-8 can represent a wide variety of characters, including:
 
 - Latin characters with diacritics: `é, ñ, ü, č, š`
 - Mathematical symbols: `∞, ∑, π, √`
@@ -126,35 +129,35 @@ To address this, other encodings were developed, with UTF-8 becoming the most wi
 - Emoji: `😀, ❤️, 🚀, 🔥`
 - Non-Latin scripts: `你好 (Chinese), Привет (Russian), नमस्ते (Hindi), العربية (Arabic)`
 
-| Type       | Size         | Prefix  | Description                                       |
-| ---------- | ------------ | ------- | ------------------------------------------------- |
-| `char`     | 1 byte       | None    | Holds a single character (typically ASCII)        |
-| `wchar_t`  | 2 or 4 bytes | `L'A'`  | Wide character (Unicode, size platform-dependent) |
-| `char8_t`  | 1 byte       | `u8'A'` | UTF-8 character (C++20)                           |
-| `char16_t` | 2 bytes      | `u'A'`  | UTF-16 character (Unicode)                        |
-| `char32_t` | 4 bytes      | `U'A'`  | UTF-32 character (Unicode)                        |
+| Type       | Size (bytes)        | Prefix  | Description                                       |
+| ---------- | ------------------- | ------- | ------------------------------------------------- |
+| `char`     | 1                   | None    | Holds a single character (typically ASCII)        |
+| `wchar_t`  | 2 or 4              | `L'A'`  | Wide character (Unicode, size platform-dependent) |
+| `char8_t`  | 1                   | `u8'A'` | UTF-8 character (C++20)                           |
+| `char16_t` | 2                   | `u'A'`  | UTF-16 character (Unicode)                        |
+| `char32_t` | 4                   | `U'A'`  | UTF-32 character (Unicode)                        |
 
 These specialized types require prefixes before assigning literals to indicate their encoding.
 
 Handling non-ASCII characters in the terminal can be tricky, especially on Windows.
-To support UTF-8 output, you need to include the `windows.h` header and adjust settings via its functions.
+To support UTF-8 output, you need to include the `<Windows.h>` header and adjust settings via its functions.
 On Linux and macOS, this usually works without additional setup.
 
 ```cpp title="main.cpp"
 #include <iostream>
-#include <windows.h>
+#include <Windows.h>
 
 #pragma execution_character_set("utf-8")
 
 int main() {
 	SetConsoleOutputCP(CP_UTF8);
 	
-	std::cout << "Testing unicode: " << std::endl;
-	std::cout << " - English" << std::endl;
-	std::cout << " - Ελληνικά" << std::endl;
-	std::cout << " - Español" << std::endl;
- 	std::cout << " - Русский" << std::endl;
-	std::cout << " - aäbcdefghijklmnoöpqrsßtuüvwxyz" << std::endl;
+	std::cout << "Testing unicode:\n";
+	std::cout << " - English\n";
+	std::cout << " - Ελληνικά\n";
+	std::cout << " - Español\n";
+ 	std::cout << " - Русский\n";
+	std::cout << " - aäbcdefghijklmnoöpqrsßtuüvwxyz\n";
 }
 ```
 
@@ -172,9 +175,69 @@ Testing unicode:
     It’s  best to avoid non-ASCII characters in your source code unless necessary (e.g., in GUI applications).
     Non-ASCII characters can complicate compatibility across different environments and are rarely required in typical C++ code.
 
+## Bitfields
+
+!!! info
+
+    This section is considered more advanced at this point, as it requires knowledge of user-defined types.
+    If you're not yet comfortable with those concepts, feel free to skip this section and return to it later once you're more confident.
+
+So far, all of the primitive data types we’ve introduced have used whole bytes as their smallest unit of storage.
+That’s usually fine—but in low-level programming, we sometimes want more granular control.
+
+In many real-world cases, a value only needs a few bits.
+For example, a flag might only need to store true or false, a status code might fit in a range of 0–7, or a set of options might only require a handful of on/off switches.
+Using a full `int` or even a full `char` for these cases wastes memory.
+
+Bitfields allow us to pack multiple small values into a single integer type by specifying exactly how many bits each value should occupy.
+
+Bitfields are declared inside a struct, using a colon followed by the number of bits allocated to the member.
+
+```cpp title="main.cpp"
+#include <iostream>
+
+struct Flags {
+    unsigned is_visible : 1;
+    unsigned is_active  : 1;
+    unsigned has_error  : 1;
+};
+
+int main() {
+    Flags flags{1, 0, 1};
+
+    std::cout << "Visible: " << flags.is_visible << '\n';
+    std::cout << "Active: " << flags.is_active << '\n';
+    std::cout << "Error: " << flags.has_error << '\n';
+}
+```
+
+``` title="output"
+Visible: 1
+Active: 0
+Error: 1
+```
+
+Each field here occupies only one bit, yet behaves like a normal integer when accessed.
+Internally, the compiler packs these values together into a single storage unit.
+
+Bitfields can also store small integer ranges, not just booleans.
+
+```cpp title="example"
+struct Color {
+    unsigned red   : 8;
+    unsigned green : 8;
+    unsigned blue  : 8;
+};
+```
+
+Each color channel is limited to 8 bits, giving it a range of 0–255—exactly what we want for RGB values.
+This representation is both compact and expressive.
+
 ## Automatic Type Inference
 
-Before diving into this section, it’s helpful to have a grasp of data structures, since type inference often involves more complex types like containers and iterators.
+!!! info 
+
+    Before diving into this section, it’s helpful to have a grasp of collections of data, since type inference often involves more complex types like containers and iterators.
 
 In C++, data types determine what kind of data a variable can hold and how much memory it uses.
 Manually specifying types can sometimes be tedious or verbose—especially when the type is obvious from the context.
@@ -204,7 +267,7 @@ String size: 4
 ```
 
 Here, name is correctly inferred as `std::string`.
-However, if the return type of `GetName()` were changed to `const char*`, this code would no longer compile—C-style strings don’t support the .size() method.
+However, if the return type of `GetName()` were changed to `const char*`, this code would no longer compile—C-style strings don’t support the `.size()` method.
 
 This is a good example of how type inference can become fragile when the underlying return type changes.
 In such cases, using an explicit type can help make your code more predictable.
@@ -218,8 +281,9 @@ One place where auto truly shines is in range-based for loops, where the element
 int main() {
     std::array<int, 5> array{17, 48, 92, 64, 88};
 	
-    for (const auto& element : array)
+    for (const auto& element : array) {
         std::cout << element << '\t';
+    }
 }
 ```
 
@@ -230,58 +294,130 @@ int main() {
 Here, `auto` makes the loop cleaner and more readable, without sacrificing clarity or safety.
 Since the type of element is tightly bound to the container, there's little risk of confusion or error.
 
+## Volatile Specifier
+
+The `volatile` keyword acts as a directive to the compiler’s optimizer: "Do not cache this value."
+It informs the compiler that a variable's state can be altered by external factors—such as hardware, an interrupt, or a signal—that the compiler cannot see.
+Consequently, the program must re-read the variable from memory every single time it is referenced, rather than relying on a previously stored value in a CPU register.
+
+Normally, compilers aggressively optimize code by caching values in registers, reordering instructions, or eliminating repeated reads.
+For most variables, this is exactly what we want—it makes programs faster. However, in some low-level scenarios, these assumptions are incorrect.
+
+A variable should be declared volatile when its value can change due to external factors, such as:
+
+- Hardware devices (Status registers)
+- Signal handlers (Interacting with a running program)
+- Memory-mapped I/O (Communicating with peripherals)
+
+In these cases, every read and write must go directly to memory.
+
+```cpp title="example"
+#include <iostream>
+#include <csignal>
+
+volatile bool stop_flag = false;
+
+void handle_signal(int signal) {
+    stop_flag = true; 
+}
+
+int main() {
+    // Register the handler for Ctrl+C (SIGINT)
+    std::signal(SIGINT, handle_signal);
+
+    std::cout << "Waiting for Ctrl+C...\n";
+
+    while (!stop_flag) {
+        // The compiler might optimize this into an infinite loop
+    }
+
+    std::cout << "Signal received! Exiting ...";
+}
+```
+
+Without `volatile`, the compiler might assume that `stop_flag` never changes inside the loop and aggressively optimize the code—potentially turning the loop into an infinite one.
+By marking the variable as `volatile`, we explicitly tell the compiler that its value may change unexpectedly, forcing it to reload the value from memory on every iteration.
+
+It’s important to be precise about what it actually guarantees.
+
+When a variable is declared `volatile`, the compiler is prevented from optimizing away reads and writes to that variable.
+Every access is performed directly against memory rather than being cached in a register.
+This ensures correct behavior when the value can change outside the normal flow of the program, such as through hardware or external events.
+
+!!! note
+
+    `volatile` should be used only in situations where the compiler’s normal assumptions about program flow do not hold.
+    This typically includes low-level programming tasks such as interacting with hardware, working with memory-mapped registers, responding to signal handlers, or writing embedded or systems-level code.
+
+    In regular application code, volatile is rarely needed.
+    If you find yourself wanting to use it in ordinary logic, it’s often a sign that a different design or abstraction would be more appropriate.
+
+## Register Specifier
+
+Same as `volatile` the `register` specifier acts as a hint to the compiler suggesting that a variable should be stored in a CPU register rather than in memory.
+The motivation was simple: accessing registers is faster than accessing memory, so keeping frequently used variables in registers could improve performance.
+
+In early C and C++ compilers, this hint could sometimes make a noticeable difference.
+Developers would mark loop counters or heavily used variables as register in an attempt to reduce memory access overhead.
+
+```cpp title="example"
+int main() {
+    register int counter = 0;
+
+    for (counter = 0; counter < 10; ++counter) {
+        // work...
+    }
+}
+```
+
+However, modern compilers are far better at optimization than humans.
+They perform sophisticated analysis to decide which variables should live in registers, how long they should stay there, and when spilling to memory is necessary.
+As a result, the register keyword is almost always ignored by today’s compilers.
+
+In fact, starting with C++17, `register` has been officially deprecated.
+Using it no longer provides any performance benefit and may even trigger warnings in some compilers.
+
+!!! note
+
+    Although `register` no longer influences optimization, it still has one observable effect: you cannot take the address of a variable inside of a register.
+    This restriction exists because a variable stored purely in a register does not have a stable memory address.
+
 ## Determining the Byte Size of Variables
 
-You can get the byte size of any variable using the `sizeof` operator.
-Even compound structures like C-style arrays can be measured this way, which is useful because it lets you calculate the number of elements in the array using a simple formula: the total byte size of the array divided by the byte size of a single element.
+We can get the byte size of any variable using the `sizeof` operator.
 
 ```cpp title="main.cpp"
 #include <iostream>
 
 int main() {
-    int array[] = {37, 82, 14, 69, 5};
+    double value = 145.32;
 
-    int size_of_array = sizeof(array) / sizeof(array[0]);
-
-    for (int i = 0; i < size_of_array; ++i)
-        std::cout << array[i] << '\t';
+    std::cout << "Byte size of double is: " << sizeof(value);
 }
 ```
 
 ``` title="output"
-37	82	14	69	5
+Byte size of double is: 8
 ```
-
-The `sizeof` operator can also be used with data types directly. So, instead of dividing by `sizeof(array[0])`, you could divide by `sizeof(int)`:
-
-```cpp 
-int size_of_array = sizeof(array) / sizeof(int);
-```
-
-This works the same, but it's a bit more error-prone.
-If you change the array's type, you'd need to update int in multiple places.
-By dividing by sizeof(array[0]), your code automatically adapts to whatever type the array holds—making it safer and more maintainable.
 
 ## Type Casting
 
 Sometimes, we need to reinterpret the data a variable holds by changing its type.
 This process is called type casting.
-Type casting is especially important in C++ because it's a statically typed language.
-As a result, conversions are often necessary when working with different data types together, whether to ensure compatibility or to match the expected type in a specific context.
 
 But not all types in C++ are directly compatible, and trying to mix them without conversion can lead to errors or unexpected behavior.
 Fortunately, C++ provides two main ways to perform type conversions:
 
-- **Implicit Conversion (Automatic)**:
+- Implicit Conversion (Automatic):
   In many cases, the compiler can handle type conversions for you—this is called implicit conversion.
   For example, assigning an `int` to a `double` works automatically, because the compiler knows how to safely widen the value without losing information.
-- **Explicit Conversion (Casting)**:
+- Explicit Conversion (Casting):
   When a conversion isn’t safe or obvious, C++ requires you to perform an explicit cast.
   This tells the compiler, “Yes, I know what I’m doing—convert this anyway.” There are several ways to do this, and we’ll cover them.
 
 ### Conversions
 
-**In C++, conversions are implicit**.
+In C++, conversions are implicit.
 They occur when the compiler automatically converts one type to another without data loss, such as in arithmetic operations between different types or when assigning a `double` to an `int`.
 
 ```cpp title="main.cpp"
@@ -294,8 +430,8 @@ int main() {
     char a = 'A';
     int b = a; // Implicit conversion: 'b' is assigned 65 (ASCII value of 'A')
 
-    std::cout << "Double to integer conversion: " << value << std::endl;
-    std::cout << "Character to integer conversion: " << a << std::endl;
+    std::cout << "Double to integer conversion: " << value << '\n';
+    std::cout << "Character to integer conversion: " << a << '\n';
 }
 ```
 
@@ -531,7 +667,7 @@ General Guidelines for Casting:
 - Do not misuse `reinterpret_cast` unless you fully understand the potential consequences.
 - Do not remove `const` qualifiers unless absolutely necessary, as it can lead to unintended side effects.
 
-## Constants and Compile-Time Constructs
+## Compile-Time Constructs
 
 In the introduction chapter, we introduced the idea of constants—variables that are meant to remain unchanged throughout a program's execution.
 However, we later saw that `const` can be bypassed with `const_cast`, which means it doesn't provide absolute immutability.
@@ -1092,14 +1228,122 @@ It is possible to disable RTTI, but the process varies depending on the compiler
 When RTTI is turned off, the compiler will typically generate a warning after building the project, indicating that RTTI is disabled.
 Additionally, `dynamic_cast` will exhibit unpredictable behavior, potentially leading to crashes or undefined results.
 
-## Chapter Summary
+## Questions
 
-By completing this chapter, you should now have a solid understanding of data types in C++—from the basic building blocks like integers, floating-point numbers, and characters, to more advanced tools like RTTI and type punning.
+=== "question 1"
 
-You’ve also explored how data types affect memory layout, performance, and the overall type safety of your programs.
+    What does it mean for C++ to be a statically typed language, and how does this differ from dynamic typing?
 
-In particular, you've learned:
+=== "answer"
 
-- How to safely convert between types using modern C++ casting operators like `static_cast` and `dynamic_cast`, which offer greater clarity and safety than traditional C-style casts.
-- The flexibility of dynamic typing through `std::optional`, `std::variant`, and `std::any`, each suited for different scenarios where type uncertainty or variability is involved.
-- How type punning allows you to reinterpret data at a low level, and how RTTI (Run-Time Type Information) can help identify types at runtime—while being mindful of their performance implications.
+    C++ is statically typed, meaning the type of every variable must be known at compile time.  
+    In contrast, dynamically typed languages determine types at runtime.
+
+---
+
+=== "question 2"
+
+    Explain the difference between static typing and strong typing in C++.  
+    Why are these two concepts often confused?
+
+=== "answer"
+
+    Static typing describes when types are known (at compile time), while strong typing describes how strictly the language enforces type rules.
+
+---
+
+=== "question 3"
+
+    Why are fixed-width integer types such as `int32_t` preferred in portable code over types like `int` or `long`?
+
+=== "answer"
+
+    Fixed-width integer types such as int32_t guarantee their size across different systems and compilers.  
+    This makes them more predictable and portable than types like `int` or `long`, whose sizes depend on the platform.
+
+---
+
+=== "question 4"
+
+    In what situations is it more appropriate to use an unsigned integer instead of a signed one?  
+    Give two concrete examples.
+
+=== "answer"
+
+    Unsigned integers should be used when negative values are unnecessary or nonsensical.  
+    Examples include color channels like RGBA values, which range from 0 to 255, and quantities such as array sizes or memory addresses, which are always non-negative.
+
+---
+
+=== "question 5"
+
+    What problem do bitfields solve, and why are they commonly used in low-level or memory-sensitive code?
+
+=== "answer"
+
+    Bitfields allow multiple small values to be packed into a single integer by specifying how many bits each value occupies.  
+    They are useful when values only need a few bits, such as flags or small ranges, and using full bytes would waste memory.
+
+---
+
+=== "question 6"
+
+    What does the `auto` keyword do in C++, and what potential risks can arise if it is overused?
+
+=== "answer"
+
+    The `auto` keyword lets the compiler deduce a variable’s type based on its initializer or return value.  
+    Overusing `auto` can reduce clarity and make code fragile if the inferred type changes unexpectedly.
+
+---
+
+=== "question 7"
+
+    What guarantees does the `volatile` specifier provide?
+
+=== "answer"
+
+    The volatile specifier tells the compiler not to cache a variable’s value and to always read it directly from memory.
+
+---
+
+=== "question 8"
+
+    Why has the `register` keyword become obsolete in modern C++, and what limitation does it still impose on variables declared with it?
+
+=== "answer"
+
+    The `register` keyword was originally a hint suggesting that a variable should be stored in a CPU register for performance.  
+    Modern compilers perform this optimization automatically, making the keyword obsolete and officially deprecated in C++17.  
+    Its only remaining effect is that you cannot take the address of a variable declared as register.
+
+---
+
+=== "question 9"
+
+    Explain the difference between `sizeof(T)` and `std::alignment_of_v<T>`.  
+    How do padding and alignment affect struct memory layout?
+
+=== "answer"
+
+    `sizeof(T)` returns the total number of bytes an object of type T occupies, including any padding.  
+    `std::alignment_of_v<T>` returns the alignment requirement for that type in memory.  
+    Padding is added by the compiler to satisfy alignment rules, which can increase the size of structs and affect memory.
+
+---
+
+=== "question 10"
+
+    Compare `std::optional`, `std::variant`, and `std::any`.  
+    In what situations should each be used, and why is `std::variant` often preferred over `std::any`?
+
+=== "answer"
+
+    `std::optional` represents a value that may or may not be present.  
+    `std::variant` stores one value from a predefined set of types in a type-safe way.  
+    `std::any` can store a value of any type, but at the cost of weaker compile-time guarantees and potential overhead.  
+    In most cases, `std::variant` is preferred over `std::any` because it enforces type safety at compile time.
+
+
+## Exercises
+
