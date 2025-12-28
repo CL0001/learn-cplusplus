@@ -905,6 +905,7 @@ But in larger programs or when printing lots of text quickly, forcing a flush on
     - Buffered vs unbuffered (affects when output appears)
     - Intended purpose (normal output vs error vs logging)
     - `std::cerr` is immediate, `std::clog` preserves order like `std::cout`
+    - While both `std::clog` and `std::cout` are buffered, `std::cout` is tied to `std::cin`, so reading input from `std::cin` will automatically flush the `std::cout` buffer.
 
 ---
 
