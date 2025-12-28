@@ -555,13 +555,13 @@ The main differences between data types come down to how much memory they use an
 
 The most basic data types in C++ are called primitive types. They form the foundation for all more complex types you’ll encounter later.
 
-| Type     | Name                        | Description                                                                 | Size                            |
+| Type     | Name                        | Description                                                                 | Size (bytes)                    |
 | -------- | --------------------------- | --------------------------------------------------------------------------- | ------------------------------- |
-| `int`    | Integer                     | Stores whole numbers                                                        | Typically 4 bytes               |
-| `float`  | Floating-point number       | Stores numbers with decimals. Precision is limited.                         | 4 bytes                         |
-| `double` | Double-precision float      | Similar to `float`, but with more precision.                                | 8 bytes                         |
-| `char`   | Character                   | Stores a single ASCII character (e.g., 'A', 'b', '#').                      | 1 byte                          |
-| `bool`   | Boolean                     | Stores only `true` (1) or `false` (0).                                      | 1 byte (implementation-defined) |
+| `int`    | Integer                     | Stores whole numbers                                                        | Typically 4                     |
+| `float`  | Floating-point number       | Stores numbers with decimals. Precision is limited.                         | 4                               |
+| `double` | Double-precision float      | Similar to `float`, but with more precision.                                | 8                               |
+| `char`   | Character                   | Stores a single ASCII character (e.g., 'A', 'b', '#').                      | 1                               |
+| `bool`   | Boolean                     | Stores only `true` (1) or `false` (0).                                      | 1 (implementation-defined)      |
 
 !!! tip
 
@@ -595,7 +595,7 @@ You can explore the full ASCII table here: <a href="https://www.asciitable.com/"
 A variable is a named storage location for data in memory.
 When we create a variable, we assign it a data type and name so that we can refer to it later in our program.
 
-**Rules for Naming Variables:**
+Rules for Naming Variables:
 
 - Must start with a letter or underscore, but cannot start with a number.
 - Can contain letters, numbers, and underscores, but no spaces.
@@ -670,7 +670,7 @@ int main() {
 
     number = 34;
 
-    std::cout << number << '\n'; 
+    std::cout << number; 
 }
 ```
 
@@ -681,13 +681,13 @@ error: assignment of read-only variable ‘number’
 As shown in the example above, a constant variable cannot be reassigned a value—it results in an error.
 
 
-## Terminal Input and Output
+## Console Input and Output
 
 So far, we've focused on how programs come together and store data internally.
-Equally important, though, is understanding how that data enters and exits the program.
-While data can come from sources like files, databases, or web APIs, the most fundamental method is through terminal input and output.
+Equally important, however, is understanding how data enters and exits a program.
+While programs can receive input and produce output through many sources—such as files, databases, or different APIs—the most fundamental method is through console input and output.
 
-In C++, this is handled by the standard library header `<iostream>`, which provides tools for both displaying messages to the user and reading input from the terminal.
+In C++, this is handled by the standard library header `<iostream>`, which provides tools for displaying messages to the user and reading input from the console.
 
 The following example demonstrates how to use `std::cout` to prompt the user and `std::cin` to read their response.
 
@@ -700,7 +700,7 @@ int main() {
     std::cout << "Enter your age: ";
     std::cin >> user_age;
 
-    std::cout << "User age: " << user_age << '\n';
+    std::cout << "Entered age was - " << user_age;
 }
 ```
 
@@ -708,36 +708,97 @@ int main() {
 Depends on the input you provided
 ```
 
-It can be tricky for beginners to remember which symbols to use for input (`>>`) and output (`<<`) streams.
-A helpful way to visualize them is to think of them as arrows showing the direction of data flow:
+It can be tricky at first to remember which symbols to use for input and output streams.
+A helpful way to visualize them is to think of them as arrows showing the direction of data flow.
 
-| Statement               | Description                                          |
-| ----------------------- | ---------------------------------------------------- |
-| `std::cin >> variable;` | Data flows from the terminal into the variable.      |
-| `std::cout << message;` | Data flows from the program out to the terminal.     |
+| Type   | Statement               | Description                                          |
+| ------ | ----------------------- | ---------------------------------------------------- |
+| input  | `std::cin >> variable;` | Data flows from the console into the variable.       |
+| output | `std::cout << message;` | Data flows from the program out to the console.      |
+
+### Additional Output Streams
+
+Up to this point, we’ve only used `std::cout` to send output to the console.
+In practice, however, C++ provides three standard output streams, each intended for a slightly different purpose.
+
+Alongside `std::cout`, we are also provided with `std::cerr` and `std::clog`.
+
+All three can print text to the console using the same syntax, but `std::cerr` and `std::clog` are primarily intended for diagnostic output—such as error messages, warnings, or debugging information.
+As you’ll see in the next subsection, the key difference between them lies in how their output is handled internally.
+
+This distinction may not matter much in very small programs, but it becomes important as programs grow larger.
 
 ### Stream Buffers
 
-When we print something to the screen, it might feel like it appears instantly, but that’s not quite what happens under the hood.
+When we output something to the screen, it may feel like the text appears instantly.
+Behind the scenes, however, the process is a little more involved.
 
-Every time your program outputs data, it has to make a system call — a request to the operating system — to display text on the command line.
-System calls are relatively slow and performing one for every line of text would make your program inefficient.
+Every time a program writes output, it must make a system call—a request to the operating system—to display text on the console.
+System calls are relatively slow, and performing one for every small piece of output would be inefficient.
 
-To solve this, C++ uses a stream buffer.
-A stream buffer is a temporary storage area in memory that holds output data before it’s actually written to the command line or a file.
-The program keeps adding data to the buffer until the buffer fills up, a newline or flush command—which explicitly forces the buffer’s contents to be written out—is encountered, or the program ends.
-At that point, everything in the buffer is written out at once.
+To avoid this, C++ uses stream buffers.
 
-!!! danger
+A stream buffer is a temporary area in memory that collects output data before it is actually written to the console or a file.
+Instead of sending each character immediately, the program stores output in the buffer and writes it out in larger chunks.
 
-    You may have noticed that in this chapter, we used the newline character `\n` to move to a new line in the terminal.  
-    It’s also possible to use `std::endl` for the same purpose after including `<iostream>`.  
+The contents of a buffer are written out (this is called flushing) when one of the following occurs:
 
-    However, you should avoid using `std::endl` unless you specifically need to flush the output buffer.  
-    Unlike `\n`, `std::endl` doesn’t just insert a newline—it also forces the output stream to flush immediately, triggering a system call.
-    When printing large amounts of text, this can dramatically slow down your program.  
+- The buffer becomes full
+- An explicit flush is requested, such as by using `std::flush` or `std::endl`
+- The program finishes execution normally
 
-    In short: prefer `\n` for regular line breaks, and reserve `std::endl` for cases where you truly need to flush the output.
+This buffering behavior is why different output streams exist.
+For example, `std::cerr` is typically unbuffered, ensuring that error messages appear immediately, while `std::clog` is buffered, making it more suitable for logging.
+
+One subtle point to note is that `std::cout` is tied to `std::cin` by default.
+This means that whenever your program reads input from `std::cin`, `std::cout` is automatically flushed first.
+This ensures that prompts or messages appear before the program waits for input.
+`std::clog`, on the other hand, is not tied to `std::cin`, so it does not flush automatically when reading input.
+
+!!! warning
+
+    One small caveat is worth keeping in mind when mixing output streams.
+    Since `std::cerr` is typically unbuffered, its output is written immediately, while output sent to buffered streams like `std::cout` or `std::clog` may be delayed.
+
+    As a result, error messages written to `std::cerr` can sometimes appear before earlier output, even though the program executed the statements in the expected order.
+
+    When the exact order of diagnostic messages matters—such as when logging program behavior—it can be preferable to use std::clog, which is buffered and preserves a more predictable output sequence.
+
+### Newlines and Flushing
+
+In many classic C++ examples, you might see the following line.
+
+```cpp title="main.cpp" hl_lines="4"
+#include <iostream>
+
+int main() {
+    std::cout << "Hello World!" << std::endl;
+}
+```
+
+This works fine, but it can be misleading.
+Unlike the newline character `\n`, `std::endl` not only moves the output to a new line—it also forces the output buffer to flush immediately.
+Internally, `std::endl` expands to the following.
+
+```cpp title="main.cpp" hl_lines="4"
+#include <iostream>
+
+int main() {
+    std::cout << "Hello World!" << '\n' << std::flush;
+}
+```
+
+For small programs, this difference doesn’t matter.
+But in larger programs or when printing lots of text quickly, forcing a flush on every line can become a performance bottleneck.
+
+
+!!! note
+
+    In modern C++, we should avoid using `std::endl` altogether because it forces a flush every time, slowing down our program.
+    If we want a newline, we should use the newline character `\n`.
+    
+    When we really need to flush the output immediately—for example, when printing error messages or debugging information.
+    We have streams like `std::cerr` which are unbuffered and automatically print immediately, so in those cases, we do not need `std::endl` for flushing either.
 
 ## Questions
 
@@ -830,6 +891,24 @@ At that point, everything in the buffer is written out at once.
 ---
 
 === "question 9"
+
+    List the standard output streams covered in this chapter and explain their primary differences and typical use cases.
+
+=== "answer"
+
+    - `std::cout` — Normal program output; buffered.
+    - `std::cerr` — Error messages; unbuffered, prints immediately.
+    - `std::clog` — Logging and diagnostic messages; buffered, prints in order, useful for tracking program behavior.
+
+    Primary differences:
+    
+    - Buffered vs unbuffered (affects when output appears)
+    - Intended purpose (normal output vs error vs logging)
+    - `std::cerr` is immediate, `std::clog` preserves order like `std::cout`
+
+---
+
+=== "question 10"
 
     Explain difference between a `\n` and `std::endl` for writing a new line.
 

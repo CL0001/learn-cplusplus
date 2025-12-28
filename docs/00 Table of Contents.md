@@ -22,8 +22,10 @@
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#ascii">ASCII</a>
 │   │   ├── <a href="/learn-cplusplus/01 Introduction/#declaring-and-naming-variables">Declaring and Naming Variables</a>
 │   │   └── <a href="/learn-cplusplus/01 Introduction/#constants">Constants</a>
-│   ├── <a href="/learn-cplusplus/01 Introduction/#terminal-input-and-output">Terminal Input and Output/</a>
-│   │   └── <a href="/learn-cplusplus/01 Introduction/#stream-buffers">Stream Buffers</a>
+│   ├── <a href="/learn-cplusplus/01 Introduction/#console-input-and-output">Console Input and Output/</a>
+│   │   ├── <a href="/learn-cplusplus/01 Introduction/#additional-output-streams">Additional Output Streams</a>
+│   │   ├── <a href="/learn-cplusplus/01 Introduction/#stream-buffers">Stream Buffers</a>
+│   │   └── <a href="/learn-cplusplus/01 Introduction/#newlines-and-flushing">Newlines and Flushing</a>
 │   ├── <a href="/learn-cplusplus/01 Introduction/#questions">Questions</a>
 │   └── <a href="/learn-cplusplus/01 Introduction/#exercises">Exercises</a>
 │
