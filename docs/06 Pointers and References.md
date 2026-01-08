@@ -4,9 +4,9 @@ Now, we arrive at one of the most feared topics in C/C++, pointers.
 Many people associate pointers with confusion, often because they tend to overthink them.
 In reality, pointers are quite simple once you understand the core concept.
 
-**A pointer is essentially an integer that represents a memory address.**
+A pointer is essentially an integer that represents a memory address.
 Think of computer memory as a long, one-dimensional array of bytes, each with a unique address, like houses lined up along a street.
-Just as you wouldn't physically move a house to show someone its location, but rather give them its address, a pointer stores the address of a specific memory block.
+Just as we wouldn’t physically move a house to show someone what it looks like, but instead give them its address so they can go and take a look, a pointer stores the address of a specific block of memory.
 This approach allows programs to work directly with data without unnecessary duplication.
 
 | Address     | 1             | 2             | 3             | 4             | ...          |
@@ -17,15 +17,15 @@ This approach allows programs to work directly with data without unnecessary dup
 Pointers are extremely important because everything in computing involves reading and writing to memory.
 While you can write C/C++ code without directly using pointers, they offer a powerful way to manage memory.
 
-**Also pointers themselves aren’t tied to specific data types**.
+It is also important to note that pointers themselves aren’t tied to specific data types.
 Whether you're dealing with characters, booleans, integers, or any other data type, a pointer is still just a number representing a memory address.
-The reason we specify a type for pointers in C/C++ is to indicate how much data should be read or written at that memory location.
+The reason we specify a type for pointers is to indicate how much data should be read or written at that memory location.
 
 ## Memory Allocation
 
 Memory (RAM) is where our program is loaded and where it stores data.
 It is divided into two distinct regions: the stack and the heap.
-The stack is typically a fixed-size memory area, often around 2 MB, while the heap also has a predefined size but can grow dynamically as the application runs—yet not indefinitely.
+The stack is typically a fixed-size memory area, often around 2 MB (depending on the platform), while the heap grows dynamically as the application runs—though it is still limited by the system and available memory.
 
 A common misconception is that the stack and heap are stored in the CPU cache, but they actually reside in RAM.
 These regions serve as the primary storage areas for variables and other essential data during program execution.
@@ -48,7 +48,7 @@ Scopes in C++ are not limited to functions; classes, statements, and loops also 
 Additionally, we can create an isolated scope by enclosing code within curly brackets inside the `main` function or any other part of the program.
 Variables declared inside such a block exist only within that scope and are destroyed once the block ends.
 
-```cpp title="main.cpp"
+```cpp title="main.cpp" hl_lines="9"
 #include <iostream>
 
 int main() {
@@ -57,7 +57,7 @@ int main() {
 		std::cout << number << '\n';
 	}
 	
-	std::cout << number << '\n';
+	std::cout << number;
 }
 ```
 
@@ -85,29 +85,29 @@ Once the function returns, the stack frame is destroyed, and the array no longer
 
 ## Raw Pointers
 
-We will start by introducing **`void*` (void pointer), a generic pointer that is not associated with any specific data type**.
+We will start by introducing `void*` (void pointer), a generic pointer that is not associated with any specific data type.
 It can store the address of any variable, but since it lacks type information, we cannot directly read from or write to the memory it points to—we don't know how many bytes belong to it without first converting it to a specific pointer type.
 This reinforces the idea that pointers are simply memory addresses, independent of data types.
 
 ### Declaring Pointers
 
 Pointers are declared by appending an asterisk to a data type, followed by the variable name.
-**The `*` symbol is known as the dereference operator**, which allows us to access the value stored at the memory address the pointer holds.
+The `*` symbol is known as the dereference operator, which allows us to access the value stored at the memory address the pointer holds.
 
 ```cpp title="example"
 int main() {
-	void* ptr = 0;
+	void* ptr1 = 0;
 	
-	void* ptr = NULL;
+	void* ptr2 = NULL;
 	
-	void* ptr = nullptr;
+	void* ptr3 = nullptr;
 }
 ```
 
 ### Null Pointers
 
 In the example above, we assigned `0` to a pointer.
-Since **memory addresses do not start at zero, `0` is an invalid memory address.**
+Since memory addresses do not start at zero, `0` is an invalid memory address.
 However, having an invalid address is a perfectly acceptable state for a pointer, as it indicates that the pointer is not currently pointing to valid memory.
 
 We also used `NULL`, which is simply a macro-defined constant representing `0`.
@@ -121,7 +121,7 @@ Unlike `NULL`, `nullptr` has stronger type safety, making it the preferred choic
 Earlier, we mentioned that everything created in a program has a memory address that points to where the data is stored.
 This applies even to simple integer variables, each variable resides at a unique location in memory.
 
-We can access a variable's address by prefixing it with **`&`, which is called the address-of operator (sometimes referred to as the reference operator)**.
+We can access a variable's address by prefixing it with `&`, which is called the address-of operator (sometimes referred to as the reference operator).
 This operator returns the memory address of the variable, allowing us to work with its location directly.
 
 ```cpp title="main.cpp"
@@ -131,7 +131,7 @@ int main() {
 	int value = 8;
 	void* ptr = &value; // Storing the memory address of 'value'
 	
-	std::cout << &value << '\n';
+	std::cout << &value;
 }
 ```
 
@@ -160,7 +160,7 @@ int main() {
 	int value = 8;
 	void* ptr = &value;
 	
-	std::cout << *ptr << std::endl;
+	std::cout << *ptr;
 }
 ```
 
@@ -179,15 +179,17 @@ This way, the compiler knows that 4 bytes (on most modern systems) after the add
 
 int main() {
     int value = 8;
-    int* ptr = &value;
+    int* int_ptr = &value;
+    void* void_ptr = &value;
 
-    // Correct: Dereferencing an int pointer
-    std::cout << "Value of pointer: " << *ptr << '\n;
+    std::cout << "Value of pointer trough int*: " << *int_ptr << '\n';
+    std::cout << "Value of pointer trough cast to int*: " << *(int*)void_ptr;
 }
 ```
 
 ``` title="output"
-Value of pointer: 8
+Value of pointer trough int*: 8
+Value of pointer trough cast to int*: 8
 ```
 
 ### Dynamic Memory Allocation
@@ -265,7 +267,7 @@ A constant pointer applies specific constraints, ensuring that either the pointe
 
 This type of pointer cannot modify the value it points to, but it can be reassigned to another address.
 
-**Use case:** When you want to protect the data from being modified but allow the pointer to point elsewhere.
+Use case: When you want to protect the data from being modified but allow the pointer to point elsewhere.
 
 ```cpp title="main.cpp"
 #include <iostream>
@@ -291,7 +293,7 @@ Reassigned pointer to B: 20
 
 This type of pointer cannot be reassigned, but it can modify the value it points to.
 
-**Use case:** When you want a pointer to always point to the same object but still allow modifications to the object.
+Use case: When you want a pointer to always point to the same object but still allow modifications to the object.
 
 ```cpp title="main.cpp"
 #include <iostream>
@@ -317,7 +319,7 @@ Modified variable A: 15
 
 This type of pointer cannot be reassigned and cannot modify the value it points to.
 
-**Use case:** When you want a pointer to always point to the same object and ensure that the object cannot be modified through the pointer.
+Use case: When you want a pointer to always point to the same object and ensure that the object cannot be modified through the pointer.
 
 ```cpp title="main.cpp"
 #include <iostream>
@@ -355,7 +357,7 @@ int main() {
 	char* buffer = new char[8];
 	memset(buffer, 0, 8);
 
-	char** pointer_to_buffer = &buffer; // A pointer to the pointer 'buffer'
+	char pointer_to_buffer = &buffer; // A pointer to the pointer 'buffer'
 }
 ```
 
@@ -385,9 +387,9 @@ Accessing such memory leads to undefined behavior, which can result in crashes, 
 
 How Dangling Pointers Occur:
 
-1. **Deleted Memory Access** - A pointer still holds an address to memory that has already been deallocated.
-2. **Returning Pointers to Local Variables** - A pointer to a local variable is returned from a function, but the variable is destroyed when the function exits.
-3. **Uninitialized Pointers** - A pointer is used without being properly initialized, leading it to point to an arbitrary or invalid location.
+1. Deleted Memory Access - A pointer still holds an address to memory that has already been deallocated.
+2. Returning Pointers to Local Variables - A pointer to a local variable is returned from a function, but the variable is destroyed when the function exits.
+3. Uninitialized Pointers - A pointer is used without being properly initialized, leading it to point to an arbitrary or invalid location.
 
 #### Memory Leaks
 
@@ -414,8 +416,8 @@ Most pointer-related safety issues stem from raw pointer management and manual m
 
 To avoid these risks, modern C++ provides:
 
-- **Smart Pointers** (`std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`) - Automatically manage memory and prevent leaks.
-- **STL Containers** (`std::vector`, `std::array`, etc.) - Provide automatic memory management and prevent buffer overflows.
+- Smart Pointers (`std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`) - Automatically manage memory and prevent leaks.
+- STL Containers (`std::vector`, `std::array`, etc.) - Provide automatic memory management and prevent buffer overflows.
 
 ## Pointer Arithmetic
 
@@ -474,7 +476,7 @@ However, semantically, they have subtle differences.
 A reference is essentially a syntax shortcut for a pointer, making the code more readable and easier to follow.
 
 As the name suggests, a reference is used to refer to an existing variable.
-Unlike pointers, a **reference cannot be null and must always be bound to a valid variable**.
+Unlike pointers, a reference cannot be null and must always be bound to a valid variable.
 This means you cannot set a reference to `nullptr`, and it must always refer to an existing object.
 
 ```cpp title="main.cpp"
@@ -499,15 +501,15 @@ Any modifications to `b` will directly affect `a`, and vice versa.
 
 In C++, the reference operator (`&`) and the address-of operator (`&`) can sometimes be confusing, but they serve distinct purposes depending on their usage.
 
-- When `&` is **appended to the data type, it signifies a reference**. A reference is simply an alias for an existing variable, meaning it acts as another name for that variable.
-- When `&` is **used as a prefix before a variable name, it means the address-of operator**, which returns the memory address of the variable. 
+- When `&` is appended to the data type, it signifies a reference. A reference is simply an alias for an existing variable, meaning it acts as another name for that variable.
+- When `&` is used as a prefix before a variable name, it means the address-of operator, which returns the memory address of the variable. 
 
 ### Pass by Value vs. Pass by Reference
 
 In C++, there are two common ways to pass data into a function: pass-by-value and pass-by-reference.
 Each method has its own behavior and implications.
 
-**In pass-by-value**, when we pass a variable to a function, a copy of the variable is created.
+In pass-by-value, when we pass a variable to a function, a copy of the variable is created.
 The function then works with this copy, and any changes made to the parameter within the function do not affect the original variable.
 
 ```cpp title="main.cpp"
@@ -534,7 +536,7 @@ In this case, the `Increment()` function receives a copy of the `number` from `m
 Inside the function, the copy of `number` is incremented, but the original `number` in `main()` remains unchanged.
 As a result, the value of `number` in `main()` stays at `5`.
 
-**In pass-by-reference**, instead of passing a copy of the variable, we pass the actual variable itself.
+In pass-by-reference, instead of passing a copy of the variable, we pass the actual variable itself.
 This allows the function to modify the original variable directly, and any changes made to the parameter within the function will affect the original variable outside of the function as well.
 
 To pass a variable by reference, we use the reference operator in the function parameter list. 
@@ -565,13 +567,13 @@ In this case, the `Increment()` function receives a reference to `number`, meani
 
 There are four main scenarios where pass-by-reference is preferred over pass-by-value:
 
-1. **Modifying Arguments**
+1. Modifying Arguments
     - If a function needs to modify its arguments, you should use pass-by-reference or pass-by-pointer.
-2. **Avoiding Unnecessary Copies (Efficiency)**
+2. Avoiding Unnecessary Copies (Efficiency)
     - When a function accepts a large object as a parameter, it's better to use pass-by-const-reference.
-3. **Copy & Move Constructors**
+3. Copy & Move Constructors
     - Copy and move constructors must always take a reference to avoid unnecessary object creation and to ensure proper copying or moving of objects.
-4. **Working with Polymorphism (Avoiding Object Slicing)**
+4. Working with Polymorphism (Avoiding Object Slicing)
     - When working with polymorphic classes, it's essential to pass objects by reference or pointer rather than by value.
     - Passing by value may lead to object slicing, where the derived class data is lost when copied into a base class object.
 
@@ -690,9 +692,9 @@ While function pointers can still be useful in specific cases, such as when inte
 
 In C++, understanding lvalues and rvalues is crucial because they are fundamental concepts that appear frequently in compiler warnings, error messages, and in modern C++ features like move semantics and temporary values.
 
-**An lvalue refers to a location value**, something that has a persistent memory address. You can think of it as an object or a variable that you can modify or access.
+An lvalue refers to a location value, something that has a persistent memory address. You can think of it as an object or a variable that you can modify or access.
 
-In contrast, **an rvalue represents a temporary value**, usually something that does not have a lasting memory address. These can be literals or the results of function calls that return a temporary value.
+In contrast, an rvalue represents a temporary value, usually something that does not have a lasting memory address. These can be literals or the results of function calls that return a temporary value.
 
 ```cpp title="main.cpp"
 int main() {
@@ -779,7 +781,7 @@ Function value: 5
 We have learned that when passing variables as function arguments, they are copied into a new variable created inside the function.
 While passing them as lvalue references can improve performance, it also prevents passing literal values because an lvalue reference cannot bind to an rvalue (a temporary value).
 To work around this, we can declare the parameter as `const`, which allows temporary values (rvalues) to be assigned to a temporary variable behind the scenes.
-**The compiler creates a temporary variable, assigns the literal value to it, and then binds it to the lvalue reference**.
+The compiler creates a temporary variable, assigns the literal value to it, and then binds it to the lvalue reference.
 
 ```cpp title="main.cpp"
 #include <iostream>
@@ -797,7 +799,7 @@ int main() {
 ```
 
 That is why most C++ functions declare parameters as `const` lvalue references (`const type&`), allowing them to efficiently accept both lvalues and rvalues.
-However, it is also possible to create a function parameter that accepts only temporary values (rvalues) by appending the type with **`&&`, which is known as an rvalue reference**.
+However, it is also possible to create a function parameter that accepts only temporary values (rvalues) by appending the type with `&&`, which is known as an rvalue reference.
 
 ```cpp title="main.cpp"
 #include <iostream>
@@ -817,8 +819,8 @@ int main() {
 
 It is considered good practice to overload a function in modern medium-to-large projects if we want to support both lvalues and rvalues while maximizing performance.
 By having an overload for `const lvalue reference` (which can accept both lvalues and rvalues) and another for `rvalue reference`, the compiler will always prefer the more specific overload when an rvalue is passed.
-The key difference is that an **rvalue reference (`&&`) allows moving resources** from the source, as it indicates that the variable is temporary and will not persist for long.
-On the other hand, a **`const lvalue reference` (`const int&`) signals that the variable is important, cannot be modified**, and is passed by reference to avoid unnecessary copying.
+The key difference is that an rvalue reference (`&&`) allows moving resources from the source, as it indicates that the variable is temporary and will not persist for long.
+On the other hand, a `const lvalue reference` (`const int&`) signals that the variable is important, cannot be modified, and is passed by reference to avoid unnecessary copying.
 
 ## Move Semantics
 
@@ -938,8 +940,8 @@ The purpose of this example is purely to demonstrate how copying and moving work
 
 By adding logs inside the copy constructor and move constructor, we can clearly observe the difference between copying and moving an object:
 
-- **The copy constructor** (`String(const String& other)`) **duplicates the resource** by allocating new memory and copying the data from the source object.
-- **The move constructor** (`String(String&& other) noexcept`) **steals the resource** from the temporary object (`other`) by transferring the pointer to the new object, rather than copying the data. After the transfer, the original object is detached by setting its pointer to `nullptr` and its size to `0`.
+- The copy constructor (`String(const String& other)`) duplicates the resource by allocating new memory and copying the data from the source object.
+- The move constructor (`String(String&& other) noexcept`) steals the resource from the temporary object (`other`) by transferring the pointer to the new object, rather than copying the data. After the transfer, the original object is detached by setting its pointer to `nullptr` and its size to `0`.
 
 This behavior makes moving much more efficient than copying, especially for large objects that allocate memory on the heap, such as strings or vectors.
 By moving rather than copying, we avoid unnecessary memory allocations and reduce performance overhead.
@@ -966,7 +968,7 @@ In this example, `string1` is copied into `string2` because it is an lvalue (a n
 However, if we want to move its resources to `string2` instead of copying them, we need to treat `string1` as a temporary value (rvalue), because the move constructor requires an rvalue reference.
 
 One way to do this is by casting `string1` to an rvalue reference using `(String&&)`.
-However, this approach is not ideal and **does not work with variables deduced using `auto`**.
+However, this approach is not ideal and does not work with variables deduced using `auto`.
 
 To solve this, we use `std::move`, which efficiently converts an lvalue into an rvalue, allowing us to move the resource without unnecessary copies.
 It also makes the intention clear in the code, signaling that we are intentionally transferring ownership rather than copying.
@@ -1038,14 +1040,14 @@ Smart pointers wrap around raw pointers and, depending on their type, automatica
 
 Instead of using `new` directly, smart pointers provide factory functions (e.g., `std::make_unique`, `std::make_shared`), which should be preferred as they:
 
-- **Improve exception safety** by ensuring memory is allocated and assigned in one step.
-- **Simplify code** by eliminating explicit calls to `new` and `delete`.
+- Improve exception safety by ensuring memory is allocated and assigned in one step.
+- Simplify code by eliminating explicit calls to `new` and `delete`.
 
 To use smart pointers, include the `<memory>` header from the C++ Standard Library.
 
 ### Unique Pointer
 
-A unique pointer is a scoped smart pointer, meaning **it automatically deallocates the allocated memory when it goes out of scope**.
+A unique pointer is a scoped smart pointer, meaning it automatically deallocates the allocated memory when it goes out of scope.
 This eliminates the need for manual `delete` calls and helps prevent memory leaks.
 
 ```cpp title="main.cpp"
@@ -1084,7 +1086,7 @@ Entity Destroyed!
 
 Here, the `Entity` class logs its creation and destruction, allowing us to observe when the unique pointer automatically deallocates the object at the end of `main`.
 
-**A `std::unique_ptr` cannot be copied, ensuring exclusive ownership of the resource.**
+A `std::unique_ptr` cannot be copied, ensuring exclusive ownership of the resource.
 Attempting to copy it will result in a compilation error.
 However, ownership can be transferred using `std::move()`.
 
@@ -1162,7 +1164,7 @@ The object will only be destroyed when the last shared pointer managing it is de
 ### Weak Pointer
 
 Weak pointers are used in combination with shared pointers.
-They also allow sharing access to a resource, but **they do not keep the resource alive because they do not increase the reference count**.
+They also allow sharing access to a resource, but they do not keep the resource alive because they do not increase the reference count.
 
 This can be useful when you need to observe or manipulate a shared resource (e.g., sorting a list of objects) without taking ownership of it.
 
@@ -1213,7 +1215,7 @@ Entity Destroyed!
 End of main scope
 ```
 
-In this example, the **Entity** instance will be destroyed at the end of the inner scope, not at the end of `main()`.
+In this example, the Entity instance will be destroyed at the end of the inner scope, not at the end of `main()`.
 This happens because we assigned it to a weak pointer, which does not increase the reference count.
 
 Since no other `shared_ptr` exists after the inner scope ends, the resource is freed immediately.
@@ -1222,14 +1224,294 @@ Since no other `shared_ptr` exists after the inner scope ends, the resource is f
 
 Smart pointers should be preferred over raw pointers as they provide better memory safety and help prevent memory leaks.
 Use `std::unique_ptr` when a heap allocation is necessary.
-**`std::shared_ptr` should only be used when multiple owners are required**, as it comes with additional overhead due to reference counting and internal management.
+`std::shared_ptr` should only be used when multiple owners are required, as it comes with additional overhead due to reference counting and internal management.
 
 However, there may be low-level cases where smart pointers are not sufficient, but these are uncommon in most high-level applications.
 
-## Chapter Summary
+## Questions
 
-By completing this lesson, you should now have a solid understanding of computer memory and how objects are allocated on the stack and heap.
-You’ve also learned why one might be more beneficial than the other in different situations.
+=== "question 1"
 
-Additionally, you now understand ownership, how it works, why it matters, and when it can be useful.
-Finally, we explored smart pointers, which simplify memory management and help prevent memory leaks, making C++ programs more safe.
+    What is a pointer, and how does it conceptually differ from the value it points to?
+
+=== "answer"
+
+    A pointer is a variable that stores a memory address.
+    Instead of holding a value directly, it points to the location in memory where that value is stored.
+
+---
+
+=== "question 2"
+
+    Why do pointers in C++ have an associated data type if they ultimately store only a memory address?
+
+=== "answer"
+
+    Pointers have an associated data type so the compiler knows how many bytes to read or write when the pointer is dereferenced.
+    The type does not change the address itself, only how the memory at that address is interpreted.
+
+---
+
+=== "question 3"
+
+    What is the difference between stack memory and heap memory in terms of allocation, lifetime, and management?
+
+=== "answer"
+
+    Stack memory is automatically allocated and freed based on scope and has a limited, fixed size.
+    Heap memory is manually allocated and deallocated by the programmer and persists until it is explicitly freed.
+
+---
+
+=== "question 4"
+
+    What is a dangling pointer, and name two common ways dangling pointers can occur.
+
+=== "answer"
+
+    A dangling pointer is a pointer that refers to memory that is no longer valid.
+    Common causes include accessing memory after it has been deleted and returning pointers to local stack variables that go out of scope.
+
+---
+
+=== "question 5"
+    
+    Why is returning a pointer to a local stack variable from a function considered undefined behavior?
+
+=== "answer"
+
+    Local stack variables are destroyed when a function exits.
+    Returning a pointer to such a variable leaves the pointer referencing memory that no longer exists, resulting in undefined behavior.
+
+---
+
+=== "question 6"
+    
+    Explain the difference between `const int*`, `int* const`, and `const int* const`.
+
+=== "answer"
+
+    `const int*`       -> is a pointer to a constant value, meaning the value cannot be modified through the pointer.  
+    `int* const`       -> is a constant pointer, meaning the pointer cannot be reassigned.  
+    `const int* const` -> is a constant pointer to a constant value, meaning neither the pointer nor the value can be modified.
+
+---
+
+=== "question 7"
+    
+    How does pointer arithmetic work, and why does incrementing a pointer move by more than one byte?
+
+=== "answer"
+
+    Pointer arithmetic moves the pointer by multiples of the size of the type it points to.
+    Incrementing a pointer advances it to the next element in memory, not the next byte.
+
+---
+
+=== "question 8"
+
+    What are the key semantic differences between pointers and references in C++?
+
+=== "answer"
+
+    A pointer can be null, reassigned, and explicitly dereferenced.
+    A reference must always be bound to a valid object, cannot be null, and cannot be reassigned after initialization.
+
+---
+
+=== "question 9"
+    
+    Explain the difference between pass-by-value, pass-by-reference, and pass-by-const-reference, and when each should be used.
+
+=== "answer"
+
+    Pass-by-value copies the argument and does not affect the original.  
+    Pass-by-reference allows the function to modify the original argument.  
+    Pass-by-const-reference avoids copying while preventing modification, making it ideal for large or read-only objects.
+
+---
+
+=== "question 10"
+    
+    What problem do move semantics solve, and how do rvalue references and `std::move` enable this behavior?
+
+=== "answer"
+
+    Move semantics avoid unnecessary copying by transferring ownership of resources instead of duplicating them.
+    Rvalue references identify temporary objects, and `std::move` enables the compiler to invoke move operations rather than copy operations.
+
+## Exercises
+
+=== "exercise 1"
+
+    Write a program that declares an `int` variable, creates a pointer that points to it.  
+    Print the variable’s value and memory address by dereferencing and using the pointer.
+
+=== "answer"
+
+    ```cpp
+    #include <iostream>
+
+    int main() {
+        int value = 10;
+        int* value_ptr = &value;
+
+        std::cout << "Value: " << *value_ptr << '\n';
+        std::cout << "Pointer: " << value_ptr;
+    }
+    ```
+
+---
+
+=== "exercise 2"
+
+    Write a program that dynamically allocates an `int` on the heap and assigns it a value.  
+    Print the value and memory address of the variable, and then correctly frees the memory.
+
+=== "answer"
+
+    ```cpp
+    #include <iostream>
+
+    int main() {
+        int* dynamic_value = new int(5);
+
+        std::cout << "Value: " << *dynamic_value << '\n';
+        std::cout << "Pointer: " << dynamic_value;
+
+        delete dynamic_value;
+    }
+    ```
+
+---
+
+=== "exercise 3"
+
+    Write a function that takes an int by reference and doubles its value.  
+    Call the function from main and show that the original variable is modified.
+
+=== "answer"
+
+    ```cpp
+    #include <iostream>
+
+    void DoubleValue(int& value) {
+        value *= 2;
+    }
+
+    int main() {
+        int value = 10;
+
+        DoubleValue(value);
+
+        std::cout << "Modified value: " << value;
+    }
+    ```
+
+---
+
+=== "exercise 4"
+
+    Write a program that intentionally creates a dangling pointer.
+
+=== "hint"
+
+    There is more than one way to do this, such as returning the address of a local variable or deleting dynamically allocated memory and keeping the pointer.
+
+=== "answer"
+
+    ```cpp
+    #include <iostream>
+
+    int* CreateDanglingPointer() {
+        int value;
+        return &value;
+    }
+
+    int main() {
+        int* dangling_pointer = CreateDanglingPointer();
+    }
+    ```
+
+---
+
+=== "exercise 5"
+
+    Write a function that swaps two integers using pointers instead of references.
+
+=== "answer"
+
+    ```cpp
+    #include <iostream>
+
+    void SwapValues(int* value1, int* value2) {
+        int temp = *value1;
+        *value1 = *value2;
+        *value2 = temp;
+    }
+
+    int main() {
+        int a = 10;
+        int b = 20;
+        
+        SwapValues(&a, &b);
+        
+        std::cout << "a: " << a << '\n';
+        std::cout << "b: " << b;
+    }
+    ```
+
+---
+
+=== "exercise 6"
+
+    Create a function pointer that points to a function performing a simple arithmetic operation.
+    Call the function through the function pointer.
+
+=== "answer"
+
+    ```cpp
+    #include <iostream>
+    #include <functional>
+
+    int Addition(int augend, int addend) {
+        return augend + addend; 
+    }
+
+    int main() {
+        std::function<int(int, int)> function_ptr = &Addition;
+        
+        int sum = function_ptr(10, 20);
+        
+        std::cout << "Sum: " << sum;
+    }
+    ```
+
+---
+
+=== "exercise 7"
+
+    Create a unique smart pointer for `int` and assign it a value.  
+    Then write a function that takes this smart pointer as a parameter and prints the value.
+    Move the pointer into the function, and observe what happens to the original pointer after the move.
+
+=== "answer"
+
+    ```cpp
+    #include <iostream>
+    #include <memory>
+
+    void TakeOwnershipAndPrint(std::unique_ptr<int> ptr) {
+        std::cout << "Pointer value: " << *ptr << '\n';
+    }
+
+    int main() {
+        std::unique_ptr<int> smart_ptr = std::make_unique<int>(10);
+        
+        TakeOwnershipAndPrint(std::move(smart_ptr));
+        
+        if (smart_ptr == nullptr) {
+            std::cout << "Moved Successfully!";
+        }
+    }
+    ```

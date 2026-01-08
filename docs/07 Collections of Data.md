@@ -1428,15 +1428,111 @@ int main() {
 73	12	89	47	31
 ```
 
-## Chapter Summary
+## Questions
 
-In this lecture, we explored various **data structures** in C++, each designed to solve different types of problems efficiently. From **C-style arrays** and **strings** to more advanced structures like **linked lists, hash maps, stacks, and queues**, we covered their properties, use
-cases, and optimal usage.
+=== "question 1"
 
-Key takeaways from this lecture:
-- **Choosing the Right Data Structure**: Each structure has its advantages, arrays offer **cache efficiency**, linked lists provide **efficient insertions/deletions**, and hash maps enable **fast lookups**. Understanding when to use each one is critical.
-- **Memory Considerations**: Static vs. dynamic allocation plays a big role in performance. Data locality, heap allocations, and iterator stability should always be factored into design decisions.
-- **Iterators & Range-Based Loops**: Modern C++ provides efficient ways to traverse collections while maintaining readability and performance.
-- **Algorithmic Efficiency**: Many operations have **trade-offs** (e.g., `std::vector` vs. `std::list` for insertions). Profiling and testing are necessary to make the right decision.
+	What is the main difference between a C-style array and a `std::array`?
 
-Data structures form the **foundation** of efficient programming. Mastering their behavior and choosing the right one for the task **can drastically improve performance and maintainability**. Always consider **time complexity, memory overhead, and real-world constraints** when working with them.
+=== "answer"
+
+	A C-style array has a fixed size and provides no bounds checking.  
+    A `std::array` also has a fixed size, but it is a safer wrapper around a C-style array that integrates with the C++ standard library.
+
+---
+
+=== "question 2"
+
+	What happens to a C-style array when it is passed to a function?
+
+=== "answer"
+
+	When passed to a function, a C-style array decays into a pointer to its first element, losing information about its size.
+
+---
+
+=== "question 3"
+
+	How does pointer arithmetic behave when applied to an array?
+
+=== "answer"
+
+	Pointer arithmetic advances the pointer by multiples of the element size, not by raw bytes.
+
+---
+
+=== "question 4"
+
+	How are multidimensional arrays stored in memory in C/C++?
+
+=== "answer"
+
+	Multidimensional arrays allocated on the stack are stored in a single contiguous block of memory.
+	They use row-major order, where each row is laid out directly after the previous one.
+
+	Multidimensional arrays dynamically allocated on the heap using pointers are typically implemented as an array of pointers.
+	In this case, each row is stored separately and is not guaranteed to be contiguous with the others leading to memory fragmentation.
+
+---
+
+=== "question 5"
+
+	Why must dynamically allocated arrays be deallocated using `delete[]` instead of `delete`?
+
+=== "answer"
+
+	`delete[]` ensures that all elements in the array are properly destroyed, while `delete` only destroys a single object.
+
+---
+
+=== "question 6"
+
+	What character marks the end of a C-style string?
+
+=== "answer"
+
+	A C-style string is terminated by the null character `'\0'`.
+
+---
+
+=== "question 7"
+
+	What advantages does `std::string` have over C-style strings?
+
+=== "answer"
+
+	`std::string` manages memory automatically, prevents buffer overflows, and provides rich functionality for string manipulation.
+
+---
+
+=== "question 8"
+
+	What is `std::string_view`, and does it own the string data it refers to?
+
+=== "answer"
+
+	`std::string_view` is a non-owning view into a string; it does not manage or extend the lifetime of the referenced data.
+
+---
+
+=== "question 9"
+
+	Why are range-based for loops considered safer and more expressive than manual iterator loops?
+
+=== "answer"
+
+	Range-based for loops use iterators internally and reduce errors by avoiding manual index or iterator management.
+
+---
+
+=== "question 10"
+
+	How does a hash map determine where to store a value, and what role does the hash function play?
+
+=== "answer"
+
+	A hash map uses a hash function to turn a key into an index, which tells it where to store the value.  
+	The function tries to spread keys evenly so things don’t get clumped together, making lookups faster.
+
+## Exercises
+

@@ -406,7 +406,7 @@ Sometimes, we need to reinterpret the data a variable holds by changing its type
 This process is called type casting.
 
 But not all types in C++ are directly compatible, and trying to mix them without conversion can lead to errors or unexpected behavior.
-Fortunately, C++ provides two main ways to perform type conversions:
+Fortunately, C++ provides two main ways to perform type conversions.
 
 - Implicit Conversion (Automatic):
   In many cases, the compiler can handle type conversions for you—this is called implicit conversion.
@@ -455,7 +455,7 @@ int main() {
     
     int* ptr_num = (int*)ptr; // Explicit cast
     
-    std::cout << "Value: " << *ptr_num << std::endl;
+    std::cout << "Value: " << *ptr_num << '\n';
 }
 ```
 
@@ -495,7 +495,7 @@ int main() {
 
     int* int_ptr = static_cast<int*>(void_ptr);
 
-    std::cout << "Value: " << *int_ptr << std::endl;
+    std::cout << "Value: " << *int_ptr << '\n';
 }
 ```
 
@@ -589,7 +589,7 @@ int main() {
 
     ChangeValue(&value);
 
-    std::cout << "Value: " << value << std::endl;
+    std::cout << "Value: " << value << '\n';
 }
 ```
 
@@ -623,7 +623,7 @@ int main() {
     
     int* int_ptr = reinterpret_cast<int*>(&data);
     
-    std::cout << "Interpreted int: " << *int_ptr << std::endl;
+    std::cout << "Interpreted int: " << *int_ptr << '\n';
 }
 ```
 
@@ -643,7 +643,7 @@ int main() {
 
     uintptr_t address = reinterpret_cast<uintptr_t>(ptr);
 
-    std::cout << "Memory address: " << address << std::endl;
+    std::cout << "Memory address: " << address << '\n';
 }
 ```
 
@@ -678,7 +678,7 @@ This is also a type-safe alternative to the old preprocessor macros like `#defin
 
 ### Constexpr
 
-The `constexpr` keyword guarantees that a **variable or function is evaluated at compile time**.
+The `constexpr` keyword guarantees that a variable or function is evaluated at compile time.
 This is especially useful for constants, mathematical functions, and lookup tables that should not change during the program’s lifetime.
 
 Unlike `const`, which merely promises not to modify a variable after initialization, `constexpr` enforces that the value is computed before runtime.
@@ -696,11 +696,11 @@ constexpr int Add(int a, int b) {
 }
 
 int main() {
-    std::cout << Add(5, 10) << std::endl;
+    std::cout << Add(5, 10) << '\n';
 
     /*
         After compilation, it becomes this:
-        std::cout << 5 + 10 + 20 << std::endl;
+        std::cout << 5 + 10 + 20 << '\n';
     */
 }
 ```
@@ -736,7 +736,7 @@ consteval int GetValue() {
 constinit int global_value = GetValue();
 
 int main() {
-	std::cout << global_value << std::endl;
+	std::cout << global_value << '\n';
 }
 ```
 
@@ -777,7 +777,7 @@ The `_v` suffix stands for "value" and is a shorthand that gives you the result 
 #include <type_traits>
 
 int main() {
-    std::cout << "Alignment of integer: "<< std::alignment_of_v<int> << std::endl;
+    std::cout << "Alignment of integer: "<< std::alignment_of_v<int> << '\n';
 }
 ```
 
@@ -807,7 +807,7 @@ struct Entity {              // Total: 19 bytes
 };
 
 int main() {
-	std::cout << "Size of entity: " << sizeof(Entity) << std::endl;
+	std::cout << "Size of entity: " << sizeof(Entity) << '\n';
 }
 ```
 
@@ -856,7 +856,7 @@ struct Entity {              // Total: 19 bytes
 };
 
 int main() {
-	std::cout << "Size of entity: " << sizeof(Entity) << std::endl;
+	std::cout << "Size of entity: " << sizeof(Entity) << '\n';
 }
 ```
 
@@ -895,7 +895,7 @@ int main() {
 	int a = 50;
 	double value = *(double*)&a;
 
-	std::cout << "Value: " << value << std::endl; 
+	std::cout << "Value: " << value << '\n'; 
 }
 ```
 
@@ -920,7 +920,7 @@ int main() {
 	
 	int result = *(int*)((char*)&e + 4);
 	
-	std::cout << "Value: " << result << std::endl;
+	std::cout << "Value: " << result << '\n';
 }
 ```
 
@@ -951,7 +951,7 @@ int main() {
     
     int* array = e.CreateArrayFromEntity();
     
-    std::cout << "Second array value: " << array[1] << std::endl;
+    std::cout << "Second array value: " << array[1] << '\n';
 }
 ```
 
@@ -1037,9 +1037,9 @@ std::optional<std::string> ReadFileToString(const std::string& path) {
 int main() {
 	std::optional<std::string> data = ReadFileToString("data.txt");
     if (data) {
-        std::cout << "File was read successfully: " << *data << std::endl;
+        std::cout << "File was read successfully: " << *data << '\n';
     } else {
-        std::cout << "File was not read successfully!" << std::endl;
+        std::cout << "File was not read successfully!" << '\n';
     }
 }
 ```
@@ -1101,10 +1101,10 @@ int main() {
     std::variant<std::string, int> data;
 
     data = "Random";
-    std::cout << "String variant: " << std::get<std::string>(data) << std::endl;
+    std::cout << "String variant: " << std::get<std::string>(data) << '\n';
 
     data = 3;
-    std::cout << "Integer variant: " << std::get<int>(data) << std::endl;
+    std::cout << "Integer variant: " << std::get<int>(data) << '\n';
 }
 ```
 
@@ -1120,9 +1120,9 @@ To avoid this, you can use `std::get_if<T>()` to safely access the value only if
 ```cpp title="example"
 // Initializer inside the statement is a C++17 feature
 if (auto value = std::get_if<std::string>(&data)) {
-    std::cout << "String value: " << *value << std::endl;
+    std::cout << "String value: " << *value << '\n';
 } else {
-    std::cout << "Data does not hold a string." << std::endl;
+    std::cout << "Data does not hold a string." << '\n';
 }
 ```
 
@@ -1146,10 +1146,10 @@ int main() {
     std::any data;
 
     data = 3;
-    std::cout << "Now holding integer: " << std::any_cast<int>(data) << std::endl;
+    std::cout << "Now holding integer: " << std::any_cast<int>(data) << '\n';
 
     data = std::string("String");
-    std::cout << "Now holding string: " << std::any_cast<std::string>(data) << std::endl;
+    std::cout << "Now holding string: " << std::any_cast<std::string>(data) << '\n';
 }
 ```
 

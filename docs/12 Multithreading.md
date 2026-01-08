@@ -1,3 +1,3 @@
-# 12 Standard Template Library
+# 12 Multithreading
 
 🚧 This chapter is under construction... 🚧
