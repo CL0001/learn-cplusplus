@@ -1704,111 +1704,42 @@ int main() {
 }
 ```
 
+## Questions
+
+
+
 ## Exercises
 
 === "task 1"
 
-    ```
     Define a `Book` struct with the following fields: `title`, `author`,
     `year`, and `price`. Then, write a function that takes a `Book`
     as a parameter and prints its contents in a human-readable format.
-    ```
 
 === "answer"
 
     ```cpp
-    #include <iostream>
-    #include <string>
-
-    struct Book {
-        std::string title;
-        std::string author;
-        unsigned int year;
-        double price; 
-    };
-
-    void PrintBookContent(const Book& book) {
-        std::cout << "Title: " << book.title << std::endl;
-        std::cout << "Author: " << book.author << std::endl;
-        std::cout << "Year: " << book.year << std::endl;
-        std::cout << "Price: " << book.price << std::endl;
-    }
-
-    int main() {
-        Book book{
-            .title = "Learn CPlusPlus",
-            .author = "CL0001/ElGordoOfficial",
-            .year = 2025,
-            .price = 0.0
-        };
-        
-        PrintBookContent(book);
-    }
     ```
 
 ---
 
 === "task 2"
 
-    ```
     Create a Rectangle class that stores width and height.
 
     - Provide a constructor.
     - Add getter and setter methods for both members.
     - Add a method area() that returns the area of the rectangle.
-    ```
 
 === "answer"
 
     ```cpp
-    #include <iostream>
-
-    class Rectangle {
-    public:
-        Rectangle(double width, double height)
-            : width_(width), height_(height) {
-        }
-
-        double GetWidth() const {
-            return width_;
-        }
-
-        double GetHeight() const {
-            return height_;
-        }
-
-        void SetWidth(double width) {
-            width_ = width;
-        }
-
-        void SetHeight(double height) {
-            height_ = height;
-        }
-
-        double CalculateArea() const {
-            return width_ * height_;
-        }
-
-    private:
-        double width_;
-        double height_;
-    };
-
-    int main() {
-        Rectangle rectangle(10.32, 20.85);
-
-        rectangle.SetWidth(10.0);
-        rectangle.SetHeight(20.0);
-
-        std::cout << "Rectangle area: " << rectangle.CalculateArea() << std::endl;
-    }
     ```
 
 ---
 
 === "task 3"
 
-    ```
     Define a class Logger that writes custom user defined messages
     into terminal when:
 
@@ -1817,42 +1748,10 @@ int main() {
 
     Create several `Logger` instances inside a `CreateLoggers` function
     and observe the output order.
-    ```
 
 === "answer"
 
     ```cpp
-    #include <iostream>
-    #include <string>
-
-    class Logger {
-    public:
-        Logger(const std::string& name)
-            : name_(name) {
-            std::cout << "Logger " << name_ << " constructed." << std::endl;
-        }
-
-        ~Logger() {
-            std::cout << "Logger " << name_ << " destructed." << std::endl;
-        }
-
-    private:
-        std::string name_;
-    };
-
-    void CreateLoggers() {
-        Logger log1("First");
-        Logger log2("Second");
-        Logger log3("Third");
-        std::cout << "Exiting CreateLoggers function..." << std::endl;
-    }
-
-    int main() {
-        CreateLoggers();
-        std::cout << "Back in main." << std::endl;
-    }
     ```
 
 ---
-
-More to come ...

@@ -120,6 +120,7 @@
 │   ├── <a href="/learn-cplusplus/05 Data Types/#run-time-type-identification">Run-Time Type Identification/</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#type-id">Type ID</a>
 │   │   └── <a href="/learn-cplusplus/05 Data Types/#considerations-when-using-rtti">Considerations When Using RTTI</a>
+│   ├── <a href="/learn-cplusplus/05 Data Types/#questions">Questions</a>
 │   └── <a href="/learn-cplusplus/05 Data Types/#exercises">Exercises</a>
 │
 ├── <strong><a href="/learn-cplusplus/06 Pointers and References/"><span class="link">06 Pointers and References/</span></a></strong>
@@ -132,36 +133,37 @@
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#dereferencing-a-pointer">Dereferencing a Pointer</a>
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#dynamic-memory-allocation">Dynamic Memory Allocation/</a>
 │   │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#initializing-heap-memory">Initializing Heap Memory</a>
-│   │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#heap-memory-management">Heap Memory Management</a>
+│   │   │   └── <a href="/learn-cplusplus/06 Pointers and References/#heap-memory-management">Heap Memory Management</a>
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#constant-pointers">Constant Pointers/</a>
 │   │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#pointer-to-constant">Pointer to Constant</a>
 │   │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#constant-pointer">Constant Pointer</a>
-│   │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#constant-pointer-to-constant">Constant Pointer to Constant</a>
+│   │   │   └── <a href="/learn-cplusplus/06 Pointers and References/#constant-pointer-to-constant">Constant Pointer to Constant</a>
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#pointer-to-pointer">Pointer to Pointer</a>
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#pointer-safety">Pointer Safety/</a>
 │   │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#dangling-pointers">Dangling Pointers</a>
 │   │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#memory-leaks">Memory Leaks</a>
 │   │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#buffer-overflows">Buffer Overflows</a>
 │   │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#pointer-aliasing-and-ownership">Pointer Aliasing and Ownership</a>
-│   │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#preventions">Preventions</a>
+│   │   │   └── <a href="/learn-cplusplus/06 Pointers and References/#preventions">Preventions</a>
 │   ├── <a href="/learn-cplusplus/06 Pointers and References/#pointer-arithmetic">Pointer Arithmetic</a>
 │   ├── <a href="/learn-cplusplus/06 Pointers and References/#references">References/</a>
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#reference-vs-address-of-operator">Reference vs. Address-of Operator</a>
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#pass-by-value-vs-pass-by-reference">Pass by Value vs. Pass by Reference</a>
-│   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#when-to-pass-by-reference">When to Pass by Reference</a>
+│   │   └── <a href="/learn-cplusplus/06 Pointers and References/#when-to-pass-by-reference">When to Pass by Reference</a>
 │   ├── <a href="/learn-cplusplus/06 Pointers and References/#function-pointer">Function Pointer</a>
 │   ├── <a href="/learn-cplusplus/06 Pointers and References/#where-to-use-function-pointers">Where to Use Function Pointers</a>
 │   ├── <a href="/learn-cplusplus/06 Pointers and References/#lvalues-and-rvalues">Lvalues and Rvalues/</a>
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#lvalue-reference">Lvalue Reference</a>
-│   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#rvalue-reference">Rvalue Reference</a>
+│   │   └── <a href="/learn-cplusplus/06 Pointers and References/#rvalue-reference">Rvalue Reference</a>
 │   ├── <a href="/learn-cplusplus/06 Pointers and References/#move-semantics">Move Semantics/</a>
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#standard-move-function">Standard Move Function</a>
-│   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#move-assignment-operator">Move Assignment Operator</a>
+│   │   └── <a href="/learn-cplusplus/06 Pointers and References/#move-assignment-operator">Move Assignment Operator</a>
 │   ├── <a href="/learn-cplusplus/06 Pointers and References/#smart-pointers">Smart Pointers/</a>
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#unique-pointer">Unique Pointer</a>
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#shared-pointer">Shared Pointer</a>
 │   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#weak-pointer">Weak Pointer</a>
-│   │   ├── <a href="/learn-cplusplus/06 Pointers and References/#when-to-use-smart-pointers">When to Use Smart Pointers</a>
+│   │   └── <a href="/learn-cplusplus/06 Pointers and References/#when-to-use-smart-pointers">When to Use Smart Pointers</a>
+│   ├── <a href="/learn-cplusplus/06 Pointers and References/#questions">Questions</a>
 │   └── <a href="/learn-cplusplus/06 Pointers and References/#exercises">Exercises</a>
 │
 ├── <strong><a href="/learn-cplusplus/07 Collections of Data/"><span class="link">07 Collections of Data/</span></a></strong>
@@ -174,7 +176,7 @@
 │   │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#dynamically-allocate-a-2d-array">Dynamically Allocate a 2D Array</a>
 │   │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#deallocate-a-2d-array">Deallocate a 2D Array</a>
 │   │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#access-multidimensional-arrays">Access Multidimensional Arrays</a>
-│   │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#optimize-memory-access-for-multidimensional-arrays">Optimize Memory Access for Multidimensional Arrays</a>
+│   │   │   └── <a href="/learn-cplusplus/07 Collections of Data/#optimize-memory-access-for-multidimensional-arrays">Optimize Memory Access for Multidimensional Arrays</a>
 │   ├── <a href="/learn-cplusplus/07 Collections of Data/#strings">Strings/</a>
 │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#c-style-strings">C-Style Strings</a>
 │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#modifiable-c-style-strings">Modifiable C-Style Strings</a>
@@ -182,21 +184,22 @@
 │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#string-concatenation">String Concatenation</a>
 │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#string-literals">String Literals/</a>
 │   │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#raw-string-literals">Raw String Literals</a>
-│   │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#unicode-string-literals">Unicode String Literals</a>
+│   │   │   └── <a href="/learn-cplusplus/07 Collections of Data/#unicode-string-literals">Unicode String Literals</a>
 │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#small-strings">Small Strings</a>
 │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#optimize-strings-in-c">Optimize Strings in C++/</a>
 │   │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#substring-operations-overhead">Substring Operations Overhead</a>
-│   │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#string-views">String Views</a>
+│   │   │   └── <a href="/learn-cplusplus/07 Collections of Data/#string-views">String Views</a>
 │   ├── <a href="/learn-cplusplus/07 Collections of Data/#c-static-array">C++ Static Array</a>
 │   ├── <a href="/learn-cplusplus/07 Collections of Data/#dynamic-array">Dynamic Array/</a>
-│   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#vector-optimization">Vector Optimization</a>
+│   │   └── <a href="/learn-cplusplus/07 Collections of Data/#vector-optimization">Vector Optimization</a>
 │   ├── <a href="/learn-cplusplus/07 Collections of Data/#hashmap">HashMap/</a>
 │   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#hashing-function">Hashing Function</a>
-│   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#index-operator">Index Operator</a>
+│   │   └── <a href="/learn-cplusplus/07 Collections of Data/#index-operator">Index Operator</a>
 │   ├── <a href="/learn-cplusplus/07 Collections of Data/#linked-list">Linked List</a>
 │   ├── <a href="/learn-cplusplus/07 Collections of Data/#stack-and-queue">Stack and Queue</a>
 │   ├── <a href="/learn-cplusplus/07 Collections of Data/#iterators">Iterators/</a>
-│   │   ├── <a href="/learn-cplusplus/07 Collections of Data/#range-based-for-loops">Range-Based For Loops</a>
+│   │   └── <a href="/learn-cplusplus/07 Collections of Data/#range-based-for-loops">Range-Based For Loops</a>
+│   ├── <a href="/learn-cplusplus/07 Collections of Data/#questions">Questions</a>
 │   └── <a href="/learn-cplusplus/07 Collections of Data/#exercises">Exercises</a>
 │
 ├── <strong><a href="/learn-cplusplus/08 User Defined Types/"><span class="link">08 User Defined Types</span></a></strong>
@@ -221,7 +224,22 @@
 │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#current-instance-pointer">Current Instance Pointer</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#inheritance-and-polymorphism">Inheritance and Polymorphism</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#singletons">Singletons</a>
+│   ├── <a href="/learn-cplusplus/08 User Defined Types/#questions">Questions</a>
 │   └── <a href="/learn-cplusplus/08 User Defined Types/#exercises">Exercises</a>
-
+│
+...
+│
+├── <strong><a href="/learn-cplusplus/10 Macros/"><span class="link">10 Macros</span></a></strong>
+│   ├── <a href="/learn-cplusplus/10 Macros/#object-like-macros">Object Like Macros</a>
+│   ├── <a href="/learn-cplusplus/10 Macros/#function-like-macros">Function Like Macros</a>
+│   ├── <a href="/learn-cplusplus/10 Macros/#stringizing-operator">Stringizing Operator</a>
+│   ├── <a href="/learn-cplusplus/10 Macros/#token-concatenation-operator">Token Concatenation Operator</a>
+│   ├── <a href="/learn-cplusplus/10 Macros/#predefined-macros">Predefined Macros</a>
+│   ├── <a href="/learn-cplusplus/10 Macros/#conditional-compilation">Conditional Compilation</a>
+│   ├── <a href="/learn-cplusplus/10 Macros/#multiline-macros">Multiline Macros</a>
+│   ├── <a href="/learn-cplusplus/10 Macros/#variadic-macros">Variadic Macros</a>
+│   ├── <a href="/learn-cplusplus/10 Macros/#questions">Questions</a>
+│   └── <a href="/learn-cplusplus/10 Macros/#exercises">Exercises</a>
+│
 Working on more...
 </pre>

@@ -1,28 +1,29 @@
 # 10 Macros
 
-In the introduction chapter, we took a first look at how a C++ program comes together.
-One important detail we touched on there was that the compiler is not the first tool that sees your code.
-Before any C++ syntax is parsed or type-checked, your source files are passed through an earlier stage of the build pipeline: the preprocessor.
+In the introductory chapter, we took a first look at how a C++ program comes together.
+One important detail we touched on was that the compiler is not the first tool that sees your code.
+Before any C++ syntax is parsed or type-checked, your source files pass through an earlier stage of the build pipeline: the preprocessor.
 
-Macros are another feature provided by the preprocessor.
-In C++, macros exist entirely in the form of preprocessor directives and allow us to “macro-fy” certain operations by rewriting code before compilation begins.
-This makes macro expansion a purely text-editing stage—closer to an automated find-and-replace than to actual C++ logic.
+This fact matters because, in C++, macros are provided entirely by the preprocessor through a set of special directives.
+Rather than operating on C++ constructs, macros work by rewriting source code before compilation begins.
+In practice, macro expansion is a purely textual transformation—closer to an automated find-and-replace than to actual C++ logic.
 
-Because macros work at the textual level, they come with serious limitations.
-They have no type safety, ignore scope, and effectively erase symbol names before the compiler ever sees them.
-As a result, macros can be difficult to debug and often obscure what the code is really doing.
-For these reasons, modern C++ generally favors safer language features such as constexpr, inline functions, templates, and strongly typed enums.
+Because macros operate at the textual level, they come with significant limitations.
+They have no awareness of types, ignore scope, and can erase symbol names before the compiler ever sees them.
+As a result, macros are often difficult to debug and can obscure what the code is really doing.
 
-This chapter therefore serves as an introduction to templates and metaprogramming, highlighting how C++ historically approached certain problems.
-By studying macros first, we gain a better understanding of the motivation behind modern techniques—showing how higher-level language features improve safety, readability, and maintainability.
+!!! warning
 
-Even so, macros haven’t disappeared.
-When used carefully, they can streamline repetitive code and enable patterns that are difficult—or impossible—to express otherwise.
-Large frameworks like Qt and Unreal Engine rely heavily on macros to inject metadata, generate boilerplate, and extend user-defined types in a controlled and consistent way.
+    In modern C++ macros should be avoided.
+    As they cause the code you write to differ from the code the compiler actually sees.
+    This can introduce subtle and unexpected behavior, especially since macros have global scope.
+    Language features such as `constexpr`, strongly typed enums, and inline functions provide the same functionality with proper type safety, scoping, and far better diagnostics.
+    Object-like macros today remain mainly for legacy code and build-time configuration.
 
-We’ll begin by separating macros into their two fundamental forms: object-like macros and function-like macros.
+This chapter therefore serves as a bridge into templates and metaprogramming, showing how C++ historically approached certain problems.
+By studying macros first, we gain useful context for understanding why modern techniques exist and how they improve safety, readability, and maintainability.
 
-## Object-Like Macros
+## Object Like Macros
 
 The simplest form of a macro is the object-like macro.
 Despite the name, it does not define an object in the C++ sense.
@@ -51,16 +52,10 @@ int main()
 }
 ```
 
-!!! note
+## Function Like Macros
 
-    In modern C++, object-like macros should generally be avoided.
-    Language features such as `constexpr` provide the same functionality with proper type safety, scoping, and far better diagnostics.
-    Object-like macros remain mainly for legacy code and build-time configuration.
-
-## Function-Like Macros
-
-Function-like macros resemble functions in syntax, but they are not functions in any meaningful C++ sense.
-Like all macros, they are handled entirely by the preprocessor and exist purely as text substitution rules.
+Function-like macros resemble functions in syntax, but they are not functions in the usual programming sense.
+Like all macros, they are handled entirely by the preprocessor and exist purely as text-substitution rules.
 
 ```cpp title="main.cpp"
 #include <iostream>
@@ -127,7 +122,7 @@ This result is almost certainly not what was intended.
 The issue arises because the macro does not insert any parentheses.
 The preprocessor performs a blind textual replacement, and normal operator precedence rules then apply to the expanded code.
 
-A common attempt to fix this is to parenthesize every macro parameter and expression.
+A common attempt to fix and a rule of thumb is to parenthesize every macro parameter and expression.
 
 ```cpp title="main.cpp"
 #include <iostream>
@@ -206,12 +201,12 @@ Depending on the C++ standard and evaluation rules, this may also result in unde
 The stringizing operator allows a macro parameter to be converted into a string literal.
 It is written as a single `#` placed directly in front of a macro parameter.
 
-When the preprocessor expands the macro, the argument passed to that parameter is wrapped in double quotes and turned into a C-Style string.
+When the preprocessor expands the macro, the argument passed to that parameter is wrapped in double quotes and turned into a C-style string.
 
 ```cpp title="main.cpp"
 #include <iostream>
 
-#define PRINT_VAR(x) std::cout << "Var Name: " << #x << '\n';
+#define PRINT_VAR(x) std::cout << "Var name: " << #x << '\n'
 
 int main()
 {
@@ -226,7 +221,7 @@ int main()
 int main()
 {
     int value = 10;
-    std::cout << "Var Name: " << "value" << '\n';
+    std::cout << "Var name: " << "value" << '\n';
 }
 ```
 
@@ -256,33 +251,26 @@ void FileClose();
 ```
 
 The preprocessor treats File and Open as separate tokens, then pastes them together into a single identifier.
-The same rule applies to any valid tokens that can legally form a new identifier.
+The same rule applies to any tokens that can legally be combined to form a valid identifier.
 
 ## Predefined Macros
 
 In addition to user-defined macros, the compiler environment automatically provides a set of predefined ones.
 These macros are always available and expand to information about the current source file, compilation context, or language version.
 
-Because they are filled in by the compiler, predefined macros are particularly useful for debugging, logging, diagnostics, and tooling support.
+Because they are supplied by the compiler or preprocessing environment, predefined macros are particularly useful.
 
-| Macro                 | Description                                                                                   |
-| --------------------- | --------------------------------------------------------------------------------------------- |
-| `__FILE__`            | Expands to the current source file name.                                                      |
-| `__LINE__`            | Expands to the current line number in the source file.                                        |
-| `__DATE__`            | Expands to the compilation date as a string literal (e.g., `"Jan  6 2026"`).                  |
-| `__TIME__`            | Expands to the compilation time as a string literal (e.g., `"14:30:00"`).                     |
-| `__func__`            | Expands to the name of the current function (standard C++11).                                 |
-| `__COUNTER__`         | Expands to an integer that increments each time it is used in a translation unit.             |
-| `__cplusplus`         | Expands to a long integer representing the C++ standard version being used (e.g., `202402L`). |
+| Macro                 | Description                                                                                      |
+| --------------------- | ------------------------------------------------------------------------------------------------ |
+| `__FILE__`            | Expands to the current source file name.                                                         |
+| `__LINE__`            | Expands to the current line number in the source file.                                           |
+| `__DATE__`            | Expands to the compilation date as a string literal (e.g., `"Jan  6 2026"`).                     |
+| `__TIME__`            | Expands to the compilation time as a string literal (e.g., `"14:30:00"`).                        |
+| `__func__`            | A compiler-provided identifier that evaluates to the name of the current function (not a macro). |
 
 
 For example, `__FILE__` and `__LINE__` are often combined to produce detailed error or log messages that point directly to the source location where an issue occurred.
 `__func__` can provide additional context when tracing execution paths or debugging complex code.
-
-The `__COUNTER__` macro expands to an integer value that increases with each use, which can be useful in advanced macro techniques where unique identifiers are required.
-
-Finally, `__cplusplus` allows code to detect which version of the C++ standard the compiler is targeting.
-This is commonly used to enable or disable features conditionally based on language support.
 
 !!! Note
 
@@ -292,7 +280,7 @@ This is commonly used to enable or disable features conditionally based on langu
 ## Conditional Compilation
 
 The preprocessor can include or exclude sections of code based on whether certain macros are defined.
-This is called conditional compilation, and it’s controlled using directives such as shown in a table below.
+This is called conditional compilation, and it’s controlled using directives such as those shown in the table below.
 
 | Directive | Purpose                                |
 | --------- | -------------------------------------- |
@@ -327,6 +315,7 @@ int main() {
 
 ``` title="main"
 Debug mode is enabled.
+Release mode is not defined.
 ```
 
 !!! note
@@ -346,8 +335,8 @@ To indicate that a macro continues onto the next line, we use a backslash `\` at
 
 Without the backslash, the preprocessor would treat each line as a separate directive or statement, leading to compilation errors.
 
-A common problem arises when a macro contains multiple statements and is used inside an if statement or other control flow.
-Simply enclosing the macro in braces `{}` seems intuitive, but it can break the surrounding code if a semicolon follows.
+A common problem with multiline macros arises when a macro contains multiple statements and is used inside a control-flow construct.
+Simply enclosing the macro in braces `{}` may seem intuitive, but it can break the surrounding code if a semicolon follows, because the macro then expands to a compound statement that does not behave like a single statement.
 
 ```cpp title="example"
 if (condition)
@@ -370,33 +359,137 @@ Variadic macros are function-like macros that can accept any number of arguments
 They are particularly useful for logging, debugging, or other situations where the number of parameters may vary.
 
 ```cpp title="main.cpp"
-#include <cstdio>
+#include <iostream>
 
-#define LOG(format, ...) \
-    printf("[LOG] " format "\n", ##__VA_ARGS__);
+#define LOG(msg, ...)                         \
+    std::cout << "[LOG] " << msg;             \
+    ((std::cout << ' ' << __VA_ARGS__), ...); \
+    std::cout << '\n';
 
 int main()
 {
-    LOG("Player: %s Score: %d", "P1", 100);
+    LOG("Player score:", "P1", 100);
     LOG("Game started");
 }
 ```
 
+``` title="output"
+
+```
+
 | Concept       | Description                                                                      |
 | ------------- | -------------------------------------------------------------------------------- |
-| `...`         | In the macro definition, captures **all additional arguments** after the first.  |
-| `__VA_ARGS__` | Replaced by **whatever extra arguments** are provided when the macro is invoked. |
+| `...`         | In the macro definition, captures all additional arguments after the first.      |
+| `__VA_ARGS__` | Replaced by whatever extra arguments are provided when the macro is invoked.     |
 
 
-The ## operator before `__VA_ARGS__` is a special trick that removes the trailing comma if no extra arguments are passed, allowing the macro to work correctly with zero or more parameters.
-
-## The X Macro
-
-
+The `__VA_ARGS__` mechanism allows the macro to work correctly with zero or more additional arguments.
+This makes it possible to write flexible logging or debugging macros entirely in idiomatic C++.
 
 ## Questions
 
+=== "question 1"
 
+    What is a macro in C++?
+
+=== "answer"
+
+    A macro is a preprocessor directive that defines a rule for text substitution before compilation.
+
+---
+
+=== "question 2"
+
+    What is the difference between object-like and function-like macros?
+
+=== "answer"
+
+    - Object-like macros resemble constants and do not take parameters.  
+    - Function-like macros take parameters and resemble functions in syntax, but expand as text.
+
+---
+
+=== "question 3"
+
+    What is the purpose of the stringizing operator `#` in a macro?
+
+=== "answer"
+
+    It converts a macro parameter into a string literal during preprocessing.
+
+---
+
+=== "question 4"
+
+    How does the token concatenation operator `##` work?
+
+=== "answer"
+
+    It joins two tokens into a single token during macro expansion, allowing programmatic generation of identifiers.
+
+---
+
+=== "question 5"
+
+    Why are parentheses important when defining function-like macros?
+
+=== "answer"
+
+    Parentheses prevent operator precedence issues by ensuring the macro arguments and the resulting expression evaluate correctly.
+
+---
+
+=== "question 6"
+
+    What problem does the `do { ... } while(0)` pattern solve in macros?
+
+=== "answer"
+
+    It ensures that multi-statement macros behave like a single statement in any control-flow context, preventing syntax errors.
+
+---
+
+=== "question 7"
+
+    What are variadic macros and how are they defined?
+
+=== "answer"
+
+    Macros that accept any number of arguments, defined with `...` in the macro parameter list, and using `__VA_ARGS__` to expand the extra arguments.
+
+---
+
+=== "question 8"
+
+    What is a predefined macro? Give two examples.
+
+=== "answer"
+
+    Predefined macros are macros automatically provided by the compiler or preprocessor.  
+    Examples:
+    - `__FILE__` — expands to the current source file name.  
+    - `__LINE__` — expands to the current line number.
 
 ## Exercises
+
+=== "question 1"
+
+    Write a function-like macro `CUBE(x)` that correctly computes the cube of an expression, handling operator precedence.
+
+=== "answer"
+
+    ```cpp
+    #include <iostream>
+
+    #define CUBE(x) ((x) * (x) * (x))
+
+    int main() {
+        int n = 5;
+
+        std::cout << "Cube of " << n << " is " << CUBE(n) << '\n';
+        std::cout << "Cube of (n + 1) is " << CUBE(n + 1) << '\n';
+    }
+    ```
+
+---
 
