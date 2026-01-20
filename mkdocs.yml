@@ -4,8 +4,10 @@ theme:
   name: material
   palette:
     scheme: slate
-    primary: deep orange
+    primary: black
     accent: indigo
+  font:
+    text: Roboto
   features:
     - content.code.copy
 

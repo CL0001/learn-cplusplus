@@ -129,6 +129,58 @@ int main() {
 Player health: 90
 ```
 
+### Bitfields
+
+So far, every struct member we’ve used has occupied at least one full byte of memory.
+That’s usually fine—but sometimes, especially in low-level or memory-sensitive code, we want tighter control over how data is laid out.
+
+In many real-world cases, a value only needs a few bits.
+A flag might only represent on or off, a status code might fit in a small range, or a set of options might be stored as individual switches.
+Using a full int or even a full char for these cases wastes space.
+
+Bitfields let you specify exactly how many bits a struct member should occupy.
+They are declared inside a struct by placing a colon and a bit width after the member name.
+
+```cpp title="main.cpp"
+#include <iostream>
+
+struct Flags {
+    unsigned is_visible : 1;
+    unsigned is_active  : 1;
+    unsigned has_error  : 1;
+};
+
+int main() {
+    Flags flags{1, 0, 1};
+
+    std::cout << "Visible: " << flags.is_visible << '\n';
+    std::cout << "Active: " << flags.is_active << '\n';
+    std::cout << "Error: " << flags.has_error;
+}
+```
+
+``` title="output"
+Visible: 1
+Active: 0
+Error: 1
+```
+
+Each field here occupies only one bit, yet behaves like a normal integer when accessed.
+Internally, the compiler packs these values together into a single storage unit.
+
+Bitfields can also store small integer ranges, not just booleans.
+
+```cpp title="example"
+struct Color {
+    unsigned red   : 8;
+    unsigned green : 8;
+    unsigned blue  : 8;
+};
+```
+
+Each color channel is limited to 8 bits, giving it a range of 0–255—exactly what we want for RGB values.
+This representation is both compact and expressive.
+
 ## Unions
 
 A `union` is similar to a `struct` in that it groups related variables under a single name.

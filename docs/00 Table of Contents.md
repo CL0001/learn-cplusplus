@@ -91,14 +91,10 @@
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#standard-integer-types">Standard Integer Types</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#fixed-width-integer-types">Fixed-Width Integer Types</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#unsigned-integers">Unsigned Integers</a>
+│   │   ├── <a href="/learn-cplusplus/05 Data Types/#integer-literals">Integer Literals</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#floating-point-types">Floating-Point Types</a>
 │   │   └── <a href="/learn-cplusplus/05 Data Types/#character-types">Character Types</a>
-│   ├── <a href="/learn-cplusplus/05 Data Types/#bitfields">Bitfields</a>
-│   ├── <a href="/learn-cplusplus/05 Data Types/#automatic-type-inference">Automatic Type Inference</a>
-│   ├── <a href="/learn-cplusplus/05 Data Types/#volatile-specifier">Volatile Specifier</a>
-│   ├── <a href="/learn-cplusplus/05 Data Types/#register-specifier">Register Specifier</a>
-│   ├── <a href="/learn-cplusplus/05 Data Types/#determining-the-byte-size-of-variables">Determining the Byte Size of Variables</a>
-│   ├── <a href="/learn-cplusplus/05 Data Types/#type-casting">Type Casting/</a>
+│   ├── <a href="/learn-cplusplus/05 Data Types/#type-casts">Type Casts/</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#conversions">Conversions</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#c-style-cast">C-Style Cast</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#c-casts">C++ Casts/</a>
@@ -106,7 +102,11 @@
 │   │   │   ├── <a href="/learn-cplusplus/05 Data Types/#dynamic-cast">Dynamic Cast</a>
 │   │   │   ├── <a href="/learn-cplusplus/05 Data Types/#constant-cast">Constant Cast</a>
 │   │   │   └── <a href="/learn-cplusplus/05 Data Types/#reinterpret-cast">Reinterpret Cast</a>
-│   │   └── <a href="/learn-cplusplus/05 Data Types/#when-to-cast">When to Cast</a>
+│   │   └── <a href="/learn-cplusplus/05 Data Types/#cast-rules">Cast Rules</a>
+│   ├── <a href="/learn-cplusplus/05 Data Types/#automatic-type-inference">Automatic Type Inference</a>
+│   ├── <a href="/learn-cplusplus/05 Data Types/#volatile-specifier">Volatile Specifier</a>
+│   ├── <a href="/learn-cplusplus/05 Data Types/#register-specifier">Register Specifier</a>
+│   ├── <a href="/learn-cplusplus/05 Data Types/#determining-the-byte-size-of-variables">Determining the Byte Size of Variables</a>
 │   ├── <a href="/learn-cplusplus/05 Data Types/#compile-time-constructs">Compile-Time Constructs/</a>
 │   │   ├── <a href="/learn-cplusplus/05 Data Types/#constexpr">Constexpr</a>
 │   │   └── <a href="/learn-cplusplus/05 Data Types/#consteval-and-constinit">Consteval and Constinit</a>
@@ -204,6 +204,7 @@
 │
 ├── <strong><a href="/learn-cplusplus/08 User Defined Types/"><span class="link">08 User Defined Types</span></a></strong>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#structs">Structs</a>
+│   │   └── <a href="/learn-cplusplus/08 User Defined Types/#bitfields">Bitfields</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#unions">Unions</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#enums">Enums</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#classes">Classes/</a>
@@ -221,7 +222,7 @@
 │   │   │   └── <a href="/learn-cplusplus/08 User Defined Types/#rule-of-zero-and-five">Rule of Zero and Five</a>
 │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#destructors">Destructors</a>
 │   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#arrow-operator">Arrow Operator</a>
-│   │   ├── <a href="/learn-cplusplus/08 User Defined Types/#current-instance-pointer">Current Instance Pointer</a>
+│   │   └── <a href="/learn-cplusplus/08 User Defined Types/#current-instance-pointer">Current Instance Pointer</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#inheritance-and-polymorphism">Inheritance and Polymorphism</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#singletons">Singletons</a>
 │   ├── <a href="/learn-cplusplus/08 User Defined Types/#questions">Questions</a>

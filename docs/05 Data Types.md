@@ -98,6 +98,27 @@ For example, `uint8_t` ranges from 0 to 255, doubling the maximum value you can 
 | `uint32_t`           | 4            | 0 to 4,294,967,295              |
 | `uint64_t`           | 8            | 0 to 18,446,744,073,709,551,615 |
 
+### Integer Literals
+
+An integer literal is a numeric value written directly in your source code, such as `42` or `1'000'000`.
+When no extra information is provided, the compiler infers the most appropriate integer type based on the value itself and the platform’s integer sizes.
+
+In most cases, this automatic inference is exactly what you want.
+However, when working with large numbers, unsigned values, or APIs that expect specific integer types, you may need to explicitly control how a literal is interpreted.
+C++ allows this by appending suffixes to integer literals.
+
+|   Suffix | Inferred Type                 | Example |
+| -------: | ----------------------------- | ------- |
+|     none | `int`, `long`, or `long long` | `42`    |
+|      `u` | `unsigned int`                | `42u`   |
+|      `l` | `long`                        | `42l`   |
+|     `ul` | `unsigned long`               | `42ul`  |
+|     `ll` | `long long`                   | `42ll`  |
+|    `ull` | `unsigned long long`          | `42ull` |
+
+!!! info
+
+    Uppercase and lowercase suffixes are equivalent (`U` vs `u`, `LL` vs `ll`), though lowercase is commonly preferred for readability.
 
 ### Floating-Point Types
 
@@ -175,232 +196,7 @@ Testing unicode:
     It’s  best to avoid non-ASCII characters in your source code unless necessary (e.g., in GUI applications).
     Non-ASCII characters can complicate compatibility across different environments and are rarely required in typical C++ code.
 
-## Bitfields
-
-!!! info
-
-    This section is considered more advanced at this point, as it requires knowledge of user-defined types.
-    If you're not yet comfortable with those concepts, feel free to skip this section and return to it later once you're more confident.
-
-So far, all of the primitive data types we’ve introduced have used whole bytes as their smallest unit of storage.
-That’s usually fine—but in low-level programming, we sometimes want more granular control.
-
-In many real-world cases, a value only needs a few bits.
-For example, a flag might only need to store true or false, a status code might fit in a range of 0–7, or a set of options might only require a handful of on/off switches.
-Using a full `int` or even a full `char` for these cases wastes memory.
-
-Bitfields allow us to pack multiple small values into a single integer type by specifying exactly how many bits each value should occupy.
-
-Bitfields are declared inside a struct, using a colon followed by the number of bits allocated to the member.
-
-```cpp title="main.cpp"
-#include <iostream>
-
-struct Flags {
-    unsigned is_visible : 1;
-    unsigned is_active  : 1;
-    unsigned has_error  : 1;
-};
-
-int main() {
-    Flags flags{1, 0, 1};
-
-    std::cout << "Visible: " << flags.is_visible << '\n';
-    std::cout << "Active: " << flags.is_active << '\n';
-    std::cout << "Error: " << flags.has_error << '\n';
-}
-```
-
-``` title="output"
-Visible: 1
-Active: 0
-Error: 1
-```
-
-Each field here occupies only one bit, yet behaves like a normal integer when accessed.
-Internally, the compiler packs these values together into a single storage unit.
-
-Bitfields can also store small integer ranges, not just booleans.
-
-```cpp title="example"
-struct Color {
-    unsigned red   : 8;
-    unsigned green : 8;
-    unsigned blue  : 8;
-};
-```
-
-Each color channel is limited to 8 bits, giving it a range of 0–255—exactly what we want for RGB values.
-This representation is both compact and expressive.
-
-## Automatic Type Inference
-
-!!! info 
-
-    Before diving into this section, it’s helpful to have a grasp of collections of data, since type inference often involves more complex types like containers and iterators.
-
-In C++, data types determine what kind of data a variable can hold and how much memory it uses.
-Manually specifying types can sometimes be tedious or verbose—especially when the type is obvious from the context.
-That’s where the auto keyword comes in: it lets the compiler automatically deduce the variable’s type based on its initializer, assignment, or the return value of a function.
-
-Using auto can simplify your code and make it more concise, but it’s not without trade-offs.
-Overusing it may reduce readability, making it harder to quickly understand what a variable represents.
-It can also introduce subtle bugs if the inferred type doesn’t match your intentions, especially as your code evolves over time.
-
-```cpp title="main.cpp"
-#include <iostream>
-
-std::string GetName() {
-    return "name";
-}
-
-int main() {
-    auto name = GetName(); // inferred as std::string
-	
-    // safe, std::string supports .size()
-    std::cout << "String size: " << name.size();
-}
-```
-
-``` title="output"
-String size: 4
-```
-
-Here, name is correctly inferred as `std::string`.
-However, if the return type of `GetName()` were changed to `const char*`, this code would no longer compile—C-style strings don’t support the `.size()` method.
-
-This is a good example of how type inference can become fragile when the underlying return type changes.
-In such cases, using an explicit type can help make your code more predictable.
-
-One place where auto truly shines is in range-based for loops, where the element type is usually obvious and unlikely to change.
-
-```cpp title="main.cpp"
-#include <iostream>
-#include <array>
-
-int main() {
-    std::array<int, 5> array{17, 48, 92, 64, 88};
-	
-    for (const auto& element : array) {
-        std::cout << element << '\t';
-    }
-}
-```
-
-``` title="output"
-17	48	92	64	88
-```
-
-Here, `auto` makes the loop cleaner and more readable, without sacrificing clarity or safety.
-Since the type of element is tightly bound to the container, there's little risk of confusion or error.
-
-## Volatile Specifier
-
-The `volatile` keyword acts as a directive to the compiler’s optimizer: "Do not cache this value."
-It informs the compiler that a variable's state can be altered by external factors—such as hardware, an interrupt, or a signal—that the compiler cannot see.
-Consequently, the program must re-read the variable from memory every single time it is referenced, rather than relying on a previously stored value in a CPU register.
-
-Normally, compilers aggressively optimize code by caching values in registers, reordering instructions, or eliminating repeated reads.
-For most variables, this is exactly what we want—it makes programs faster. However, in some low-level scenarios, these assumptions are incorrect.
-
-A variable should be declared volatile when its value can change due to external factors, such as:
-
-- Hardware devices (Status registers)
-- Signal handlers (Interacting with a running program)
-- Memory-mapped I/O (Communicating with peripherals)
-
-In these cases, every read and write must go directly to memory.
-
-```cpp title="example"
-#include <iostream>
-#include <csignal>
-
-volatile bool stop_flag = false;
-
-void handle_signal(int signal) {
-    stop_flag = true; 
-}
-
-int main() {
-    // Register the handler for Ctrl+C (SIGINT)
-    std::signal(SIGINT, handle_signal);
-
-    std::cout << "Waiting for Ctrl+C...\n";
-
-    while (!stop_flag) {
-        // The compiler might optimize this into an infinite loop
-    }
-
-    std::cout << "Signal received! Exiting ...";
-}
-```
-
-Without `volatile`, the compiler might assume that `stop_flag` never changes inside the loop and aggressively optimize the code—potentially turning the loop into an infinite one.
-By marking the variable as `volatile`, we explicitly tell the compiler that its value may change unexpectedly, forcing it to reload the value from memory on every iteration.
-
-It’s important to be precise about what it actually guarantees.
-
-When a variable is declared `volatile`, the compiler is prevented from optimizing away reads and writes to that variable.
-Every access is performed directly against memory rather than being cached in a register.
-This ensures correct behavior when the value can change outside the normal flow of the program, such as through hardware or external events.
-
-!!! note
-
-    `volatile` should be used only in situations where the compiler’s normal assumptions about program flow do not hold.
-    This typically includes low-level programming tasks such as interacting with hardware, working with memory-mapped registers, responding to signal handlers, or writing embedded or systems-level code.
-
-    In regular application code, volatile is rarely needed.
-    If you find yourself wanting to use it in ordinary logic, it’s often a sign that a different design or abstraction would be more appropriate.
-
-## Register Specifier
-
-Same as `volatile` the `register` specifier acts as a hint to the compiler suggesting that a variable should be stored in a CPU register rather than in memory.
-The motivation was simple: accessing registers is faster than accessing memory, so keeping frequently used variables in registers could improve performance.
-
-In early C and C++ compilers, this hint could sometimes make a noticeable difference.
-Developers would mark loop counters or heavily used variables as register in an attempt to reduce memory access overhead.
-
-```cpp title="example"
-int main() {
-    register int counter = 0;
-
-    for (counter = 0; counter < 10; ++counter) {
-        // work...
-    }
-}
-```
-
-However, modern compilers are far better at optimization than humans.
-They perform sophisticated analysis to decide which variables should live in registers, how long they should stay there, and when spilling to memory is necessary.
-As a result, the register keyword is almost always ignored by today’s compilers.
-
-In fact, starting with C++17, `register` has been officially deprecated.
-Using it no longer provides any performance benefit and may even trigger warnings in some compilers.
-
-!!! note
-
-    Although `register` no longer influences optimization, it still has one observable effect: you cannot take the address of a variable inside of a register.
-    This restriction exists because a variable stored purely in a register does not have a stable memory address.
-
-## Determining the Byte Size of Variables
-
-We can get the byte size of any variable using the `sizeof` operator.
-
-```cpp title="main.cpp"
-#include <iostream>
-
-int main() {
-    double value = 145.32;
-
-    std::cout << "Byte size of double is: " << sizeof(value);
-}
-```
-
-``` title="output"
-Byte size of double is: 8
-```
-
-## Type Casting
+## Type Casts
 
 Sometimes, we need to reinterpret the data a variable holds by changing its type.
 This process is called type casting.
@@ -440,10 +236,10 @@ Double to integer conversion: 3
 Character to integer conversion: 65
 ```
 
-### C-Style Cast
+### C-Style Casts
 
 Since C++ is built on top of C, it inherits nearly all of its features, including its casting techniques.
-The C-style cast is one of the most commonly used casting methods, even in other programming languages, due to its simplicity and ease of use.
+The C-style cast is one of the most commonly used casting methods due to its simplicity and ease of use.
 It is applied by prefixing a variable with a type in parentheses.
 
 ```cpp title="main.cpp"
@@ -471,7 +267,8 @@ That’s why C++ introduced its own casting operators—`static_cast`, `dynamic_
 
 It’s important to understand that C++ casts don’t add new capabilities beyond what C-style casts can do.
 Instead, they provide safer and more controlled ways to perform conversions.
-By using explicit keywords, C++ casts make your intent clear and help the compiler enforce stricter type checks. This reduces the risk of accidental or unsafe conversions.
+By using explicit keywords, C++ casts make your intent clear and help the compiler enforce stricter type checks.
+This reduces the risk of accidental or unsafe conversions.
 
 Another benefit is maintainability.
 Because each cast uses a specific keyword, it's easier to search for and reason about casting operations in your code.
@@ -651,7 +448,7 @@ int main() {
 Memory address: 140727907748748
 ```
 
-### When to Cast
+### Cast Rules
 
 Casting should be avoided whenever possible.
 If explicit conversion is required, consider alternative approaches before resorting to a cast.
@@ -666,6 +463,174 @@ General Guidelines for Casting:
 - Avoid C-style casts (`(T)expression`), as they are unsafe, bypass type checks, and make code harder to maintain.
 - Do not misuse `reinterpret_cast` unless you fully understand the potential consequences.
 - Do not remove `const` qualifiers unless absolutely necessary, as it can lead to unintended side effects.
+
+
+## Automatic Type Inference
+
+!!! info 
+
+    Before diving into this section, it’s helpful to have a grasp of collections of data, since type inference often involves more complex types like containers and iterators.
+
+In C++, data types determine what kind of data a variable can hold and how much memory it uses.
+Manually specifying types can sometimes be tedious or verbose—especially when the type is obvious from the context.
+That’s where the auto keyword comes in: it lets the compiler automatically deduce the variable’s type based on its initializer, assignment, or the return value of a function.
+
+Using auto can simplify your code and make it more concise, but it’s not without trade-offs.
+Overusing it may reduce readability, making it harder to quickly understand what a variable represents.
+It can also introduce subtle bugs if the inferred type doesn’t match your intentions, especially as your code evolves over time.
+
+```cpp title="main.cpp"
+#include <iostream>
+
+std::string GetName() {
+    return "name";
+}
+
+int main() {
+    auto name = GetName(); // inferred as std::string
+	
+    // safe, std::string supports .size()
+    std::cout << "String size: " << name.size();
+}
+```
+
+``` title="output"
+String size: 4
+```
+
+Here, name is correctly inferred as `std::string`.
+However, if the return type of `GetName()` were changed to `const char*`, this code would no longer compile—C-style strings don’t support the `.size()` method.
+
+This is a good example of how type inference can become fragile when the underlying return type changes.
+In such cases, using an explicit type can help make your code more predictable.
+
+One place where auto truly shines is in range-based for loops, where the element type is usually obvious and unlikely to change.
+
+```cpp title="main.cpp"
+#include <iostream>
+#include <array>
+
+int main() {
+    std::array<int, 5> array{17, 48, 92, 64, 88};
+	
+    for (const auto& element : array) {
+        std::cout << element << '\t';
+    }
+}
+```
+
+``` title="output"
+17	48	92	64	88
+```
+
+Here, `auto` makes the loop cleaner and more readable, without sacrificing clarity or safety.
+Since the type of element is tightly bound to the container, there's little risk of confusion or error.
+
+## Volatile Specifier
+
+The `volatile` keyword acts as a directive to the compiler’s optimizer: "Do not cache this value."
+It informs the compiler that a variable's state can be altered by external factors—such as hardware, an interrupt, or a signal—that the compiler cannot see.
+Consequently, the program must re-read the variable from memory every single time it is referenced, rather than relying on a previously stored value in a CPU register.
+
+Normally, compilers aggressively optimize code by caching values in registers, reordering instructions, or eliminating repeated reads.
+For most variables, this is exactly what we want—it makes programs faster. However, in some low-level scenarios, these assumptions are incorrect.
+
+A variable should be declared volatile when its value can change due to external factors, such as:
+
+- Hardware devices (Status registers)
+- Signal handlers (Interacting with a running program)
+- Memory-mapped I/O (Communicating with peripherals)
+
+In these cases, every read and write must go directly to memory.
+
+```cpp title="example"
+#include <iostream>
+#include <csignal>
+
+volatile bool stop_flag = false;
+
+void handle_signal(int signal) {
+    stop_flag = true; 
+}
+
+int main() {
+    // Register the handler for Ctrl+C (SIGINT)
+    std::signal(SIGINT, handle_signal);
+
+    std::cout << "Waiting for Ctrl+C...\n";
+
+    while (!stop_flag) {
+        // The compiler might optimize this into an infinite loop
+    }
+
+    std::cout << "Signal received! Exiting ...";
+}
+```
+
+Without `volatile`, the compiler might assume that `stop_flag` never changes inside the loop and aggressively optimize the code—potentially turning the loop into an infinite one.
+By marking the variable as `volatile`, we explicitly tell the compiler that its value may change unexpectedly, forcing it to reload the value from memory on every iteration.
+
+It’s important to be precise about what it actually guarantees.
+
+When a variable is declared `volatile`, the compiler is prevented from optimizing away reads and writes to that variable.
+Every access is performed directly against memory rather than being cached in a register.
+This ensures correct behavior when the value can change outside the normal flow of the program, such as through hardware or external events.
+
+!!! note
+
+    `volatile` should be used only in situations where the compiler’s normal assumptions about program flow do not hold.
+    This typically includes low-level programming tasks such as interacting with hardware, working with memory-mapped registers, responding to signal handlers, or writing embedded or systems-level code.
+
+    In regular application code, volatile is rarely needed.
+    If you find yourself wanting to use it in ordinary logic, it’s often a sign that a different design or abstraction would be more appropriate.
+
+## Register Specifier
+
+Same as `volatile` the `register` specifier acts as a hint to the compiler suggesting that a variable should be stored in a CPU register rather than in memory.
+The motivation was simple: accessing registers is faster than accessing memory, so keeping frequently used variables in registers could improve performance.
+
+In early C and C++ compilers, this hint could sometimes make a noticeable difference.
+Developers would mark loop counters or heavily used variables as register in an attempt to reduce memory access overhead.
+
+```cpp title="example"
+int main() {
+    register int counter = 0;
+
+    for (counter = 0; counter < 10; ++counter) {
+        // work...
+    }
+}
+```
+
+However, modern compilers are far better at optimization than humans.
+They perform sophisticated analysis to decide which variables should live in registers, how long they should stay there, and when spilling to memory is necessary.
+As a result, the register keyword is almost always ignored by today’s compilers.
+
+In fact, starting with C++17, `register` has been officially deprecated.
+Using it no longer provides any performance benefit and may even trigger warnings in some compilers.
+
+!!! note
+
+    Although `register` no longer influences optimization, it still has one observable effect: you cannot take the address of a variable inside of a register.
+    This restriction exists because a variable stored purely in a register does not have a stable memory address.
+
+## Determining the Byte Size of Variables
+
+We can get the byte size of any variable using the `sizeof` operator.
+
+```cpp title="main.cpp"
+#include <iostream>
+
+int main() {
+    double value = 145.32;
+
+    std::cout << "Byte size of double is: " << sizeof(value);
+}
+```
+
+``` title="output"
+Byte size of double is: 8
+```
 
 ## Compile-Time Constructs
 

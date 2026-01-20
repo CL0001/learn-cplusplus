@@ -472,7 +472,7 @@ This makes it possible to write flexible logging or debugging macros entirely in
 
 ## Exercises
 
-=== "question 1"
+=== "exercise 1"
 
     Write a function-like macro `CUBE(x)` that correctly computes the cube of an expression, handling operator precedence.
 
@@ -492,4 +492,3 @@ This makes it possible to write flexible logging or debugging macros entirely in
     ```
 
 ---
-

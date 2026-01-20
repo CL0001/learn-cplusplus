@@ -1,13 +1,13 @@
 # 01 Introduction
 
 We chose C++ as our language of choice for learning computer science because it’s an incredibly powerful and versatile tool.
-It offers low-level access to memory management when we need fine-grained control, yet also provides high-level abstractions when we prefer to think in broader, conceptual terms.
+It offers low-level access to memory when we need fine-grained control, yet also provides high-level abstractions when we prefer to think in broader, conceptual terms.
 C++ is used to build everything from command-line utilities and desktop applications to high-performance systems such as 3D engines, game frameworks, and low-latency trading platforms.
 
 To spark your interest, C++ is the language behind major AAA titles like Counter-Strike, Fortnite, the Warcraft series and many more.
 Every industry-grade game engine—such as Unreal, Unity, or Godot—is built on it, and even modern operating systems, including parts of Windows, rely on C++ under the hood.
 
-Also, it’s important to note that even if you’re not aiming for game development or high-performance programming—the areas where C++ truly shines—learning C++ gives you a remarkably solid foundation in how computers work.
+Also, it’s important to note that even if you’re not aiming for game development or high-performance programming—the areas where C++ truly shines—learning C++ gives you a remarkably solid foundation in software engineering.
 Along the way, you’ll also get to peek into several programming paradigms and long-standing design ideas.
 Not all of these ideas are universally great or perfectly modern, but they provide valuable context for how today’s languages evolved.
 
@@ -30,26 +30,25 @@ In this book, we’ll work through modern C++ from the ground up.
 Along the way, we’ll occasionally dip into C concepts as well, especially when we want to get closer to the hardware or squeeze out every last bit of performance.
 
 !!! info
+
     Before we jump into actual coding, we need to cover a few essentials in this introduction chapter.  
     We'll go through how to set up your development environment, introduce some basic terminology and conventions used throughout the book, and get familiar with how the C++ build process works.  
     Once those foundations are in place, we’ll be ready to start writing C++ code.
-
 
 ## Environment Setup
 
 To write and run C++ code on your computer, you need two essential components:
 
-- **Compiler:** A program that translates your human-readable C++ source code—essentially plain text—into machine-readable binary.
+- Compiler: A program that translates your human-readable C++ source code—essentially plain text—into machine-readable binary.
 It acts as a bridge between your code and the hardware, allowing the CPU to execute your instructions.
 
-- **Code Editor or IDE (Integrated Development Environment):** A tool that helps you write, edit, and manage your code.
+- Code Editor or IDE (Integrated Development Environment): A tool that helps you write, edit, and manage your code.
 Most IDEs also provide features like syntax highlighting, auto-completion and debugging tools.
-
 
 ### Recommended Setup for Windows
 
 The easiest way to get started with C++ on Windows is to use Microsoft Visual Studio Community Edition.
-It’s a fully featured IDE that comes preconfigured for C/C++ development and includes the MSVC compiler, so there’s no need to install it separately.
+It’s a fully featured IDE that comes preconfigured for C/C++ development and includes the MSVC compiler, so there’s no need to install everything separately.
 Everything you need comes in a single package.
 
 **Installation Steps**
