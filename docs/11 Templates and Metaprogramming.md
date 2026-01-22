@@ -33,7 +33,7 @@ Unlike regular functions, the compiler needs to see the entire definition of a t
 ## The Tradeoff
 
 While templates are incredibly powerful, they should be used with care.
-It is rarely healthy to "templatize" every part of your codebase just because you can.
+It is rarely healthy to "templatize" every part of our codebase just because we can.
 Templates have a reputation for producing notoriously long and confusing error messages that can be difficult to debug.
 Like any complex feature, overusing them can lead to code that is difficult to read or maintain.
 Balance is key.
@@ -75,14 +75,14 @@ Print(std::string("C++")); // T becomes std::string
 
 !!! info
 
-    In the template definition, you'll see `typename T`.  
-    You might also see developers use `class T` (e.g., `template<class T>`).  
+    In the template definition, we'll see `typename T`.  
+    We might also see developers use `class T` (e.g., `template<class T>`).  
     While they are functionally interchangeable in this context, typename is generally preferred.  
     Using `class` can be misleading, as it suggests the template only works with class types, when it actually works with primitives as well.
 
 When we compile this, the compiler performs a process called instantiation.
-It generates a specific version of the function for every type you actually use in your code.
-In the final binary, it looks as if you had written:
+It generates a specific version of the function for every type we actually use in our code.
+In the final binary, it looks as if we had written:
 
 ```cpp linenums="0"
 void Print(const int& value) {
@@ -118,7 +118,9 @@ T GetValue(const T& value) {
 auto value = GetValue<int>(42);
 ```
 
-Explicitly stating the type doesn't change the performance of the code, but it is useful for resolving ambiguity.
+!!! info
+
+    Explicitly stating the type doesn't change the performance of the code, but it is useful for resolving ambiguity.
 
 ### Multiple Template Parameters
 
@@ -137,10 +139,10 @@ PrintPair(42, "Age");
 
 ### Non Type Template Parameters
 
-In earlier chapters, we saw that passing a `std::array` into a function can be tricky because the size is part of the type.
+In earlier chapters, we saw that passing a `std::array` into a function can be a problem because the size is part of the type.
 For example, a function expecting a `std::array<int, 5>` cannot accept a `std::array<int, 10>`.
 
-Templates solve this beautifully.
+Trough templates we can solve this beautifully.
 We can use a non-type template parameter to capture the size of the array at compile time, making the function completely flexible.
 
 ```cpp linenums="0"
@@ -148,7 +150,7 @@ We can use a non-type template parameter to capture the size of the array at com
 // 'K' represents a compile-time constant value
 template<typename T, size_t K>
 void PrintArray(const std::array<T, K>& arr) {
-    for (const auto& element : arr) {
+    for (const T& element : arr) {
         std::cout << element << ' ';
     }
     std::cout << '\n';
@@ -171,7 +173,7 @@ By using `auto` in a function’s parameter list, the compiler automatically tre
 
 ```cpp linenums="0"
 // This is still a function template
-void PrintColl(const auto& coll) {
+void PrintCollection(const auto& coll) {
     for (const auto& elem : coll) {
         std::cout << elem << ' ';
     }
@@ -181,8 +183,8 @@ void PrintColl(const auto& coll) {
 
 While this is shorter and easier to read, there is a catch: we don't have a name for the type.
 In a traditional template, we can use `T` to create a local variable or a return type.
-With abbreviated templates, if you suddenly need to know the name of the type (for example, to create a temporary variable of that same type), it becomes a bit tricky.
-You have to use `decltype` to extract the type.
+With abbreviated templates, if we suddenly need to know the name of the type, it becomes a bit tricky.
+We have to use `decltype` to extract the type.
 
 ```cpp linenums="0"
 void SwapFirstAndSecond(auto& coll) {
@@ -221,7 +223,7 @@ If we wanted to restrict a function to only work with certain types, we had to r
 
 This usually involved using `std::enable_if`, a tool that intentionally breaks a template's substitution to force the compiler to look for a different overload.
 While effective, this approach often felt like we were abusing the template system.
-It resulted in verbose, "hacky" code and produced notoriously long, cryptic error messages that were difficult to debug.
+It resulted in verbose, hacky code and produced notoriously long, cryptic error messages that were difficult to debug.
 
 In Modern C++ (C++20 and beyond), we have moved away from these workarounds in favor of a formal, first-class solution: Concepts.
 
@@ -272,7 +274,7 @@ template<typename CollT, typename T>
 requires HasPushBack<CollT>
 
 // Version 2
-template<HasPushBack CollT, typename T>
+templateF<HasPushBack CollT, typename T>
 ```
 
 ### Concept Validation
@@ -295,7 +297,7 @@ Add(v, 10); // ERROR: can't call insert()
 ```
 
 In this scenario, the compiler checks `std::vector` against our `HasPushBack` concept.
-Because `std::vector` does not have a method named `pushback` (missing the underscore), the concept evaluates to false.
+Because `std::vector` does not have a method named `pushback`, the concept evaluates to false.
 
 Rather than giving us a compiler error about the typo, the compiler assumes the requirement was simply not met and moves on to the next available `Add` overload—the one that uses `.insert()`.
 This results in a confusing error message claiming that `std::vector` has no member named `insert`.
@@ -343,9 +345,9 @@ void Add(auto& coll, const auto& val) {
 }
 ```
 
-Sometimes, we may prefer using a `requires` clause with `decltype(collection)` for better control.
+Sometimes, we may prefer using a `requires` clause with `decltype` for better control.
 However, we must be careful.
-If our function takes a reference like in this case `auto&`, `decltype(collection)` will return a reference type such as `std::vector<int>&`.
+If our function takes a reference like in this case, `decltype` will return a reference type such as `std::vector<int>&`.
 
 Concepts often fail when we pass them a reference because a reference itself doesn't have member functions or nested types like `value_type`; only the underlying type does.
 To fix this, we must strip away the extras like references and const qualifiers.
@@ -385,7 +387,7 @@ We are not limited to validating a single type at a time.
 Often, the logic of our code depends on how two different types interact.
 In these cases, we can define concepts that accept multiple parameters.
 
-For example, it isn't enough to know that a collection has a `push_back()` method; we must also ensure that the specific value we are passing is compatible with that collection.
+For example, it isn't enough to know that a collection has a `.push_back()`; we must also ensure that the specific value we are passing is compatible with that collection.
 
 ```cpp linenums="0"
 template<typename CollT, typename T>
@@ -405,8 +407,8 @@ Add(numbers, 10);   // OK: Can push int into vector<int>
 Add(numbers, "Hi"); // ERROR: vector<int> cannot push_back a const char*
 ```
 
-We can also apply this to abbreviated function templates using `auto`.
-However, as we noticed in previous examples, this requires us to be very explicit with decltype and type-cleaning traits to ensure we are passing the correct types to the concept.
+We can also apply this to abbreviated function templates.
+However, as we noticed in previous examples, this requires us to be very explicit with `decltype` and type-cleaning traits to ensure we are passing the correct types to the concept.
 
 ```cpp linenums="0"
 void Add(auto& coll, const auto& val)
@@ -420,13 +422,13 @@ As we begin to use concepts more frequently, we must be careful not to fall into
 It is possible to create concepts that are too granular or specific, which can add unnecessary overhead to our mental model of the code.
 
 If a concept is only ever used for one specific function and one specific pair of types, we might ask ourselves if a standard function overload would be simpler and more readable.
-The true power of concepts lies in their ability to define generic requirements that apply to broad categories of types.
+The true power of concepts lies in their ability to define generic requirements that apply to broad range of types.
 
-### Requires and Compile Time If
+### Requires in Compile Time If
 
 Sometimes we don't need a full-blown named concept.
 We just want to check if a specific line of code would work before we try to compile it.
-This is where the requires expression and if constexpr work together to create branching logic at compile time.
+This is where the requires expression and `if constexpr` work together to create branching logic at compile time.
 
 In the example below, we create a function that adds an item to a collection.
 It doesn't care if the collection uses `.push_back()` or `.insert()`, it checks for the right method automatically.
@@ -449,10 +451,10 @@ Add(s, 20); // Compiler sees push_back fails, uses the second branch
 
 ### Constrain Ambiguities
 
-Concepts are powerful, but they can lead to ambiguity errors if two different functions match the same type equally well.
+Concepts can lead to ambiguity errors if two different functions match the same type equally well.
 
 In the example below, a `std::vector` supports both `.size()` and the index operator.
-Because it satisfies both requirements, the compiler doesn't know which version of foo to choose.
+Because it satisfies both requirements, the compiler doesn't know which version of `foo()` to choose.
 
 ```cpp linenums="0"
 template<typename CollT>
@@ -487,11 +489,11 @@ C++ uses a rule called subsumption: if one function's requirements include all t
 We can fix the ambiguity by combining the concepts in the requires clause.
 
 ```cpp linenums="0"
-// This version is now "more constrained" than Version A
+// This version is now more constrained than before
 template<typename CollT>
 requires HasSize<CollT> && HasIndexOp<CollT> 
 void foo(const CollT& coll) {
-    std::cout << "[] (More specific)\n";
+    std::cout << "[]\n";
 }
 
 foo(std::vector<int>{1, 2}); // OK: Picks the most constrained version.
@@ -500,11 +502,11 @@ foo(std::vector<int>{1, 2}); // OK: Picks the most constrained version.
 
 ### Constrains for Non Type Template Parameters
 
-Concepts are most commonly used to check types, but they can also be used to validate Non-Type Template Parameters like integers.
-This allows you to catch logic errors at compile time before the program even runs.
+Concepts are most commonly used to check properties, but they can also be used to validate non-type template parameters.
+This allows us to catch logic errors at compile time before the program even runs.
 
 Suppose we want a class or function that only accepts a prime number as a template argument.
-First, we define a constexpr function to do the math, then we wrap it in a concept.
+First, we define a compile time function to do the math, then we wrap it in a concept.
 
 ```cpp linenums="0"
 // A constexpr function that can be evaluated at compile-time
@@ -530,7 +532,7 @@ concept Prime = IsPrime(N);
 template<int N>
 requires Prime<N>
 void ProcessPrime() {
-    std::cout << N << " is a valid prime number!\n";
+    std::cout << "valid prime number\n";
 }
 
 ProcessPrime<7>();  // OK: 7 is prime
@@ -556,7 +558,7 @@ void Print(const T& value) {
 // Full Specialization for std::string
 template<>
 void Print<std::string>(const std::string& value) {
-    std::cout << "Specialized String: '" << value << "'\n";
+    std::cout << "Specialized: '" << value << "'\n";
 }
 
 Print(100);                        // Uses General
@@ -565,70 +567,85 @@ Print(std::string("Specialized")); // Uses Specialization
 
 !!! note
 
-    A `const char*` (string literal) is NOT a `std::string`.
+    A string literal (`const char*`) is NOT a `std::string`.
     Therefore it will use the General template unless we specialize for `const char*` too.
 
-## Class templates 
+## Class Templates 
 
-Class templates apply the same "blueprint" logic to entire classes.
-As mentioned earlier, the Standard Template Library (STL) is built on this; when you use `std::vector<int>`, you are using a class template.
+Class templates apply the blueprint logic to entire data structures.
+As we have seen, the Standard Template Library is built entirely on this foundation; when we use `std::vector<int>`, we aren't just using a class—we are using a specific instantiation of a class template.
 
-A class template allows you to define the member variables and methods of a class using placeholder types.
+A class template allows us to define member variables and methods using placeholder types, deferring the choice of the actual type until the object is declared.
 
 ```cpp title="main.cpp"
-#include <iostream>
-
-template<typename T, size_t K>
-class Array {
+template<typename T>
+class Stack {
 public:
-    // We can use K for loop boundaries and T for parameters
-    void Populate(T value) {
-        for (size_t i = 0; i < K; i++) {
-            m_array[i] = value;
-        }
-    }
+    void Push(const T& elem);
+    T Pop();
+    T Top() const;
 
-    void Print() const {
-        for (size_t i = 0; i < K; i++) {
-            std::cout << m_array[i] << " ";
-        }
-        std::cout << '\n';
-    }
-
-    void SetElement(size_t index, T value) {
-        if (index < K) {
-            m_array[index] = value;
-        }
+    bool Empty() const {
+        return elems.empty();
     }
 
 private:
-    T m_array[K]; // The underlying array uses our template parameters
+    std::vector<T> elems;
 };
+```
 
-int main()
-{
-    // We specify the type and the size in angle brackets
-    Array<int, 5> numbers;
-    numbers.Populate(1);
-    numbers.SetElement(2, 50);
-    numbers.Print();
+Because the compiler needs to see the template definition to generate the code for a specific type, the implementation must reside in the header file.
 
-    Array<std::string, 2> words;
-    words.SetElement(0, "Hello");
-    words.SetElement(1, "Templates");
-    words.Print();
+The most common and readable approach is to write the implementation directly inside the class definition.
+
+```cpp linenums="0"
+template<typename T>
+class Stack {
+public:
+    void Push(const T& elem) {
+        elems.push_back(elem);
+    }
+    // ... other methods ...
+};
+```
+
+Alternatively, if we prefer to keep our class interface clean, we can define methods outside the class body, provided they remain in the same header.
+
+```cpp linenums="0"
+template<typename T>
+void Stack<T>::Push(const T& elem) {
+    elems.push_back(elem);
 }
 ```
 
-``` title="output"
-1 1 50 1 1 
-Hello Templates 
+### Implicit Reuirements
+
+One of the more subtle, and occasionally dangerous, aspects of C++ templates is that requirements are often implicit.
+Unlike traditional inheritance where requirements are explicitly defined in a base class, template requirements emerge from how the type is actually used within the code.
+
+Consider what happens if we add a debugging method to our `Stack`.
+
+```cpp linenums="0"
+template<typename T>
+void Stack<T>::Print() const {
+    for (const T& elem : elems) {
+        // Implicit requirement: T must support operator<<
+        std::cout << elem << ' ';
+    }
+}
 ```
 
-### Class Template Argument Deduction
+By adding this method, we have introduced a new constraint: `T` must be printable.
+However, C++ employs a strategy called Lazy Instantiation.
+The compiler does not generate the executable code for a template member function unless that specific function is actually called in our program.
+
+This behavior allows for a high degree of flexibility in our designs.
+We can successfully instantiate a `Stack<MyType>`—even if `MyType` has no definition for `operator<<`—provided we never actually call the `Print()` method.
+
+### Argument Deduction
 
 Since templates were introduced, the compiler has become even smarter.
-In many cases, you no longer need to explicitly list the template types if the compiler can figure them out from the constructor arguments.
+In many cases, we no longer need to explicitly list the template types if the compiler can figure them out from the constructor arguments.
 This is called CTAD.
 
 ```cpp title="main.cpp"
@@ -643,17 +660,7 @@ struct Pair {
     Pair(T f, U s) : first(f), second(s) {}
 };
 
-int main() {
-    Pair p(10, 5.5); 
-
-    std::cout << "First type: " << typeid(p.first).name() << '\n';
-    std::cout << "Second type: " << typeid(p.second).name();
-}
-```
-
-``` title="output"
-First type: i
-Second type: d
+Pair p("string", 41.78);
 ```
 
 ## Variadic Templates
@@ -681,7 +688,7 @@ Print("Hello", 43.71, str);
 A variadic template typically works through a functional pattern of recursion.
 It peels off the first argument, processes it, and then passes the remaining pack back into itself.
 
-When you call Print("Hello", 43.71, str), the compiler instantiates a chain of functions that looks like this:
+When we call `Print("Hello", 43.71, str)`, the compiler instantiates a chain of functions that looks like this:
 
 ```cpp linenums="0"
 // 1. first_arg is "Hello", args is {43.71, str}
@@ -703,7 +710,7 @@ Print(std::string first_arg) {
 }
 
 // 4. Base case
-void Print() {}
+Print() {}
 ```
 
 We can query the number of elements inside a parameter pack using the `sizeof...` operator.
@@ -727,13 +734,98 @@ void Print(const T& first_arg, const Types&... args) {
 
     Variadic templates are a cornerstone of the Standard Template Library.
     While the syntax may seem specialized at first, these templates are incredibly versatile.
-    Even if you don't find yourself writing them daily, understanding how they work is essential for navigating modern C++ and understanding how many standard library features operate under the hood.
-
-## Alias Templates
+    Even if we don't find ourselfs writing them daily, understanding how they work is essential for navigating modern C++ and understanding how many standard library features operate under the hood.
 
 ## Variable Templates
 
+While function templates define blueprints for functions and class templates define blueprints of classes, Variable Templates allow us to define blueprints of variables.
+This is particularly useful for mathematical constants, configuration settings.
 
+The most immediate use case for variable templates is defining constants that maintain the precision of the type they are called with.
+
+```cpp linenums="0"
+template<typename T>
+constexpr T pi = T(3.14159265358979323L); 
+
+int main() {
+    // The compiler generates a double version of pi
+    std::cout << std::setprecision(20) << pi<double> << "\n"; 
+    
+    // The compiler generates a float version (less precise)
+    std::cout << pi<float> << "\n"; 
+}
+```
+
+Before C++14, we often used constexpr functions to get values.
+Variable templates provide a cleaner, data-centric syntax.
+
+```cpp linenums="0"
+constexpr auto GetValue() {
+    return 31;
+}
+
+// Variable template acting as a type-casted "bridge"
+template<typename T>
+constexpr T value = static_cast<T>(GetValue());
+```
+
+!!! note
+
+    We use variable templates when we are describing a property of a type (e.g., "The Pi value for a float") rather than a process (e.g., "Calculate the value of Pi").
+
+### Specialization and Compile-Time Recursion
+
+Just like class templates, variable templates can be specialized.
+This allows us to perform complex calculations like the Fibonacci sequence and similar entirely at compile time.
+
+```cpp linenums="0"
+template<int Value>
+constexpr auto fib = fib<Value - 1> + fib<Value - 2>;
+
+// Base cases using full specialization
+template<>
+constexpr auto fib<0> = 0;
+
+template<>
+constexpr auto fib<1> = 1;
+```
+
+When we access `fib<5>`, the compiler recursively instantiates the templates until it hits the specialized base cases (0 and 1), resulting in a single constant at runtime.
+
+### Simplifying Type Traits
+
+Variable templates revolutionized how we write type traits.
+Instead of the clunky C++11 syntax `std::is_same<T, U>::value`, we can create direct boolean variables.
+
+```cpp linenums="0"
+template<typename T, typename U>
+constexpr bool is_same = false;
+
+// Partial specialization: triggered only when types match
+template<typename T>
+constexpr bool is_same<T, T> = true;
+
+static_assert(is_same<int, int>);    // OK
+static_assert(!is_same<int, float>); // OK
+```
+
+### Templated Lambdas
+
+We can store a lambda expression inside a variable template.
+This creates a generic function object factory that is bound to a specific type.
+
+```cpp linenums="0"
+template<typename T>
+constexpr auto add = [](const T& lhs, const T& rhs) {
+    return lhs + rhs;
+};
+
+auto sum = add<int>(10, 20);
+```
+
+This is a powerful pattern for creating reusable logic that must remain strictly typed.
+
+## Alias Templates
 
 ## Type Traits
 
@@ -743,20 +835,10 @@ void Print(const T& first_arg, const Types&... args) {
 
 === "exercise 1"
 
-Create a template
+
 
 === "answer"
 
-    ```cpp title="main.cpp"
-    template<typename CollT>
-    void Print(const CollT& coll) {
-        for (const auto& val : coll) {
-            std::cout << val << ' ';
-        }
-        std::cout << '\n';
-    }
 
-    int 
-    ```
 
 ---
