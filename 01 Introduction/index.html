@@ -1,0 +1,2456 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://CL0001.github.io/learn-cplusplus/01%20Introduction/">
+      
+      
+        <link rel="prev" href="../00%20Table%20of%20Contents/">
+      
+      
+        <link rel="next" href="../02%20Operators/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>01 Introduction - Learn C++</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../style/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#01-introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Learn C++" class="md-header__button md-logo" aria-label="Learn C++" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learn C++
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              01 Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Learn C++" class="md-nav__button md-logo" aria-label="Learn C++" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Learn C++
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00%20Table%20of%20Contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Table of Contents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Introduction
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-setup-for-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Setup for Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-setup-for-macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Setup for macOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-setup-without-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Setup Without Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build Process
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entry-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entry Point
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocessor-directives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preprocessor Directives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compiler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assembler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assembler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#header-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Header Files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Header Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header-guard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Header Guard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#header-file-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Header File Search
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comment-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comment Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-types-and-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Types and Variables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Types and Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primitive-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primitive Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ascii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ASCII
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaring-and-naming-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declaring and Naming Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#console-input-and-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console Input and Output
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Console Input and Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-output-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional Output Streams
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-buffers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stream Buffers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newlines-and-flushing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Newlines and Flushing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02%20Operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03%20Control%20Flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 Control Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04%20Functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05%20Data%20Types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06%20Pointers%20and%20References/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 Pointers and References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07%20Collections%20of%20Data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 Collections of Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08%20User%20Defined%20Types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 User Defined Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09%20Error%20Handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 Error Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10%20Macros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 Macros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11%20Templates%20and%20Metaprogramming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 Templates and Metaprogramming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12%20Multithreading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 Multithreading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13%20Build%20Systems%20and%20CMake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 Build Systems with CMake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14%20Package%20Managers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 Package Managers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15%20Final%20Project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 Final Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-setup-for-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Setup for Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-setup-for-macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Setup for macOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-setup-without-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Setup Without Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build Process
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entry-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entry Point
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocessor-directives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preprocessor Directives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compiler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assembler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assembler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#header-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Header Files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Header Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header-guard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Header Guard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#header-file-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Header File Search
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comment-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comment Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-types-and-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Types and Variables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Types and Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primitive-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primitive Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ascii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ASCII
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaring-and-naming-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declaring and Naming Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#console-input-and-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console Input and Output
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Console Input and Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-output-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional Output Streams
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream-buffers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stream Buffers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newlines-and-flushing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Newlines and Flushing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="01-introduction">01 Introduction</h1>
+<p>We chose C++ as our language of choice for learning computer science because it’s an incredibly powerful and versatile tool.
+It offers low-level access to memory when we need fine-grained control, yet also provides high-level abstractions when we prefer to think in broader, conceptual terms.
+C++ is used to build everything from command-line utilities and desktop applications to high-performance systems such as 3D engines, game frameworks, and low-latency trading platforms.</p>
+<p>To spark your interest, C++ is the language behind major AAA titles like Counter-Strike, Fortnite, the Warcraft series and many more.
+Every industry-grade game engine—such as Unreal, Unity, or Godot—is built on it, and even modern operating systems, including parts of Windows, rely on C++ under the hood.</p>
+<p>Also, it’s important to note that even if you’re not aiming for game development or high-performance programming—the areas where C++ truly shines—learning C++ gives you a remarkably solid foundation in software engineering.
+Along the way, you’ll also get to peek into several programming paradigms and long-standing design ideas.
+Not all of these ideas are universally great or perfectly modern, but they provide valuable context for how today’s languages evolved.</p>
+<p>This kind of low-level understanding tends to carry over to almost every other language or technology stack you’ll encounter later on.</p>
+<p>Another big reason C++ remains so relevant is that, in addition to its performance, it offers excellent portability.
+It runs natively on everything—Windows, Linux, macOS, embedded devices, mobile platforms, game consoles—you name it.
+It supports both 32-bit and 64-bit architectures and compiles directly to machine code, which means it can be very fast when written well.</p>
+<p>But here’s the flip side: C++ gives you a lot of control—especially over memory—and that also means it’s easier to shoot yourself in the foot.
+Sloppy code can lead to memory leaks, crashes, or bugs that are notoriously tricky to track down.
+It’s a language that rewards careful thinking and clean design.</p>
+<p>But despite its challenges, C++ remains one of the most enduring languages in modern computing.
+Part of that longevity comes from its roots: C++ is built on top of C, one of the oldest and most influential programming languages still in use today.
+Much of C code even compiles directly as valid C++, but C++ takes things further.
+It introduces features that make your programs safer, more maintainable, and more modern—without losing the raw performance that made C so famous.</p>
+<p>In this book, we’ll work through modern C++ from the ground up.
+Along the way, we’ll occasionally dip into C concepts as well, especially when we want to get closer to the hardware or squeeze out every last bit of performance.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Before we jump into actual coding, we need to cover a few essentials in this introduction chapter.<br />
+We'll go through how to set up your development environment, introduce some basic terminology and conventions used throughout the book, and get familiar with how the C++ build process works.<br />
+Once those foundations are in place, we’ll be ready to start writing C++ code.</p>
+</div>
+<h2 id="environment-setup">Environment Setup</h2>
+<p>To write and run C++ code on your computer, you need two essential components:</p>
+<ul>
+<li>
+<p>Compiler: A program that translates your human-readable C++ source code—essentially plain text—into machine-readable binary.
+It acts as a bridge between your code and the hardware, allowing the CPU to execute your instructions.</p>
+</li>
+<li>
+<p>Code Editor or IDE (Integrated Development Environment): A tool that helps you write, edit, and manage your code.
+Most IDEs also provide features like syntax highlighting, auto-completion and debugging tools.</p>
+</li>
+</ul>
+<h3 id="recommended-setup-for-windows">Recommended Setup for Windows</h3>
+<p>The easiest way to get started with C++ on Windows is to use Microsoft Visual Studio Community Edition.
+It’s a fully featured IDE that comes preconfigured for C/C++ development and includes the MSVC compiler, so there’s no need to install everything separately.
+Everything you need comes in a single package.</p>
+<p><strong>Installation Steps</strong></p>
+<ol>
+<li>Download Visual Studio Community Edition from the Microsoft official website
+   <a href="https://visualstudio.microsoft.com/vs/community/" target="_blank" rel="noopener noreferrer">https://visualstudio.microsoft.com/vs/community/</a> or directly from the Microsoft Store.</li>
+<li>During installation, select “Desktop development with C++” to include the required compiler and tools.</li>
+<li>After installation, launch Visual Studio</li>
+<li>Click “Create a new project”</li>
+<li>In the project language filter, choose C++</li>
+<li>Select “Console App”</li>
+<li>Enter your desired project name</li>
+<li>Choose a location for the project (default is usually C:\Users\Username\source\repos)</li>
+<li>Click Create</li>
+</ol>
+<p>To test your setup, run the "Console App" sample program by clicking the green arrow button at the top center of the screen.</p>
+<p>If a command line window appears showing “Hello World!”, your installation is complete and working correctly.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To add a new file in Visual Studio, right-click on <strong>Source Files</strong> or <strong>Header Files</strong> in the <strong>Solution Explorer</strong>, depending on the type of file you need.
+Then choose <strong>Add → New Item</strong> and give it a name, such as <code>example.cpp</code>.</p>
+<p>Keep in mind that <strong>Source Files</strong> and <strong>Header Files</strong> are just filters in the <strong>Solution Explorer</strong>—they don’t represent the actual folder structure on your system.
+All files you add will be placed in the same physical project directory on disk.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For a more advanced C++ development experience in Visual Studio, consider using Visual Assist. It enhances code navigation, refactoring, and auto-completion.</p>
+<p>It’s not free (offers a 1-month trial or is free with a student ID), but it’s highly recommended for serious C++ work.<br />
+More info here: <a href="https://www.wholetomato.com/" target="_blank" rel="noopener noreferrer">https://www.wholetomato.com/</a></p>
+</div>
+<h3 id="recommended-setup-for-macos">Recommended Setup for macOS</h3>
+<p>The easiest way to get started with C++ on macOS is by using Xcode, Apple’s official IDE.
+It includes the Clang compiler and provides everything you need to build and run C++, all in one package.</p>
+<p><strong>Installation Steps</strong></p>
+<ol>
+<li>Open the Mac App Store and download Xcode.</li>
+<li>Once installed, launch Xcode.</li>
+<li>Click “Create a new Xcode project”</li>
+<li>Under macOS, select “Command Line Tool” and click Next</li>
+<li>Enter a product name (e.g., HelloCpp)</li>
+<li>Set Language to C++</li>
+<li>Click Next</li>
+<li>Choose a location to save your project and click Create</li>
+</ol>
+<p>To test the installation, run the sample code included in the project by clicking the Run button at the top-left corner of the Xcode window.</p>
+<p>Once you see “Hello, World!” output in the console, your setup is complete.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If the console is not visible, go to View → Debug Area → Activate Console.</p>
+</div>
+<h3 id="recommended-setup-without-installation">Recommended Setup Without Installation</h3>
+<p>If your computer struggles to run large IDEs—or if you simply want to start coding immediately without installing anything—you can use an online C++ compiler.
+This is a fast and convenient way to write, compile and run C++ code directly from your browser.</p>
+<p>The best online environment is Compiler Explorer, created by Matt Godbolt.
+It’s free, powerful and widely used by professional developers for testing and learning C++ features.</p>
+<p><strong>How to Use</strong></p>
+<ol>
+<li>Go to <a href="https://godbolt.org/" target="_blank" rel="noopener noreferrer">https://godbolt.org/</a>.</li>
+<li>Select a compiler from the drop-down menu on the top-left</li>
+<li>Type your C++ code in the editor pane on the left.</li>
+<li>Click Run or press Ctrl + Enter to compile and execute your code.</li>
+<li>The output will appear in the console area at the bottom-right of the screen.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Compiler Explorer is ideal for quickly testing code snippets, comparing compiler behavior or experimenting with new C++ features without changing your local setup.
+However, it’s not designed for large projects—once you start building multi-file programs, you’ll want to switch to a local IDE.</p>
+</div>
+<h2 id="build-process">Build Process</h2>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Don’t worry if some words sound unfamiliar—we’ll explain everything clearly as we go.</p>
+</div>
+<p>Now that the setup is behind us let’s take a look at how C++ programs actually come together.</p>
+<p>To tell a computer what we want it to do, we write code using a programming language—in our case, we've chosen C++.
+This code is written in plain text files, but instead of using the standard <code>.txt</code> extension, they use different extensions to reflect their purpose and indicate which programming language they're written in.</p>
+<p>Files referred to as source files—usually with a <code>.cpp</code> extension (though you might also see <code>.cc</code> or <code>.cxx</code>)—contain the actual logic and instructions that make your program run.</p>
+<p>Files referred to as header files—commonly ending in <code>.h</code>, <code>.hh</code>, or <code>.hpp</code>—are used to declare things like functions, classes, and variables so they can be shared across multiple source files.</p>
+<p>These file extensions are common, but they’re just conventions—they don’t affect how the compiler interprets your code.
+Naming patterns help humans organize files, but technically, you could name them almost anything.
+This separation of code into source and header files is foundational to how C++ projects are structured.</p>
+<p>Once we’ve written code describing what we want the computer to do, the next step is to turn it into a binary file—a format the machine can execute directly.</p>
+<p>This binary is usually either an executable such as a <code>.exe</code> file or a library, which contains pre-written, pre-compiled code that can be linked into an executable, like <code>.lib</code> or <code>.dll</code> files.
+We'll dive deeper into libraries and the process of linking against them in later chapters.</p>
+<p>The next important piece to understand is the compilation process itself—how your source code becomes a working program.<br />
+This process is influenced by two key settings: project configuration and target platform.</p>
+<p>This determines how the compiled binary behaves. The two most common project configurations are:</p>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>Description</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Debug</td>
+<td>Includes extra information like error messages and debug symbols</td>
+<td>Ideal during development</td>
+</tr>
+<tr>
+<td>Release</td>
+<td>Optimized for performance; debugging info is removed</td>
+<td>For final builds</td>
+</tr>
+</tbody>
+</table>
+<p>Target platform refers to the system architecture your program is intended to run on, such as x86 (32-bit) or x64 (64-bit).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Programs must be compiled separately for each target platform.
+A binary built for Windows won’t run on macOS or Linux and vice versa.</p>
+<p>Architecture also matters: a 32-bit program can usually run on a 64-bit system, but a 64-bit program will not run on a 32-bit system.</p>
+</div>
+<h3 id="entry-point">Entry Point</h3>
+<p>Every program needs an entry point—the place where program execution begins and in C++, that entry point is always the <code>main</code> function.</p>
+<p>There must be exactly one entry point; if it’s missing or if there’s more than one, the compiler won’t know where to start running your code, resulting in a compilation error.</p>
+<p>We’ve already seen an entry point during setup, where a sample file was created for us by the IDE.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.cpp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="hll"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span></span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello World!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">output</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>Hello World!
+</span></code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>main.cpp</code> is a common filename for the source file containing your program’s entry point, but it’s not required.
+You can name the file anything you want—what matters is the main function itself.</p>
+</div>
+<p>In the example, the entry point is as expected—the function called main highlighted on line 3. 
+This is where the program starts executing after it is launched.</p>
+<p>Everything inside the curly braces is called the function body, which contains the instructions that execute when the function is called—in this case, when the program begins.</p>
+<p>One other thing to note about the main function is that, even though it declares a return type of integer, you might not always see a return statement.
+Don’t worry—we’ll cover return statements in more detail in a later chapter focused solely on functions.</p>
+<p>For now, it’s enough to know that what’s happening here is that modern compilers automatically insert a <code>return 0;</code> at the end of main function body if you don’t include it yourself.
+This behavior is specific to main and does not apply to other functions.</p>
+<h3 id="preprocessor-directives">Preprocessor Directives</h3>
+<p>In C++, any line that begins with a sharp symbol is called a preprocessor directive.
+These are instructions handled before actual compilation begins—hence the name preprocessor.
+They aren’t part of the C++ language itself but are understood by a separate tool called the preprocessor, which runs just before the compiler in the build process.</p>
+<p>We’ve already seen one of these in the sample program we ran earlier.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.cpp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="hll"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span></span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello World!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">output</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>Hello World!
+</span></code></pre></div></td></tr></table></div>
+<p>The highlighted line tells the preprocessor to find the file named <code>iostream</code> and copy-paste its entire contents into this file at that exact location.
+This makes all the functionality defined in <code>&lt;iostream&gt;</code> — such as input/output using <code>std::cout</code> (console output), <code>std::cin</code> (console input) — available in our program.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is only a brief introduction to what the preprocessor really is.<br />
+The <code>#include</code> directive is just one of many, and preprocessors themselves are part of a much broader topic involving macros and metaprogramming—concepts we’ll gradually work our way toward much later in the book.</p>
+</div>
+<h3 id="compiler">Compiler</h3>
+<p>The C++ compiler transforms your human-readable code into a format that computers can understand—but it does so in several stages.</p>
+<p>First, it creates intermediate files—typically with a <code>.obj</code> extension on Windows or <code>.o</code> on macOS/Linux.
+These files are usually found inside your project directory, often in folders like <code>x64/Debug</code> or <code>build/</code>.</p>
+<p>During compilation, the compiler first processes all preprocessor directives, then tokenizes and parses your code.
+Parsing builds an internal representation called an Abstract Syntax Tree (AST), which describes the structure and meaning of your program.</p>
+<p>Once the AST is ready, the compiler generates machine code, producing a binary object file based on your original source code.</p>
+<p>Here’s a sample of what a raw <code>.obj</code> file might look like.</p>
+<div class="language-text highlight"><span class="filename">main.obj</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>00000000 64 86 6B D0 D7 95 06 69 BC 02 01 00 3E 02 00 00 d.k....i....&gt;...
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>00000010 00 00 00 00 2E 64 72 65 63 74 76 65 00 00 00 00 ....drectve...
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>00000020 00 00 00 00 CA 01 00 00 CC 10 00 00 00 00 00 00 ................
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>00000030 00 00 00 00 00 00 00 00 00 0A 10 00 2E 64 65 62 ........ .deb
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>00000040 75 67 24 53 00 00 00 00 00 00 00 CC AC 00 00 00 ug$S............
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>00000050 96 12 00 00 62 BF 00 00 00 00 00 00 EE 00 00 00 ....b...........
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>00000060 40 00 10 42 2E 62 73 73 00 00 00 00 00 00 00 00 @..B..bss.......
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>00000070 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ................
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>00000080 00 00 00 00 00 00 00 00 80 10 30 C0 2E 6D 73 76 ........ .msv
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>00000090 63 6A 6D 63 00 00 00 00 00 00 00 00 00 00 00 00 cjmc............
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>... (truncated for brevity)
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">main.asm</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>.LC0:
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>        .string &quot;Hello World!\n&quot;
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>main:
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>        push    rbp
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>        mov     rbp, rsp
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        mov     esi, OFFSET FLAT:.LC0
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>        mov     edi, OFFSET FLAT:std::cout
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        call    std::basic_ostream&lt;char, std::char_traits&lt;char&gt;&gt;&amp; std::operator&lt;&lt;&lt;std::char_traits&lt;char&gt;&gt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt;&gt;&amp;, char const*)
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        mov     eax, 0
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        pop     rbp
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        ret
+</span></code></pre></div>
+<p>You don’t need to understand these low-level details right now—they’re just examples of how code is represented internally at different stages of compilation.
+Keep in mind that these snippets don’t directly correspond to one another—they’re simplified excerpts from larger generated files.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can easily explore how your C++ code is compiled into assembly using Compiler Explorer:
+<a href="https://godbolt.org/" target="_blank" rel="noopener noreferrer">https://godbolt.org/</a></p>
+</div>
+<p>Each preprocessed source file in your project becomes what’s known as a translation unit.
+The compiler processes each translation unit independently, generating one object file for each.</p>
+<p>If your program contains multiple source files, the compiler will produce multiple object files—one per translation unit.
+These object files are then passed to the linker, which combines them into the final executable or library.
+If your program consists of only a single source file, you’ll end up with just one object file.</p>
+<h3 id="assembler">Assembler</h3>
+<p>Once the compiler generates low-level instructions from your translation units, these instructions are still not in a format the CPU can execute directly—they’re stored as human-readable assembly code inside object files.</p>
+<p>This is where the assembler comes in.
+The assembler converts those assembly instructions into pure machine code—binary instructions made up of 0s and 1s that the CPU can understand and execute directly.</p>
+<p>In practice, this step is handled automatically by the compiler toolchain, so you rarely interact with the assembler directly.
+However, it’s useful to know that this step exists because it explains why compiled languages like C++ are so fast: once assembled, the resulting machine code runs natively on the hardware without any intermediary layer like.</p>
+<h3 id="linker">Linker</h3>
+<p>After the compiler processes each translation unit into object files, the linker’s job is to bring everything together into a final executable.
+Without linking, each translation unit only knows about its own contents, so the program can’t run as a whole.</p>
+<p>The linker connects all the pieces by resolving function calls, variables and other symbols across translation units.
+Even if your program consists of just a single translation unit, the linker still plays an important role—it locates the program’s entry point so execution knows where to begin.</p>
+<p>Below is an example illustrating a common linker error.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.cpp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span>
+<span class="normal"><a href="#__codelineno-6-7">7</a></span>
+<span class="normal"><a href="#__codelineno-6-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">Multiply</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"> </span><span class="c1">// Function declaration</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="c1">// Missing function definition </span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">Multiply</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">output</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>Linker Error: unresolved external symbol
+</span></code></pre></div></td></tr></table></div>
+<p>Linker errors appear only after the program has been compiled and the linker tries to combine all object files into one executable.
+Although each individual source file may compile successfully on its own, the linker might still fail if it can’t find a function or variable definition that was declared elsewhere.</p>
+<p>In this example, the problem occurs because the function <code>Multiply</code> is declared but never defined.
+The linker tries to connect the <code>Multiply</code> call to actual machine code, but it can’t find it—so the build fails.</p>
+<p>You can fix the error by simply providing the function definition.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span>
+<span class="normal"><a href="#__codelineno-8-6">6</a></span>
+<span class="normal"><a href="#__codelineno-8-7">7</a></span>
+<span class="normal"><a href="#__codelineno-8-8">8</a></span>
+<span class="normal"><a href="#__codelineno-8-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">Multiply</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="p">}</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Multiplication: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">Multiply</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">output</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>Multiplication: 21
+</span></code></pre></div></td></tr></table></div>
+<p>This might seem like a simple mistake, but in large projects with dozens of translation units and external libraries, linker errors like this can be surprisingly tricky to diagnose and fix.</p>
+<h2 id="header-files">Header Files</h2>
+<p>We mentioned earlier that in C++, there are two main types of files: source files and header files.</p>
+<p>Source files (like the ones we’ve been working with so far) contain the actual implementation and logic of your program.
+Each source file gets compiled into an object file, forming what’s known as a translation unit.</p>
+<p>The second type is the header file.
+You’ve already seen one in the sample your IDE generated.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.cpp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="hll"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1"> // iostream is the name of a header file</span>
+</span></span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">output</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>Hello World!
+</span></code></pre></div></td></tr></table></div>
+<p>Header files are used primarily for declarations—not definitions.
+They describe what exists (functions, classes, constants, etc.), but not how they work.
+By including a header, you tell the compiler: “Hey, these functions and objects exist somewhere—trust me, you’ll find their definitions later during linking.”</p>
+<p>Without these headers, the compiler would be completely unaware of things like std::cout, and you’d get a long list of errors, as shown below.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">example</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span>
+<span class="normal"><a href="#__codelineno-12-5">5</a></span>
+<span class="normal"><a href="#__codelineno-12-6">6</a></span>
+<span class="normal"><a href="#__codelineno-12-7">7</a></span>
+<span class="normal"><a href="#__codelineno-12-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>&lt;source&gt;: In function &#39;int main()&#39;:
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>&lt;source&gt;:2:14: error: &#39;cout&#39; is not a member of &#39;std&#39;
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a>    2 |         std::cout &lt;&lt; &quot;Hello World!\n&quot;;
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a>      |              ^~~~
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a>&lt;source&gt;:1:1: note: &#39;std::cout&#39; is defined in header &#39;&lt;iostream&gt;&#39;; this is probably fixable by adding &#39;#include &lt;iostream&gt;&#39;
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a>  +++ |+#include &lt;iostream&gt;
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a>    1 | int main() {
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a>Compiler returned: 1
+</span></code></pre></div></td></tr></table></div>
+<p>Let’s look at a simple example using our own header file.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">log.h</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="cp">#pragma once</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Log</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">log.cpp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Log</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.cpp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span>
+<span class="normal"><a href="#__codelineno-15-5">5</a></span>
+<span class="normal"><a href="#__codelineno-15-6">6</a></span>
+<span class="normal"><a href="#__codelineno-15-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;log.h&quot;</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="w">    </span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Using Logging Function!&quot;</span><span class="p">);</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">output</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>Using Logging Function!
+</span></code></pre></div></td></tr></table></div>
+<p>Here, <code>main.cpp</code> includes <code>log.h</code>, which declares the <code>Log</code> function, while the actual implementation lives in <code>log.cpp</code>.
+As we’ve learned, <code>#include</code> is a preprocessor directive that tells the compiler to copy the contents of the specified file into the current translation unit.</p>
+<p>When compiled, both files become separate translation units.
+The linker then connects them by matching the function call in <code>main.cpp</code> with the definition in <code>log.cpp</code>.</p>
+<p>That’s why <code>main.cpp</code> knows about the <code>Log</code> function—even though it’s implemented elsewhere.
+Without the header file, the compiler would have no idea what <code>Log</code> is and would throw an error during compilation, never making it to the linking stage.</p>
+<h3 id="header-guard">Header Guard</h3>
+<p>You may have noticed a new directive at the top of <code>log.h</code>.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="cp">#pragma once</span>
+</span></code></pre></div></td></tr></table></div>
+<p>This is called a header guard.
+It ensures that the contents of the file are included only once per translation unit—even if the file gets included multiple times through different paths.
+Without a header guard, the same declarations (such as functions or variables) could be included more than once, leading to redefinition errors during compilation.</p>
+<p>Header guards are especially important in larger projects, where headers may be chained together or included indirectly through other headers.</p>
+<p>The traditional (and more portable) approach uses the <code>#ifndef</code> directive.
+While a bit more verbose than <code>#pragma once</code>, it’s more widely supported and commonly used.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">log.h</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span>
+<span class="normal"><a href="#__codelineno-18-5">5</a></span>
+<span class="normal"><a href="#__codelineno-18-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="cp">#ifndef LOG_H_</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="cp">#define LOG_H_</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Log</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="cp">#endif</span>
+</span></code></pre></div></td></tr></table></div>
+<p>This pattern works by checking whether <code>LOG_H_</code> has already been defined.
+If not, it defines it and includes the content inside.
+If the file has already been included elsewhere, the compiler skips its contents—avoiding duplicate declarations.</p>
+<h3 id="header-file-search">Header File Search</h3>
+<p>In <code>main.cpp</code>, we used two different notations when including header files.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;log.h&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The difference between them lies in where the compiler looks for the header file.</p>
+<table>
+<thead>
+<tr>
+<th>Syntax</th>
+<th>Search Path</th>
+<th>Typical Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;...&gt;</code></td>
+<td>Searches system and standard library include paths.</td>
+<td>For standard headers like <code>&lt;iostream&gt;</code>.</td>
+</tr>
+<tr>
+<td><code>"..."</code></td>
+<td>Searches relative to the including file, usually starting with the current working directory.</td>
+<td>For project-specific headers like <code>log.h</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="comments">Comments</h2>
+<p>Comments are lines in your code that are completely ignored by the compiler.
+This means they have no effect on what the program does—they exist solely for humans to read.</p>
+<p>Comments are essential because, as programs grow larger and more complex, it becomes necessary to document your code.
+This helps others—or even your future self—understand what the code is doing and why certain decisions were made.</p>
+<p>However, keep in mind that good code should be self-documenting.
+Avoid writing comments that merely restate what the code already makes obvious, as comments should explain why the code does something, not what it does.</p>
+<p>Use comments to:</p>
+<ul>
+<li>Document non-obvious behavior or complex algorithms.</li>
+<li>Leave notes for future improvements or reminders.</li>
+<li>Temporarily disable code for debugging or testing purposes.</li>
+</ul>
+<h3 id="comment-types">Comment Types</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single-line comment</td>
+<td><code>//</code></td>
+<td>Anything after <code>//</code> on the same line is treated as a comment.</td>
+</tr>
+<tr>
+<td>Multi-line comment</td>
+<td><code>/* ... */</code></td>
+<td>Used for longer explanations that span multiple lines.</td>
+</tr>
+</tbody>
+</table>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.cpp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-20-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-20-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-20-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-20-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-20-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-20-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-20-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-20-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-20-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1"> // This is a single-line comment</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="cm">/* </span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="cm">    This is a multi-line comment.</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="cm">    It can span multiple lines without needing // on each line. </span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="cm">*/</span><span class="w"> </span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7"></a>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello World!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">output</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>&quot;Hello World!&quot;
+</span></code></pre></div></td></tr></table></div>
+<h2 id="data-types-and-variables">Data Types and Variables</h2>
+<p>In programming, data types and variables are fundamental concepts.
+Programming is ultimately about working with data—and to work with it effectively, two things must happen.</p>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Storage</td>
+<td>Data must be placed somewhere in the computer’s memory.</td>
+</tr>
+<tr>
+<td>Typing</td>
+<td>The program must understand what kind of data it’s dealing with (e.g., a number, a character, or a boolean).</td>
+</tr>
+</tbody>
+</table>
+<p>To represent different kinds of data, we use data types.
+To actually hold that data in memory, we use variables.</p>
+<p>Even though all data in memory is ultimately stored as binary, data types give those raw bits meaning.
+The main differences between data types come down to how much memory they use and how those bits are interpreted.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Data types are important enough to deserve their own full chapter—but for now, this brief introduction will do just fine.</p>
+</div>
+<h3 id="primitive-data-types">Primitive Data Types</h3>
+<p>The most basic data types in C++ are called primitive types. They form the foundation for all more complex types you’ll encounter later.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Size (bytes)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code></td>
+<td>Integer</td>
+<td>Stores whole numbers</td>
+<td>Typically 4</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>Floating-point number</td>
+<td>Stores numbers with decimals. Precision is limited.</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>Double-precision float</td>
+<td>Similar to <code>float</code>, but with more precision.</td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td>Character</td>
+<td>Stores a single ASCII character (e.g., 'A', 'b', '#').</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td>Boolean</td>
+<td>Stores only <code>true</code> (1) or <code>false</code> (0).</td>
+<td>1 (implementation-defined)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In programming, instead of using spaces to separate large numbers for readability (which would cause a syntax error), you can group digits using single quotes.
+For example, instead of writing 1976834, you can write 1'976'834—this makes the number easier to read, especially when dealing with thousands or millions.</p>
+</div>
+<h3 id="ascii">ASCII</h3>
+<p>When we talk about text or characters in code, what we’re really dealing with under the hood are just numbers.</p>
+<p>Each character—whether a letter, digit, or symbol—is stored as an integer value defined by the ASCII (American Standard Code for Information Interchange) standard.
+ASCII assigns a unique numeric code to each printable and control character.</p>
+<table>
+<thead>
+<tr>
+<th>ASCII Code</th>
+<th>Character</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>65</td>
+<td>A</td>
+</tr>
+<tr>
+<td>66</td>
+<td>B</td>
+</tr>
+<tr>
+<td>97</td>
+<td>a</td>
+</tr>
+<tr>
+<td>48</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>That means characters can participate in arithmetic operations just like integers.</p>
+<p>So, whenever you see a character literal, remember: it’s really just an integer with a special meaning attached.</p>
+<p>You can explore the full ASCII table here: <a href="https://www.asciitable.com/" target="_blank" rel="noopener noreferrer">https://www.ascii-code.com/</a></p>
+<h3 id="declaring-and-naming-variables">Declaring and Naming Variables</h3>
+<p>A variable is a named storage location for data in memory.
+When we create a variable, we assign it a data type and name so that we can refer to it later in our program.</p>
+<p>Rules for Naming Variables:</p>
+<ul>
+<li>Must start with a letter or underscore, but cannot start with a number.</li>
+<li>Can contain letters, numbers, and underscores, but no spaces.</li>
+<li>Cannot use C++ reserved keywords (e.g., <code>int</code>, <code>float</code>, <code>return</code>).</li>
+<li>Should be descriptive (e.g., <code>user_age</code> instead of <code>x</code>).</li>
+</ul>
+<p>We assign values to variables using the <code>=</code> symbol, called the assignment operator.
+There are a few important rules to keep in mind when assigning values:</p>
+<ul>
+<li>Floating-point numbers: Use a dot instead of a comma, e.g., <code>3.14</code>, <code>-2.71</code>.</li>
+<li>Characters: Must be enclosed in single quotes, e.g., <code>'A'</code>, <code>'b'</code>, <code>'#'</code>.</li>
+<li>Escape sequences such as <code>\t</code> (tab) and <code>\n</code> (new line) are special characters that affect text formatting.</li>
+</ul>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.cpp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-22-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-22-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-22-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-22-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-22-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-22-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-22-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-22-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-22-10">10</a></span>
+<span class="normal"><a href="#__codelineno-22-11">11</a></span>
+<span class="normal"><a href="#__codelineno-22-12">12</a></span>
+<span class="normal"><a href="#__codelineno-22-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">user_age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span><span class="w">    </span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">user_grade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">;</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">underaged</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8"></a>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;User age: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">user_age</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;PI: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;User grade: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">user_grade</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Underaged? &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">underaged</span><span class="p">;</span>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">output</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">3</a></span>
+<span class="normal"><a href="#__codelineno-23-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a>User age: 25
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a>PI: 3.14
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a>User grade: 25
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4"></a>Underaged? 0
+</span></code></pre></div></td></tr></table></div>
+<p>In C++, each declaration or statement must end with a semicolon <code>;</code>.
+This symbol tells the compiler that the statement is complete.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>You might come across codebases or developers who declare multiple variables of the same type on a single line, as shown in the snippet below.  </p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">number_one</span><span class="p">,</span><span class="w"> </span><span class="n">number_two</span><span class="p">;</span>
+</span></code></pre></div>
+<p>While this is allowed and will work, it’s considered a bad habit because it reduces readability and can lead to subtle bugs.</p>
+</div>
+<p>Additionally, in the example above, you might have noticed a specific way of naming variables. This naming style is called snake_case,
+where all characters are lowercase and words are separated by underscores (e.g., user_age, player_score). This style improves readability, especially in longer variable names, and is commonly used in many C++ codebases.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Throughout this book, we will follow the Google C++ Style Guide, which recommends using snake_case for variable names and PascalCase for function and class names.</p>
+<p>You can learn more about these conventions and other best practices here: 
+<a href="https://google.github.io/styleguide/cppguide.html" target="_blank" rel="noopener noreferrer">https://google.github.io/styleguide/cppguide.html</a></p>
+</div>
+<h3 id="constants">Constants</h3>
+<p>Sometimes, we want our stored data to be read-only.
+To achieve this, we use the <code>const</code> keyword in front of a variable declaration, which ensures the variable remains unchangeable after initialization.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.cpp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span>
+<span class="normal"><a href="#__codelineno-25-3">3</a></span>
+<span class="normal"><a href="#__codelineno-25-4">4</a></span>
+<span class="normal"><a href="#__codelineno-25-5">5</a></span>
+<span class="normal"><a href="#__codelineno-25-6">6</a></span>
+<span class="normal"><a href="#__codelineno-25-7">7</a></span>
+<span class="normal"><a href="#__codelineno-25-8">8</a></span>
+<span class="normal"><a href="#__codelineno-25-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">54</span><span class="p">;</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5"></a>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6"></a><span class="w">    </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">34</span><span class="p">;</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7"></a>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">number</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">output</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>error: assignment of read-only variable ‘number’
+</span></code></pre></div></td></tr></table></div>
+<p>As shown in the example above, a constant variable cannot be reassigned a value—it results in an error.</p>
+<h2 id="console-input-and-output">Console Input and Output</h2>
+<p>So far, we've focused on how programs come together and store data internally.
+Equally important, however, is understanding how data enters and exits a program.
+While programs can receive input and produce output through many sources—such as files, databases, or different APIs—the most fundamental method is through console input and output.</p>
+<p>In C++, this is handled by the standard library header <code>&lt;iostream&gt;</code>, which provides tools for displaying messages to the user and reading input from the console.</p>
+<p>The following example demonstrates how to use <code>std::cout</code> to prompt the user and <code>std::cin</code> to read their response.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.cpp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-27-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-27-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-27-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-27-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-27-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-27-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-27-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-27-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-27-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2"></a>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">user_age</span><span class="p">;</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5"></a>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter your age: &quot;</span><span class="p">;</span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">user_age</span><span class="p">;</span>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8"></a>
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Entered age was - &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">user_age</span><span class="p">;</span>
+</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">output</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a>Depends on the input you provided
+</span></code></pre></div></td></tr></table></div>
+<p>It can be tricky at first to remember which symbols to use for input and output streams.
+A helpful way to visualize them is to think of them as arrows showing the direction of data flow.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Statement</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td><code>std::cin &gt;&gt; variable;</code></td>
+<td>Data flows from the console into the variable.</td>
+</tr>
+<tr>
+<td>output</td>
+<td><code>std::cout &lt;&lt; message;</code></td>
+<td>Data flows from the program out to the console.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="additional-output-streams">Additional Output Streams</h3>
+<p>Up to this point, we’ve only used <code>std::cout</code> to send output to the console.
+In practice, however, C++ provides three standard output streams, each intended for a slightly different purpose.</p>
+<p>Alongside <code>std::cout</code>, we are also provided with <code>std::cerr</code> and <code>std::clog</code>.</p>
+<p>All three can print text to the console using the same syntax, but <code>std::cerr</code> and <code>std::clog</code> are primarily intended for diagnostic output—such as error messages, warnings, or debugging information.
+As you’ll see in the next subsection, the key difference between them lies in how their output is handled internally.</p>
+<p>This distinction may not matter much in very small programs, but it becomes important as programs grow larger.</p>
+<h3 id="stream-buffers">Stream Buffers</h3>
+<p>When we output something to the screen, it may feel like the text appears instantly.
+Behind the scenes, however, the process is a little more involved.</p>
+<p>Every time a program writes output, it must make a system call—a request to the operating system—to display text on the console.
+System calls are relatively slow, and performing one for every small piece of output would be inefficient.</p>
+<p>To avoid this, C++ uses stream buffers.</p>
+<p>A stream buffer is a temporary area in memory that collects output data before it is actually written to the console or a file.
+Instead of sending each character immediately, the program stores output in the buffer and writes it out in larger chunks.</p>
+<p>The contents of a buffer are written out (this is called flushing) when one of the following occurs:</p>
+<ul>
+<li>The buffer becomes full</li>
+<li>An explicit flush is requested, such as by using <code>std::flush</code> or <code>std::endl</code></li>
+<li>The program finishes execution normally</li>
+</ul>
+<p>This buffering behavior is why different output streams exist.
+For example, <code>std::cerr</code> is typically unbuffered, ensuring that error messages appear immediately, while <code>std::clog</code> is buffered, making it more suitable for logging.</p>
+<p>One subtle point to note is that <code>std::cout</code> is tied to <code>std::cin</code> by default.
+This means that whenever your program reads input from <code>std::cin</code>, <code>std::cout</code> is automatically flushed first.
+This ensures that prompts or messages appear before the program waits for input.
+<code>std::clog</code>, on the other hand, is not tied to <code>std::cin</code>, so it does not flush automatically when reading input.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>One small caveat is worth keeping in mind when mixing output streams.
+Since <code>std::cerr</code> is typically unbuffered, its output is written immediately, while output sent to buffered streams like <code>std::cout</code> or <code>std::clog</code> may be delayed.</p>
+<p>As a result, error messages written to <code>std::cerr</code> can sometimes appear before earlier output, even though the program executed the statements in the expected order.</p>
+<p>When the exact order of diagnostic messages matters—such as when logging program behavior—it can be preferable to use std::clog, which is buffered and preserves a more predictable output sequence.</p>
+</div>
+<h3 id="newlines-and-flushing">Newlines and Flushing</h3>
+<p>In many classic C++ examples, you might see the following line.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.cpp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
+<span class="normal"><a href="#__codelineno-29-2">2</a></span>
+<span class="normal"><a href="#__codelineno-29-3">3</a></span>
+<span class="normal"><a href="#__codelineno-29-4">4</a></span>
+<span class="normal"><a href="#__codelineno-29-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4"></a><span class="hll"><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>This works fine, but it can be misleading.
+Unlike the newline character <code>\n</code>, <code>std::endl</code> not only moves the output to a new line—it also forces the output buffer to flush immediately.
+Internally, <code>std::endl</code> expands to the following.</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.cpp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
+<span class="normal"><a href="#__codelineno-30-2">2</a></span>
+<span class="normal"><a href="#__codelineno-30-3">3</a></span>
+<span class="normal"><a href="#__codelineno-30-4">4</a></span>
+<span class="normal"><a href="#__codelineno-30-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2"></a>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4"></a><span class="hll"><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">flush</span><span class="p">;</span>
+</span></span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>For small programs, this difference doesn’t matter.
+But in larger programs or when printing lots of text quickly, forcing a flush on every line can become a performance bottleneck.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In modern C++, we should avoid using <code>std::endl</code> altogether because it forces a flush every time, slowing down our program.
+If we want a newline, we should use the newline character <code>\n</code>.</p>
+<p>When we really need to flush the output immediately—for example, when printing error messages or debugging information.
+We have streams like <code>std::cerr</code> which are unbuffered and automatically print immediately, so in those cases, we do not need <code>std::endl</code> for flushing either.</p>
+</div>
+<h2 id="questions">Questions</h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">question 1</label><label for="__tabbed_1_2">answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How many entry points can a valid C/C++ program have?</p>
+</div>
+<div class="tabbed-block">
+<p>Exactly one — the main function.</p>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">question 2</label><label for="__tabbed_2_2">answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How does the <code>#include</code> preprocessor directive work?</p>
+</div>
+<div class="tabbed-block">
+<p>It copies the contents of the specified file directly into
+the location where it was included.</p>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">question 3</label><label for="__tabbed_3_2">answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What is a preprocessed source file called?</p>
+</div>
+<div class="tabbed-block">
+<p>A translation unit.</p>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">question 4</label><label for="__tabbed_4_2">answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>During the compile step, does the compiler require a full function
+definition, or is a declaration enough?</p>
+</div>
+<div class="tabbed-block">
+<p>A declaration is enough — the actual connection to the definition
+happens during the linking phase.</p>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">question 5</label><label for="__tabbed_5_2">answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What does a header guard protect against?</p>
+</div>
+<div class="tabbed-block">
+<p>Against multiple inclusion of the same header file.</p>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">question 6</label><label for="__tabbed_6_2">answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Name the primitive data types mentioned in this chapter
+and their typical byte sizes.</p>
+</div>
+<div class="tabbed-block">
+<p>int    - 4<br />
+float  - 4<br />
+double - 8<br />
+char   - 1<br />
+bool   - 1</p>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">question 7</label><label for="__tabbed_7_2">answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Which header provides input and output stream functionality in C++?</p>
+</div>
+<div class="tabbed-block">
+<p><code>&lt;iostream&gt;</code></p>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">question 8</label><label for="__tabbed_8_2">answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What is a stream buffer used for?</p>
+</div>
+<div class="tabbed-block">
+<p>It temporarily stores output data before sending it to the terminal or file.</p>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">question 9</label><label for="__tabbed_9_2">answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>List the standard output streams covered in this chapter and explain their primary differences and typical use cases.</p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>std::cout</code> — Normal program output; buffered.</li>
+<li><code>std::cerr</code> — Error messages; unbuffered, prints immediately.</li>
+<li><code>std::clog</code> — Logging and diagnostic messages; buffered, prints in order, useful for tracking program behavior.</li>
+</ul>
+<p>Primary differences:</p>
+<ul>
+<li>Buffered vs unbuffered (affects when output appears)</li>
+<li>Intended purpose (normal output vs error vs logging)</li>
+<li><code>std::cerr</code> is immediate, <code>std::clog</code> preserves order like <code>std::cout</code></li>
+<li>While both <code>std::clog</code> and <code>std::cout</code> are buffered, <code>std::cout</code> is tied to <code>std::cin</code>, so reading input from <code>std::cin</code> will automatically flush the <code>std::cout</code> buffer.</li>
+</ul>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">question 10</label><label for="__tabbed_10_2">answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Explain difference between a <code>\n</code> and <code>std::endl</code> for writing a new line.</p>
+</div>
+<div class="tabbed-block">
+<p><code>\n</code> only adds a newline character to the output.
+<code>std::endl</code> adds a newline and flushes the output buffer,
+which can slow the program down if used excessively.</p>
+</div>
+</div>
+</div>
+<h2 id="exercises">Exercises</h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">exercise 1</label><label for="__tabbed_11_2">answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Write a program that prints your first name on one line 
+and your surname on the next line in the terminal.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span>
+<span class="normal"><a href="#__codelineno-31-4">4</a></span>
+<span class="normal"><a href="#__codelineno-31-5">5</a></span>
+<span class="normal"><a href="#__codelineno-31-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Name</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Surname&quot;</span><span class="p">;</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<hr />
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">exercise 2</label><label for="__tabbed_12_2">answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Write a program that asks the user for their age, stores it in a variable, and then prints it back to the command line.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-32-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-32-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-32-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-32-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-32-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-32-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-32-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-32-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-32-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2"></a>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">user_age</span><span class="p">;</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5"></a>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter your age: &quot;</span><span class="p">;</span>
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">user_age</span><span class="p">;</span>
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8"></a>
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;User age: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">user_age</span><span class="p">;</span>
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
